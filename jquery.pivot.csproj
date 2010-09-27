@@ -93,6 +93,7 @@
       <LastGenOutput>testdb.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="README" />
   </ItemGroup>
   <ItemGroup>
     <None Include="model\testdb.dbml.layout">
