@@ -95,7 +95,9 @@
             var itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
             sb.append('<tr>');
             for (var col = 0; col < gbCols.length; col += 1) {
-                sb.append('<th class="groupby">');
+                sb.append('<th class="groupby level');
+                sb.append(col);
+                sb.append('">');
                 if (gbCols[col].colindex === item.colindex) {
                     if (item.children.length > 0) {
                         sb.append('<span class="foldunfold collapsed">');
@@ -149,7 +151,9 @@
         //headerrow
         sb.append('<tr class="head">');
         for (var i = 0; i < gbCols.length; i += 1) {
-            sb.append('<th class="groupby">');
+            sb.append('<th class="groupby level');
+            sb.append(i);
+            sb.append('">');
             sb.append(gbCols[i].text);
             sb.append('</th>');
         }
