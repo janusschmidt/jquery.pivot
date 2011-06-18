@@ -4,17 +4,19 @@ pre {border:1px solid grey; background:#EFE4B0; padding:10px;}
 
 span.em { font-style:italic; text-decoration:underline;}
 
+#res, #res2 {margin-top:20px}
+
 table.pivot ul {list-style-image:none; list-style-type:none; }
 
 table.pivot {border-collapse : collapse;border : solid 1px black;text-align : right;}
 
-table.pivot td.resultcell, table.pivot .foldunfold{text-decoration : underline; cursor:pointer;}
+table.pivot td.resultcell, table.pivot .foldunfold{text-decoration : underline; cursor:pointer;  white-space:nowrap;}
 
 table.pivot th, table.pivot td{padding :5px;}
 
 table.pivot tr.head{font-size : larger;text-align : center;}
 
-table.pivot .total{background-color : #eee;}
+table.pivot .total{background-color : #eee;  white-space:nowrap;}
 
 table.pivot tr.total th{text-align : left;}
 
