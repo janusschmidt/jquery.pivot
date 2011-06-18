@@ -1,7 +1,7 @@
 ﻿/*global jQuery, $, alert*/
 $(document).ready(function () {
 
-    var example4AsJSONdata = {
+    var example4JSONdata = {
         dataid: "An optional sourcetable identifier",
         columns: [
         { colvalue: "Month ", coltext: "Month ", header: "Month ", sortbycol: "Month ", groupbyrank: null, pivot: true, result: false },
@@ -45,6 +45,175 @@ $(document).ready(function () {
         { "Month ": "March ", "Subject ": "Art ", "Student ": "Mary ", "Score ": "4.8 " },
         { "Month ": "March ", "Subject ": "History ", "Student ": "Mary ", "Score ": "6.7 " },
         { "Month ": "March ", "Subject ": "French ", "Student ": "Mary ", "Score ": "9.0 "}]
+    };
+
+    var example5JSONdata = {
+        "dataid": "An identifier for the table",
+        "columns": [
+            { "colvalue": "companyid ", "coltext": "companyid ", "header": "companyid ", "datatype": "number", "sortbycol": "companyid ", "groupbyrank": 2, "pivot": false, "result": false },
+            { "colvalue": "userid ", "coltext": "userid ", "header": "userid ", "datatype": "number", "sortbycol": "userid ", "groupbyrank": 3, "pivot": false, "result": false },
+            { "colvalue": "date ", "coltext": "date ", "header": "date ", "sortbycol": "date ", "dataid": "idforpivot", "groupbyrank": null, "pivot": true, "result": false },
+            { "colvalue": "regMinutes ", "coltext": "regMinutes ", "header": "regMinutes ", "sortbycol": "regMinutes ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "flexMinutes ", "coltext": "flexMinutes ", "header": "flexMinutes ", "sortbycol": "flexMinutes ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "correction ", "coltext": "correction ", "header": "correction ", "sortbycol": "correction ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "diffMinutes ", "coltext": "diffMinutes ", "header": "diffMinutes ", "sortbycol": "diffMinutes ", "groupbyrank": null, "pivot": false, "result": true}],
+        "rows": [
+            { "companyid ": 2, "userid ": 1, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 2, "userid ": 1, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "330 ", "correction ": "0 ", "diffMinutes ": "-330 " },
+            { "companyid ": 2, "userid ": 1, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 2, "userid ": 1, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 2, "userid ": 1, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 2, "userid ": 1, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 2, "userid ": 1, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 2, "userid ": 1, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 2, "userid ": 1, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 2, "userid ": 1, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "330 ", "correction ": "0 ", "diffMinutes ": "-330 " },
+            { "companyid ": 2, "userid ": 1, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 2, "userid ": 1, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "300 ", "correction ": "0 ", "diffMinutes ": "-300 " },
+            { "companyid ": 4, "userid ": 18, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 86, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 87, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 88, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 89, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 90, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 91, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 92, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 94, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 95, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 121, "date ": "01-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 18, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 86, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 87, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 88, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 89, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 90, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 91, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 92, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 94, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 95, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 121, "date ": "02-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 18, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 93, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 94, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "03-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 93, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 94, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "04-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 93, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "480 ", "correction ": "0 ", "diffMinutes ": "-480 " },
+            { "companyid ": 4, "userid ": 94, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "05-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 94, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "06-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 86, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 87, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 89, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 90, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 91, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 92, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 94, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 95, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 121, "date ": "07-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 86, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 87, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 88, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 89, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 90, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 91, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 92, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 94, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 95, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 121, "date ": "08-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 18, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 86, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 87, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 88, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 89, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 90, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 91, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 92, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 93, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 94, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 95, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 121, "date ": "09-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 4, "userid ": 18, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "420 ", "correction ": "0 ", "diffMinutes ": "-420 " },
+            { "companyid ": 4, "userid ": 93, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 94, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "10-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 93, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 94, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "11-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 18, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 86, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 87, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 " },
+            { "companyid ": 4, "userid ": 88, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 89, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 90, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 91, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 92, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "390 ", "correction ": "0 ", "diffMinutes ": "-390 " },
+            { "companyid ": 4, "userid ": 93, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "480 ", "correction ": "0 ", "diffMinutes ": "-480 " },
+            { "companyid ": 4, "userid ": 94, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 95, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "12-08-2009 00:00:00 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 "}]
     };
 
 
@@ -119,20 +288,33 @@ $(document).ready(function () {
 
     $('a.runexample').click(function () {
         var exampleId = $(this).attr('title');
+        $('#sourcetables table').hide();
         $('#' + exampleId).show();
-        $('#res').html('');
+        $('#res').html('<h3>Click the source table and it will be transformed into a pivot table</h3>');
+        $('#res2').html('');
         $('#demos').show();
         $('#doc').hide();
 
         if (exampleId === 'example4') {
             $('#res').pivot({
-                source: example4AsJSONdata,
+                source: example4JSONdata,
                 formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
+                onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+            });
+        } else if (exampleId === 'example5') {
+            $('#res').pivot({
+                source: example4JSONdata, //same as example 1
+                formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
+                onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+            });
+            $('#res2').pivot({
+                source: example5JSONdata, //same as example 2
+                formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
+                parseNumFunc: function (n) { return +((typeof n === "string") ? +n.replace('.', '').replace(',', '.') : n); },
                 onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
             });
         }
     });
-
 
     $('#backToDoc').click(function () {
         $('#demos').hide();
