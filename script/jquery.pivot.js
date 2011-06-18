@@ -1,9 +1,6 @@
 ﻿/*global jQuery, JSON, $, alert, document, AdapterObject, PagerObject, FilterObject, SortObject, HideColumns */
 (function ($) {
-    var adapter;
-    var $obj;
     var opts;
-    var $pivottable;
 
     var lib = {};
     lib.StringBuilder = function (value) { this.strings = [""]; this.append(value); };
@@ -12,10 +9,11 @@
     lib.StringBuilder.prototype.toString = function () { return this.strings.join(""); };
     //Returns a new array with elements where a call to fun(item, index, extra) returns non null
     lib.map = function (array, fun, extra) {
+        var i, len;
         var res = [];
         if (array) {
-            for (var i = 0, len = array.length; i < len; i += 1) {
-                if (i in array) {
+            for (i = 0, len = array.length; i < len; i += 1) {
+                if (array.hasOwnProperty(i)) {
                     var item = fun(array[i], i, extra);
                     if (item) {
                         res.push(item);
@@ -32,9 +30,10 @@
     };
     //returns true if in at least one row of an array returns true when passed as argument to the given function.
     lib.exists = function (ar, fun, extra) {
+        var i, len;
         if (ar) {
-            for (var i = 0, len = ar.length; i < len; i += 1) {
-                if (i in ar) {
+            for (i = 0, len = ar.length; i < len; i += 1) {
+                if (ar.hasOwnProperty(i)) {
                     var item = fun(ar[i], i, extra);
                     if (item) {
                         return true;
@@ -48,6 +47,7 @@
     var resultCellClicked = function () {
         if (opts.onResultCellClicked) {
             var el = $(this);
+            var adapter = el.closest('table.pivot').data('jquery.pivot.adapter');
             var aGroupBys = [];
             var data = el.data("def");
             var curNode = data.treeNode;
@@ -55,12 +55,16 @@
                 aGroupBys.unshift({ dataidGroup: curNode.dataid, groupbyval: curNode.groupbyValue });
                 curNode = curNode.parent;
             }
-            var dataObj = { dataidTable: adapter.dataid, pivot: { dataidPivot: data.pivot.dataid, pivotvalue: data.pivot.pivotValue, pivotsortvalue: data.pivot.sortby }, groups: aGroupBys };
+            var dataObj = { dataidTable: adapter.dataid, pivot: { dataidPivot: data.pivot.dataid, pivotvalue: data.pivot.pivotValue,
+                pivotsortvalue: data.pivot.sortby
+            }, groups: aGroupBys
+            };
             opts.onResultCellClicked(dataObj);
         }
     };
 
     var getResValue = function (treeNode, pivotValue) {
+        var i, i1;
         var res = 0.0;
         var findPivotFunc = function (item, index, value) {
             return item.pivotValue === value ? item : null;
@@ -70,13 +74,15 @@
             res = opts.bSum ? opts.parseNumFunc(pivotCells[0].result) : pivotCells[0].result;
         }
         else if (pivotCells.length > 1) {
-            for (var i = 0; i < pivotCells.length; i += 1) {
+            for (i = 0; i < pivotCells.length; i += 1) {
                 res += opts.parseNumFunc(pivotCells[i].result);
             }
         }
         else if (opts.bSum) {
-            for (var i1 = 0; i1 < treeNode.children.length; i1 += 1) {
+            for (i1 = 0; i1 < treeNode.children.length; i1 += 1) {
+                /*ignore jslint start*/
                 res += getResValue(treeNode.children[i1], pivotValue);
+                /*ignore jslint end*/
             }
         }
         else {
@@ -85,16 +91,17 @@
         return res;
     };
 
-    var appendChildRows = function (treeNode, belowThisRow) {
+    var appendChildRows = function (treeNode, belowThisRow, adapter) {
+        var i, col, col1;
         var gbCols = adapter.alGroupByCols;
         var pivotCols = adapter.uniquePivotValues;
 
-        for (var i = 0; i < treeNode.children.length; i += 1) {
+        for (i = 0; i < treeNode.children.length; i += 1) {
             var sb = new lib.StringBuilder();
             var item = treeNode.children[i];
             var itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
             sb.append('<tr>');
-            for (var col = 0; col < gbCols.length; col += 1) {
+            for (col = 0; col < gbCols.length; col += 1) {
                 sb.append('<th class="groupby level');
                 sb.append(col);
                 sb.append('">');
@@ -120,7 +127,7 @@
 
             var rowSum = 0.0;
 
-            for (var col1 = 0; col1 < pivotCols.length; col1 += 1) {
+            for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
                 var result = getResValue(item, pivotCols[col1].pivotValue);
                 if (opts.bTotals) {
                     rowSum += result;
@@ -144,13 +151,14 @@
         }
     };
 
-    var makeCollapsed = function () {
+    var makeCollapsed = function (adapter, $obj) {
+        var i, i1, col;
         var sb = new lib.StringBuilder('<table class="pivot">');
         var gbCols = adapter.alGroupByCols;
 
         //headerrow
         sb.append('<tr class="head">');
-        for (var i = 0; i < gbCols.length; i += 1) {
+        for (i = 0; i < gbCols.length; i += 1) {
             sb.append('<th class="groupby level');
             sb.append(i);
             sb.append('">');
@@ -158,7 +166,7 @@
             sb.append('</th>');
         }
         var pivotCols = adapter.uniquePivotValues;
-        for (var i1 = 0; i1 < pivotCols.length; i1 += 1) {
+        for (i1 = 0; i1 < pivotCols.length; i1 += 1) {
             sb.append('<th class="pivotcol">');
             sb.append(pivotCols[i1].pivotValue);
             sb.append('</th>');
@@ -176,7 +184,7 @@
             sb.append(gbCols.length);
             sb.append('">Total</th>');
             var rowSum = 0.0;
-            for (var col = 0; col < pivotCols.length; col += 1) {
+            for (col = 0; col < pivotCols.length; col += 1) {
                 var result = getResValue(adapter.tree, pivotCols[col].pivotValue);
                 if (opts.bTotals) {
                     rowSum += (+result);
@@ -194,12 +202,14 @@
 
         //top level rows
         $obj.html('');
-        $pivottable = $(sb.toString()).appendTo($obj);
-        appendChildRows(adapter.tree, $('tr:first', $pivottable));
+        var $pivottable = $(sb.toString()).appendTo($obj);
+        $pivottable.data('jquery.pivot.adapter', adapter);
+        appendChildRows(adapter.tree, $('tr:first', $pivottable), adapter);
     };
 
     var foldunfold = function (eventSource) {
         var el = $(this);
+        var adapter = el.closest('table.pivot').data('jquery.pivot.adapter');
         var status = el.data("status");
         var parentRow = el.closest('tr');
         status.treeNode.collapsed = !status.treeNode.collapsed;
@@ -212,7 +222,7 @@
         }
 
         if (!status.bDatabound) {
-            appendChildRows(status.treeNode, parentRow);
+            appendChildRows(status.treeNode, parentRow, adapter);
             status.bDatabound = true;
         }
         else {
@@ -247,37 +257,40 @@
     };
 
     $.fn.pivot = function (options) {
-        $obj = this;
         opts = $.extend({}, $.fn.pivot.defaults, options);
-        adapter = new AdapterObject();
 
-        this.html('');
-        if (typeof opts.source === 'object' && opts.source.jquery || opts.source.columns) {
-            if (opts.source.jquery) {
-                if (opts.source.find('tr').length > 0) {
-                    adapter.parseFromXhtmlTable(opts.source);
+        return this.each(function () {
+            var $obj = $(this);
+            var adapter = new AdapterObject();
+
+            $obj.html('');
+            if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
+                if (opts.source.jquery) {
+                    if (opts.source.find('tr').length > 0) {
+                        adapter.parseFromXhtmlTable(opts.source);
+                    }
                 }
+                else {
+                    adapter.parseJSONsource(opts.source);
+                }
+
+                //clean up previous event handlers
+                $obj.find(".pivot .foldunfold").die('click');
+                $obj.find(".resultcell").die('click');
+
+                //set up eventhandlers
+                $obj.find(".pivot .foldunfold").live('click', foldunfold);
+                if (opts.onResultCellClicked) {
+                    $obj.find(".resultcell").live('click', resultCellClicked);
+                }
+
+                makeCollapsed(adapter, $obj);
             }
-            else {
-                adapter.parseJSONsource(opts.source);
+
+            if ($obj.html() === '') {
+                $obj.html('<h1>' + opts.noDataText + '</h1>');
             }
-
-            //clean up previous event handlers
-            $obj.find(".pivot .foldunfold").die('click');
-            $obj.find(".resultcell").die('click');
-
-            //set up eventhandlers
-            $obj.find(".pivot .foldunfold").live('click', foldunfold);
-            if (opts.onResultCellClicked) {
-                $obj.find(".resultcell").live('click', resultCellClicked);
-            }
-
-            makeCollapsed();
-        }
-
-        if (this.html() === '') {
-            this.html('<h1>' + opts.noDataText + '</h1>');
-        }
+        });
     };
 
     $.fn.pivot.defaults = {
@@ -286,8 +299,10 @@
         bTotals: true, //Includes total row and column
         bCollapsible: true, // Set to false to expand all and remove open/close buttons
         formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
-        parseNumFunc: function (n) { return +n; }, //Can be used if parsing a html table and want a non standard method of parsing data. Ie. for non US numeric formats.
-        onResultCellClicked: null, //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
+        parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. Ie. 
+        //for non US numeric formats.
+        onResultCellClicked: null,  //Method thats called when a result cell is clicked. 
+        //This can be used to call server and present details for that cell.
         noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.
         noDataText: "No data" //Text used if source data is empty.
     };
@@ -295,12 +310,13 @@
     $.fn.pivot.formatDK = function (num, decimals) { return this.formatLocale(num, decimals, '.', ','); };
     $.fn.pivot.formatUK = function (num, decimals) { return this.formatLocale(num, decimals, ',', '.'); };
     $.fn.pivot.formatLocale = function (num, decimals, kilosep, decimalsep) {
+        var i;
         var bNeg = num < 0;
         var x = Math.round(num * Math.pow(10, decimals));
-        var y = ('' + Math.abs(x)).split('');
+        var y = Math.abs(x).toString().split('');
         var z = y.length - decimals;
         if (z <= 0) {
-            for (var i = 0; i <= -z; i += 1) {
+            for (i = 0; i <= -z; i += 1) {
                 y.unshift('0');
             }
             z = 1;
@@ -357,9 +373,10 @@
     }
 
     AdapterObject.prototype.parseJSONsource = function (data) {
+        var cellIndex, cellcount, rowIndex, rowcount;
         this.dataid = data.dataid;
         //exctract header info
-        for (var cellIndex = 0, cellcount = data.columns.length; cellIndex < cellcount; cellIndex += 1) {
+        for (cellIndex = 0, cellcount = data.columns.length; cellIndex < cellcount; cellIndex += 1) {
             var col = data.columns[cellIndex];
             var cell = {
                 colvalue: col.colvalue,
@@ -391,11 +408,12 @@
         var findGroupByFunc = function (item, index, value) { return item.groupbyValue === value ? item : null; };
         var findPivotFunc = function (item, index, value) { return item.pivotValue === value ? item : null; };
         //build tree structure
-        for (var rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
+        for (rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
             var cells = data.rows[rowIndex];
             var curNode = this.tree;
+            var i;
             //groupbys
-            for (var i = 0; i < this.alGroupByCols.length; i += 1) {
+            for (i = 0; i < this.alGroupByCols.length; i += 1) {
                 var groupbyValue = trim(cells[this.alGroupByCols[i].colvalue]);
                 var groupbyText = cells[this.alGroupByCols[i].coltext];
                 var sortbyValue = trim(cells[this.alGroupByCols[i].sortbycol]);
@@ -435,12 +453,13 @@
     };
 
     AdapterObject.prototype.parseFromXhtmlTable = function (sourceTable) {
+        var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1;
         var data = { dataid: sourceTable.attr("dataid"), columns: [], rows: [] };
 
         //exctract header info
         var rows = $('tbody > tr', sourceTable);
         var columnNames = [];
-        for (var cellIndex = 0, cellcount = rows[0].cells.length; cellIndex < cellcount; cellIndex += 1) {
+        for (cellIndex = 0, cellcount = rows[0].cells.length; cellIndex < cellcount; cellIndex += 1) {
             var el = $(rows[0].cells[cellIndex]);
             var eltext = el.text();
             var col = {
@@ -459,10 +478,10 @@
         }
 
         //extract rows
-        for (var rowIndex = 1, rowcount = rows.length; rowIndex < rowcount; rowIndex += 1) {
+        for (rowIndex = 1, rowcount = rows.length; rowIndex < rowcount; rowIndex += 1) {
             var cells = rows[rowIndex].cells;
             var row = {};
-            for (var cellIndex1 = 0, cellcount1 = columnNames.length; cellIndex1 < cellcount1; cellIndex1 += 1) {
+            for (cellIndex1 = 0, cellcount1 = columnNames.length; cellIndex1 < cellcount1; cellIndex1 += 1) {
                 if (data.columns[cellIndex1].datatype === "number") {
                     row[columnNames[cellIndex1]] = parseFloat(cells[cellIndex1].innerHTML);
                 }
@@ -477,8 +496,9 @@
     };
 
     AdapterObject.prototype.sortTree = function (treeNode) {
+        var i;
         if (treeNode.children && treeNode.children.length > 0) {
-            for (var i = 0; i < treeNode.children.length; i += 1) {
+            for (i = 0; i < treeNode.children.length; i += 1) {
                 this.sortTree(treeNode.children[i]);
             }
 
@@ -505,4 +525,4 @@
             }
         };
     };
-})(jQuery);
+} (jQuery));
