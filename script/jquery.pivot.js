@@ -1,20 +1,17 @@
 ﻿/*global jQuery, JSON, $, alert, document, AdapterObject, PagerObject, FilterObject, SortObject, HideColumns */
 (function ($) {
-    var opts;
-
-    var lib = {};
+    var opts, lib = {};
     lib.StringBuilder = function (value) { this.strings = [""]; this.append(value); };
     lib.StringBuilder.prototype.append = function (value) { if (value !== null) { this.strings.push(value); } };
     lib.StringBuilder.prototype.clear = function () { this.strings.length = 1; };
     lib.StringBuilder.prototype.toString = function () { return this.strings.join(""); };
     //Returns a new array with elements where a call to fun(item, index, extra) returns non null
     lib.map = function (array, fun, extra) {
-        var i, len;
-        var res = [];
+        var i, len, res = [], item;
         if (array) {
             for (i = 0, len = array.length; i < len; i += 1) {
                 if (array.hasOwnProperty(i)) {
-                    var item = fun(array[i], i, extra);
+                    item = fun(array[i], i, extra);
                     if (item) {
                         res.push(item);
                     }
@@ -30,11 +27,11 @@
     };
     //returns true if in at least one row of an array returns true when passed as argument to the given function.
     lib.exists = function (ar, fun, extra) {
-        var i, len;
+        var i, len, item;
         if (ar) {
             for (i = 0, len = ar.length; i < len; i += 1) {
                 if (ar.hasOwnProperty(i)) {
-                    var item = fun(ar[i], i, extra);
+                    item = fun(ar[i], i, extra);
                     if (item) {
                         return true;
                     }
@@ -44,31 +41,39 @@
         return false;
     };
 
-    var resultCellClicked = function () {
+    function resultCellClicked() {
         if (opts.onResultCellClicked) {
-            var el = $(this);
-            var adapter = el.closest('table.pivot').data('jquery.pivot.adapter');
-            var aGroupBys = [];
-            var data = el.data("def");
-            var curNode = data.treeNode;
+            var el = $(this),
+                adapter = el.closest('table.pivot').data('jquery.pivot.adapter'),
+                aGroupBys = [],
+                data = el.data("def"),
+                curNode = data.treeNode,
+                dataObj;
+
             while (curNode.parent) {
                 aGroupBys.unshift({ dataidGroup: curNode.dataid, groupbyval: curNode.groupbyValue });
                 curNode = curNode.parent;
             }
-            var dataObj = { dataidTable: adapter.dataid, pivot: { dataidPivot: data.pivot.dataid, pivotvalue: data.pivot.pivotValue,
-                pivotsortvalue: data.pivot.sortby
-            }, groups: aGroupBys
+            dataObj = {
+                dataidTable: adapter.dataid,
+                pivot: {
+                    dataidPivot: data.pivot.dataid,
+                    pivotvalue: data.pivot.pivotValue,
+                    pivotsortvalue: data.pivot.sortby
+                },
+                groups: aGroupBys
             };
             opts.onResultCellClicked(dataObj);
         }
-    };
+    }
 
-    var getResValue = function (treeNode, pivotValue) {
-        var i, i1;
-        var res = opts.bSum ? 0.0 : '';
-        var pivotCells = $.map(treeNode.pivotvalues || [], function (item, index) {
-            return item.pivotValue === pivotValue ? item.result : null;
-        });
+    function getResValue(treeNode, pivotValue) {
+        var i, i1,
+            res = opts.bSum ? 0.0 : '',
+            pivotCells = $.map(treeNode.pivotvalues || [], function (item, index) {
+                return item.pivotValue === pivotValue ? item.result : null;
+            });
+
         if (opts.bSum) {
             if (pivotCells.length >= 1) {
                 for (i = 0; i < pivotCells.length; i += 1) {
@@ -88,17 +93,17 @@
         }
 
         return res;
-    };
+    }
 
-    var appendChildRows = function (treeNode, belowThisRow, adapter) {
-        var i, col, col1;
-        var gbCols = adapter.alGroupByCols;
-        var pivotCols = adapter.uniquePivotValues;
+    function appendChildRows(treeNode, belowThisRow, adapter) {
+        var i, col, col1, sb, item, itemtext, rowSum, result, resCell,
+            gbCols = adapter.alGroupByCols,
+            pivotCols = adapter.uniquePivotValues;
 
         for (i = 0; i < treeNode.children.length; i += 1) {
-            var sb = new lib.StringBuilder();
-            var item = treeNode.children[i];
-            var itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
+            sb = new lib.StringBuilder();
+            item = treeNode.children[i];
+            itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
             sb.append('<tr class="level');
             sb.append(item.groupbylevel);
             sb.append('">');
@@ -126,10 +131,10 @@
             belowThisRow = $(sb.toString()).insertAfter(belowThisRow);
             belowThisRow.find('.foldunfold').data("status", { bDatabound: false, treeNode: item });
 
-            var rowSum = 0.0;
+            rowSum = 0.0;
 
             for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
-                var result = getResValue(item, pivotCols[col1].pivotValue);
+                result = getResValue(item, pivotCols[col1].pivotValue);
                 if (opts.bTotals) {
                     rowSum += result;
                 }
@@ -137,7 +142,7 @@
                 sb.append('<td class="resultcell">');
                 sb.append(opts.formatFunc(result));
                 sb.append('</td>');
-                var resCell = $(sb.toString()).appendTo(belowThisRow);
+                resCell = $(sb.toString()).appendTo(belowThisRow);
                 resCell.data("def", { pivot: pivotCols[col1], treeNode: item });
             }
 
@@ -149,12 +154,14 @@
                 $(sb.toString()).appendTo(belowThisRow);
             }
         }
-    };
+    }
 
-    var makeCollapsed = function (adapter, $obj) {
-        var i, i1, col;
-        var sb = new lib.StringBuilder('<table class="pivot">');
-        var gbCols = adapter.alGroupByCols;
+    function makeCollapsed(adapter, $obj) {
+        var i, i1, col, result, $pivottable,
+            sb = new lib.StringBuilder('<table class="pivot">'),
+            gbCols = adapter.alGroupByCols,
+            pivotCols = adapter.uniquePivotValues,
+            rowSum = 0.0;
 
         //headerrow
         sb.append('<tr class="head">');
@@ -165,7 +172,7 @@
             sb.append(gbCols[i].text);
             sb.append('</th>');
         }
-        var pivotCols = adapter.uniquePivotValues;
+
         for (i1 = 0; i1 < pivotCols.length; i1 += 1) {
             sb.append('<th class="pivotcol">');
             sb.append(pivotCols[i1].pivotValue);
@@ -183,9 +190,8 @@
             sb.append('<th class="total" colspan="');
             sb.append(gbCols.length);
             sb.append('">Total</th>');
-            var rowSum = 0.0;
             for (col = 0; col < pivotCols.length; col += 1) {
-                var result = getResValue(adapter.tree, pivotCols[col].pivotValue);
+                result = getResValue(adapter.tree, pivotCols[col].pivotValue);
                 if (opts.bTotals) {
                     rowSum += (+result);
                 }
@@ -202,16 +208,19 @@
 
         //top level rows
         $obj.html('');
-        var $pivottable = $(sb.toString()).appendTo($obj);
+        $pivottable = $(sb.toString()).appendTo($obj);
         $pivottable.data('jquery.pivot.adapter', adapter);
         appendChildRows(adapter.tree, $('tr:first', $pivottable), adapter);
-    };
+    }
 
-    var foldunfold = function (eventSource) {
-        var el = $(this);
-        var adapter = el.closest('table.pivot').data('jquery.pivot.adapter');
-        var status = el.data("status");
-        var parentRow = el.closest('tr');
+    function foldunfold(eventSource) {
+        var el = $(this),
+            adapter = el.closest('table.pivot').data('jquery.pivot.adapter'),
+            status = el.data("status"),
+            parentRow = el.closest('tr'),
+            visible = false,
+            row, rowstatus, thisrowstatus;
+
         status.treeNode.collapsed = !status.treeNode.collapsed;
 
         if (status.treeNode.collapsed) {
@@ -226,17 +235,16 @@
             status.bDatabound = true;
         }
         else {
-            var row = parentRow;
-            var rowstatus = status;
+            row = parentRow;
+            rowstatus = status;
             while ((row = row.next()).length > 0) {
-                var thisrowstatus = row.find('.foldunfold').data("status");
+                thisrowstatus = row.find('.foldunfold').data("status");
 
                 // break if row is total row or belongs to other grouping
                 if ((thisrowstatus && thisrowstatus.treeNode.groupbylevel <= status.treeNode.groupbylevel) || row.is('.total')) {
                     break;
                 }
 
-                var visible = false;
                 if (thisrowstatus) {
                     rowstatus = thisrowstatus;
                     visible = rowstatus.treeNode.visible();
@@ -249,14 +257,14 @@
                 row.toggle(visible);
             }
         }
-    };
+    }
 
     $.fn.pivot = function (options) {
         opts = $.extend({}, $.fn.pivot.defaults, options);
 
         return this.each(function () {
-            var $obj = $(this);
-            var adapter = new AdapterObject();
+            var $obj = $(this),
+                adapter = new AdapterObject();
 
             $obj.html('');
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
@@ -304,11 +312,12 @@
     $.fn.pivot.formatDK = function (num, decimals) { return this.formatLocale(num, decimals, '.', ','); };
     $.fn.pivot.formatUK = function (num, decimals) { return this.formatLocale(num, decimals, ',', '.'); };
     $.fn.pivot.formatLocale = function (num, decimals, kilosep, decimalsep) {
-        var i;
-        var bNeg = num < 0;
-        var x = Math.round(num * Math.pow(10, decimals));
-        var y = Math.abs(x).toString().split('');
-        var z = y.length - decimals;
+        var i,
+            bNeg = num < 0,
+            x = Math.round(num * Math.pow(10, decimals)),
+            y = Math.abs(x).toString().split(''),
+            z = y.length - decimals;
+
         if (z <= 0) {
             for (i = 0; i <= -z; i += 1) {
                 y.unshift('0');
@@ -341,7 +350,7 @@
     //    }
 
     //***********************************************************
-    var AdapterObject = function () {
+    function AdapterObject() {
         this.alGroupByCols = [];
         this.pivotCol = null;
         this.resultCol = null;
@@ -349,11 +358,12 @@
         this.tree = { children: [] };
         this.uniquePivotValues = [];
         this.dataid = null;
-    };
+    }
 
     function sortgroupbys(rowA, rowB) {
-        var a = +rowA.groupbyrank;
-        var b = +rowB.groupbyrank;
+        var a = +rowA.groupbyrank,
+            b = +rowB.groupbyrank;
+
         return (a < b) ? -1 : (a > b) ? 1 : 0;
     }
 
@@ -367,12 +377,12 @@
     }
 
     AdapterObject.prototype.parseJSONsource = function (data) {
-        var cellIndex, cellcount, rowIndex, rowcount;
+        var cellIndex, cellcount, rowIndex, rowcount, col, cell, cells, curNode, i, groupbyValue, groupbyText, sortbyValue, newObj, pivotValue, pivotSortBy, result, newPivotValue;
         this.dataid = data.dataid;
         //exctract header info
         for (cellIndex = 0, cellcount = data.columns.length; cellIndex < cellcount; cellIndex += 1) {
-            var col = data.columns[cellIndex];
-            var cell = {
+            col = data.columns[cellIndex];
+            cell = {
                 colvalue: col.colvalue,
                 coltext: col.coltext,
                 text: col.header || col.coltext || col.colvalue,
@@ -399,19 +409,18 @@
         this.TreeNode = function () { };
         this.TreeNode.prototype.visible = function () { return !this.parent.collapsed && (!this.parent.visible || this.parent.visible()); };
 
-        var findGroupByFunc = function (item, index, value) { return item.groupbyValue === value ? item : null; };
-        var findPivotFunc = function (item, index, value) { return item.pivotValue === value ? item : null; };
+        function findGroupByFunc(item, index, value) { return item.groupbyValue === value ? item : null; }
+        function findPivotFunc(item, index, value) { return item.pivotValue === value ? item : null; }
         //build tree structure
         for (rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
-            var cells = data.rows[rowIndex];
-            var curNode = this.tree;
-            var i;
+            cells = data.rows[rowIndex];
+            curNode = this.tree;
             //groupbys
             for (i = 0; i < this.alGroupByCols.length; i += 1) {
-                var groupbyValue = trim(cells[this.alGroupByCols[i].colvalue]);
-                var groupbyText = cells[this.alGroupByCols[i].coltext];
-                var sortbyValue = trim(cells[this.alGroupByCols[i].sortbycol]);
-                var newObj = lib.find(curNode.children, findGroupByFunc, groupbyValue);
+                groupbyValue = trim(cells[this.alGroupByCols[i].colvalue]);
+                groupbyText = cells[this.alGroupByCols[i].coltext];
+                sortbyValue = trim(cells[this.alGroupByCols[i].sortbycol]);
+                newObj = lib.find(curNode.children, findGroupByFunc, groupbyValue);
                 if (!newObj) {
                     newObj = new this.TreeNode();
                     newObj.groupbyValue = groupbyValue;
@@ -429,13 +438,13 @@
                 curNode = newObj;
             }
             //pivot
-            var pivotValue = trim(cells[this.pivotCol.colvalue]);
-            var pivotSortBy = trim(cells[this.pivotCol.sortbycol]);
-            var result = trim(cells[this.resultCol.colvalue]);
+            pivotValue = trim(cells[this.pivotCol.colvalue]);
+            pivotSortBy = trim(cells[this.pivotCol.sortbycol]);
+            result = trim(cells[this.resultCol.colvalue]);
             if (!curNode.pivotvalues) {
                 curNode.pivotvalues = [];
             }
-            var newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
+            newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
             curNode.pivotvalues.push(newPivotValue);
             if (!lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
                 this.uniquePivotValues.push(newPivotValue);
@@ -447,16 +456,16 @@
     };
 
     AdapterObject.prototype.parseFromXhtmlTable = function (sourceTable) {
-        var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1;
-        var data = { dataid: sourceTable.attr("dataid"), columns: [], rows: [] };
+        var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1, el, eltext, col, cells, row,
+            data = { dataid: sourceTable.attr("dataid"), columns: [], rows: [] },
+            //exctract header info
+            rows = $('tbody > tr', sourceTable),
+            columnNames = [];
 
-        //exctract header info
-        var rows = $('tbody > tr', sourceTable);
-        var columnNames = [];
         for (cellIndex = 0, cellcount = rows[0].cells.length; cellIndex < cellcount; cellIndex += 1) {
-            var el = $(rows[0].cells[cellIndex]);
-            var eltext = el.text();
-            var col = {
+            el = $(rows[0].cells[cellIndex]);
+            eltext = el.text();
+            col = {
                 colvalue: el.attr("colvalue") || eltext,
                 coltext: el.attr("coltext") || eltext,
                 header: el.attr("header") || el.text(),
@@ -473,8 +482,8 @@
 
         //extract rows
         for (rowIndex = 1, rowcount = rows.length; rowIndex < rowcount; rowIndex += 1) {
-            var cells = rows[rowIndex].cells;
-            var row = {};
+            cells = rows[rowIndex].cells;
+            row = {};
             for (cellIndex1 = 0, cellcount1 = columnNames.length; cellIndex1 < cellcount1; cellIndex1 += 1) {
                 if (data.columns[cellIndex1].datatype === "number") {
                     row[columnNames[cellIndex1]] = parseFloat(cells[cellIndex1].innerHTML);
@@ -490,13 +499,13 @@
     };
 
     AdapterObject.prototype.sortTree = function (treeNode) {
-        var i;
+        var i, datatype;
         if (treeNode.children && treeNode.children.length > 0) {
             for (i = 0; i < treeNode.children.length; i += 1) {
                 this.sortTree(treeNode.children[i]);
             }
 
-            var datatype = this.findCell(this.alGroupByCols, treeNode.children[0].colindex).datatype;
+            datatype = this.findCell(this.alGroupByCols, treeNode.children[0].colindex).datatype;
             treeNode.children.sort(this.getcomparer(this.bInvSort)[datatype]);
         }
     };
