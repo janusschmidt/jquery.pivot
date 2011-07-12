@@ -100,7 +100,9 @@
             var sb = new lib.StringBuilder();
             var item = treeNode.children[i];
             var itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
-            sb.append('<tr>');
+            sb.append('<tr class="level');
+            sb.append(item.groupbylevel);
+            sb.append('">');
             for (col = 0; col < gbCols.length; col += 1) {
                 sb.append('<th class="groupby level');
                 sb.append(col);
@@ -147,7 +149,6 @@
                 sb.append('</td>');
                 $(sb.toString()).appendTo(belowThisRow);
             }
-
         }
     };
 
@@ -246,12 +247,7 @@
                     visible = rowstatus.treeNode.visible() && !rowstatus.treeNode.collapsed;
                 }
 
-                if (visible) {
-                    row.show();
-                }
-                else {
-                    row.hide();
-                }
+                row.toggle(visible);
             }
         }
     };
