@@ -65,29 +65,28 @@
 
     var getResValue = function (treeNode, pivotValue) {
         var i, i1;
-        var res = 0.0;
-        var findPivotFunc = function (item, index, value) {
-            return item.pivotValue === value ? item : null;
-        };
-        var pivotCells = lib.map(treeNode.pivotvalues, findPivotFunc, pivotValue);
-        if (pivotCells.length === 1) {
-            res = opts.bSum ? opts.parseNumFunc(pivotCells[0].result) : pivotCells[0].result;
-        }
-        else if (pivotCells.length > 1) {
-            for (i = 0; i < pivotCells.length; i += 1) {
-                res += opts.parseNumFunc(pivotCells[i].result);
+        var res = opts.bSum ? 0.0 : '';
+        var pivotCells = $.map(treeNode.pivotvalues || [], function (item, index) {
+            return item.pivotValue === pivotValue ? item.result : null;
+        });
+        if (opts.bSum) {
+            if (pivotCells.length >= 1) {
+                for (i = 0; i < pivotCells.length; i += 1) {
+                    res += opts.parseNumFunc(pivotCells[i]);
+                }
+            } else {
+                for (i1 = 0; i1 < treeNode.children.length; i1 += 1) {
+                    /*ignore jslint start*/
+                    res += getResValue(treeNode.children[i1], pivotValue);
+                    /*ignore jslint end*/
+                }
             }
-        }
-        else if (opts.bSum) {
-            for (i1 = 0; i1 < treeNode.children.length; i1 += 1) {
-                /*ignore jslint start*/
-                res += getResValue(treeNode.children[i1], pivotValue);
-                /*ignore jslint end*/
-            }
-        }
-        else {
+        } else if (pivotCells.length >= 1) {
+            res = pivotCells.join(opts.separatorchar);
+        } else {
             res = null;
         }
+
         return res;
     };
 
@@ -295,12 +294,11 @@
         bTotals: true, //Includes total row and column
         bCollapsible: true, // Set to false to expand all and remove open/close buttons
         formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
-        parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. Ie. 
-        //for non US numeric formats.
-        onResultCellClicked: null,  //Method thats called when a result cell is clicked. 
-        //This can be used to call server and present details for that cell.
-        noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.
-        noDataText: "No data" //Text used if source data is empty.
+        parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. Ie. for non US numeric formats.
+        onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
+        noGroupByText: 'No value', //Text used if no data is available for specific groupby and pivot value.
+        noDataText: 'No data', //Text used if source data is empty.
+        separatorchar: ', '
     };
 
     $.fn.pivot.formatDK = function (num, decimals) { return this.formatLocale(num, decimals, '.', ','); };
