@@ -42,8 +42,10 @@ $.fn.pivot.defaults = {
     bTotals: true, //Includes total row and column
     bCollapsible: true, // Set to false to expand all and remove open/close buttons
     formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
-    parseNumFunc: function (n) { return +n; }, //Can be used if parsing a html table and want a non standard method of parsing data. Ie. for non US numeric formats.
-    onResultCellClicked: null, //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
+    parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. 
+                                                //Ie. for non US numeric formats.
+    onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell. 
+                                //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
     noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.
     noDataText: "No data" //Text used if source data is empty.
 };
