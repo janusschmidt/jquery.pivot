@@ -50,6 +50,9 @@
                 curNode = data.treeNode,
                 dataObj;
 
+            el.closest('table.pivot').find('.resultcell').removeClass('clickedResultCell');
+            el.addClass('clickedResultCell');
+
             while (curNode.parent) {
                 aGroupBys.unshift({ dataidGroup: curNode.dataid, groupbyval: curNode.groupbyValue });
                 curNode = curNode.parent;
@@ -63,7 +66,7 @@
                 },
                 groups: aGroupBys
             };
-            opts.onResultCellClicked(dataObj);
+            opts.onResultCellClicked(dataObj, el);
         }
     }
 
@@ -458,7 +461,7 @@
     AdapterObject.prototype.parseFromXhtmlTable = function (sourceTable) {
         var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1, el, eltext, col, cells, row,
             data = { dataid: sourceTable.attr("dataid"), columns: [], rows: [] },
-            //exctract header info
+        //exctract header info
             rows = $('tbody > tr', sourceTable),
             columnNames = [];
 
