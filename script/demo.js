@@ -349,6 +349,52 @@ $(document).ready(function () {
                 //separatorchar: ' - ',
                 onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
             });
+        } else if (exampleId === 'example7') {
+            $.ajax({
+                dataType: "jsonp",
+                url: 'http://odata.netflix.com/v2/Catalog/TitleAwards?$expand=Person,Title&$format=json',
+                //                http://services.odata.org/Northwind/Northwind.svc/Orders()?$top=10&$expand=Customer, Order_Details/Product/Supplier
+
+                jsonp: '$callback',
+                success: function (data) {
+                    var i, beforetime;
+                    var rows = jQuery.map(data.d.results, function (award) {
+                        if (award.Person) {
+                            jQuery.extend(award, { personid: award.Person.Id, personname: award.Person.Name });
+                        }
+                        if (award.Title) {
+                            jQuery.extend(award, { movieid: award.Title.Id, moviename: award.Title.Name, movieruntime: award.Title.Runtime, movieparentalrating: award.Title.Rating, movieavaragerating: award.Title.AverageRating });
+                        }
+                        return award;
+                    });
+
+                    var JSONdata = {
+                        dataid: "An optional sourcetable identifier",
+                        columns: [
+                                { colvalue: "movieruntime", coltext: "movieruntime", header: "Runtime minutes", sortbycol: "movieruntime", result: true },
+                                { colvalue: "movieavaragerating", coltext: "movieavaragerating", header: "Average rating", sortbycol: "movieavaragerating", pivot: 1 },
+                                { colvalue: "Type", coltext: "Type", header: "Award Type", sortbycol: "Type", groupbyrank: 1 },
+                                { colvalue: "Category", coltext: "Category", header: "Award Category", sortbycol: "Category", groupbyrank: 2 },
+                                { colvalue: "personname", coltext: "personname", header: "Person", sortbycol: "personname", groupbyrank: 4 },
+                                { colvalue: "movieid", coltext: "moviename", header: "Movie name", sortbycol: "movieid", groupbyrank: 3}],
+                        rows: $.merge([], rows)
+                    };
+
+                    for (i = 1; i < 20; i = i + 1) {
+                        $.merge(JSONdata.rows, rows);
+                    }
+
+                    //time the pivot
+                    beforetime = (new Date()).getTime();
+                    $('#res').pivot({
+                        source: JSONdata,
+                        bSum: true,
+                        bTotals: true,
+                        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+                    });
+                    alert('time taken ' + ((new Date()).getTime() - beforetime) + ' ms. Proccessed ' + JSONdata.rows.length + ' rows.');
+                }
+            });
         }
     });
 
