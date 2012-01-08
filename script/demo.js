@@ -344,12 +344,13 @@ $(document).ready(function () {
         } else if (exampleId === 'example6') {
             $('#res').pivot({
                 source: example6JSONdata,
-                bSum: false,
+                parseNumFunc: null,
+                aggregatefunc: function (aggValues) { return aggValues.join(', '); },
                 bTotals: false,
-                //separatorchar: ' - ',
                 onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
             });
         } else if (exampleId === 'example7') {
+            $('#res').html('fetching data from netflix. please wait.');
             $.ajax({
                 dataType: "jsonp",
                 url: 'http://odata.netflix.com/v2/Catalog/TitleAwards?$expand=Person,Title&$format=json',
@@ -388,7 +389,6 @@ $(document).ready(function () {
                     beforetime = (new Date()).getTime();
                     $('#res').pivot({
                         source: JSONdata,
-                        bSum: true,
                         bTotals: true,
                         onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
                     });

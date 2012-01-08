@@ -41,6 +41,14 @@
         return false;
     };
 
+    function calcsum(values) {
+        var i, length;
+        var total = 0.0;
+        for (i = 0, length = values.length; i < length; i += 1) {
+            total += values[i];
+        }
+        return total;
+    }
 
     $.fn.pivot = function (options) {
         var opts = $.extend({}, $.fn.pivot.defaults, options);
@@ -75,26 +83,25 @@
         }
 
         function getResValue(treeNode, pivotValue) {
-            var i, i1,
-            res = opts.bSum ? 0.0 : '',
-            pivotCells = $.map(treeNode.pivotvalues || [], function (item, index) {
-                return item.pivotValue === pivotValue ? item.result : null;
-            });
+            var i, i1, res,
+                aggVals = [],
+                pivotCells = $.map(treeNode.pivotvalues || [], function (item, index) {
+                    return item.pivotValue === pivotValue ? item.result : null;
+                });
 
-            if (opts.bSum) {
+            if (opts.aggregatefunc) {
                 if (pivotCells.length >= 1) {
                     for (i = 0; i < pivotCells.length; i += 1) {
-                        res += opts.parseNumFunc(pivotCells[i]);
+                        aggVals.push(opts.parseNumFunc ? opts.parseNumFunc(pivotCells[i]) : pivotCells[i]);
                     }
-                } else {
+                } else if (opts.bTotals) {
                     for (i1 = 0; i1 < treeNode.children.length; i1 += 1) {
                         /*ignore jslint start*/
-                        res += getResValue(treeNode.children[i1], pivotValue);
+                        aggVals.push(getResValue(treeNode.children[i1], pivotValue));
                         /*ignore jslint end*/
                     }
                 }
-            } else if (pivotCells.length >= 1) {
-                res = pivotCells.join(opts.separatorchar);
+                res = opts.aggregatefunc(aggVals);
             } else {
                 res = null;
             }
@@ -103,7 +110,8 @@
         }
 
         function appendChildRows(treeNode, belowThisRow, adapter) {
-            var i, col, col1, sb, item, itemtext, rowSum, result, resCell,
+            var i, col, col1, sb, item, itemtext, result, resCell,
+            aggVals = [],
             gbCols = adapter.alGroupByCols,
             pivotCols = adapter.uniquePivotValues;
 
@@ -138,12 +146,10 @@
                 belowThisRow = $(sb.toString()).insertAfter(belowThisRow);
                 belowThisRow.find('.foldunfold').data("status", { bDatabound: false, treeNode: item });
 
-                rowSum = 0.0;
-
                 for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
                     result = getResValue(item, pivotCols[col1].pivotValue);
                     if (opts.bTotals) {
-                        rowSum += result;
+                        aggVals.push(result);
                     }
                     sb.clear();
                     sb.append('<td class="resultcell">');
@@ -156,7 +162,7 @@
                 if (opts.bTotals) {
                     sb.clear();
                     sb.append('<td class="total">');
-                    sb.append(opts.formatFunc(rowSum));
+                    sb.append(opts.formatFunc(opts.aggregatefunc(aggVals)));
                     sb.append('</td>');
                     $(sb.toString()).appendTo(belowThisRow);
                 }
@@ -165,10 +171,10 @@
 
         function makeCollapsed(adapter, $obj) {
             var i, i1, col, result, $pivottable,
-            sb = new lib.StringBuilder('<table class="pivot">'),
-            gbCols = adapter.alGroupByCols,
-            pivotCols = adapter.uniquePivotValues,
-            rowSum = 0.0;
+                aggVals = [],
+                sb = new lib.StringBuilder('<table class="pivot">'),
+                gbCols = adapter.alGroupByCols,
+                pivotCols = adapter.uniquePivotValues;
 
             //headerrow
             sb.append('<tr class="head">');
@@ -200,14 +206,14 @@
                 for (col = 0; col < pivotCols.length; col += 1) {
                     result = getResValue(adapter.tree, pivotCols[col].pivotValue);
                     if (opts.bTotals) {
-                        rowSum += (+result);
+                        aggVals.push(result);
                     }
                     sb.append('<td>');
                     sb.append(opts.formatFunc(result));
                     sb.append('</td>');
                 }
                 sb.append('<td class="total">');
-                sb.append(opts.formatFunc(rowSum));
+                sb.append(opts.formatFunc(opts.aggregatefunc(aggVals)));
                 sb.append('</td>');
                 sb.append('</tr>');
             }
@@ -266,7 +272,6 @@
             }
         }
 
-
         return this.each(function () {
             var $obj = $(this),
                 adapter = new AdapterObject();
@@ -303,15 +308,14 @@
 
     $.fn.pivot.defaults = {
         source: null, //Must be json or a jquery element containing a table
-        bSum: true, //If you are pivoting over non numeric data set to false.
         bTotals: true, //Includes total row and column
         bCollapsible: true, // Set to false to expand all and remove open/close buttons
+        aggregatefunc: calcsum, //defaults to numeric sum. Set to null for no totals. Set to concatenation for strings.
         formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
         parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. Ie. for non US numeric formats.
         onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
         noGroupByText: 'No value', //Text used if no data is available for specific groupby and pivot value.
-        noDataText: 'No data', //Text used if source data is empty.
-        separatorchar: ', '
+        noDataText: 'No data' //Text used if source data is empty.
     };
 
     $.fn.pivot.formatDK = function (num, decimals) { return this.formatLocale(num, decimals, '.', ','); };
