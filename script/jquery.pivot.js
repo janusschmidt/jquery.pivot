@@ -116,6 +116,7 @@
             pivotCols = adapter.uniquePivotValues;
 
             for (i = 0; i < treeNode.children.length; i += 1) {
+                aggVals = [];
                 sb = new lib.StringBuilder();
                 item = treeNode.children[i];
                 itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? opts.noGroupByText : item.groupbyText;
