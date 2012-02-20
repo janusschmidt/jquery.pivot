@@ -110,8 +110,7 @@
         }
 
         function appendChildRows(treeNode, belowThisRow, adapter) {
-            var i, col, col1, sb, item, itemtext, result, resCell,
-            aggVals = [],
+            var i, col, col1, sb, item, itemtext, result, resCell, aggVals,
             gbCols = adapter.alGroupByCols,
             pivotCols = adapter.uniquePivotValues;
 
@@ -146,6 +145,7 @@
                 belowThisRow = $(sb.toString()).insertAfter(belowThisRow);
                 belowThisRow.find('.foldunfold').data("status", { bDatabound: false, treeNode: item });
 
+                aggVals = [];
                 for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
                     result = getResValue(item, pivotCols[col1].pivotValue);
                     if (opts.bTotals) {
