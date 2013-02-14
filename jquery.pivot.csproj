@@ -59,7 +59,7 @@
     <Content Include="images\navigate_plus.png" />
     <Content Include="script\jquery.pivot.js" />
     <Content Include="script\demo.js" />
-    <Content Include="stylsheet.css" />
+    <Content Include="stylesheet.css" />
     <Content Include="demo.htm" />
   </ItemGroup>
   <ItemGroup>
