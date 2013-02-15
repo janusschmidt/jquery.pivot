@@ -1,4 +1,4 @@
-﻿/*global jQuery, JSON, $, alert, document, AdapterObject, PagerObject, FilterObject, SortObject, HideColumns */
+/*global jQuery, JSON, $, alert, document, AdapterObject, PagerObject, FilterObject, SortObject, HideColumns */
 (function ($) {
     var lib = {};
     lib.StringBuilder = function (value) { this.strings = [""]; this.append(value); };
@@ -172,7 +172,7 @@
         function makeCollapsed(adapter, $obj) {
             var i, i1, col, result, $pivottable,
                 aggVals = [],
-                sb = new lib.StringBuilder('<table class="pivot">'),
+                sb = new lib.StringBuilder('<table class="pivot condensed-table">'),
                 gbCols = adapter.alGroupByCols,
                 pivotCols = adapter.uniquePivotValues;
 
@@ -401,7 +401,7 @@
                 dataid: col.dataid || col.colvalue,
                 groupbyrank: col.groupbyrank
             };
-
+    		
             if (typeof cell.groupbyrank === "number" && isFinite(cell.groupbyrank)) {
                 this.alGroupByCols.push(cell);
             }
@@ -420,15 +420,28 @@
 
         function findGroupByFunc(item, index, value) { return item.groupbyValue === value ? item : null; }
         function findPivotFunc(item, index, value) { return item.pivotValue === value ? item : null; }
+		
+		// Prasad: Customization
+		// Extract data value from the cells based on key
+		// The key can be string or path in json structure (with / sepearator)
+		function getDataValue(cells, key) {
+			var value = cells;
+			var subkeys = key.split('/');
+			for (var i = 0; i < subkeys.length; ++i) {
+				value = value[subkeys[i]];
+			}
+			return value;
+		}
+		
         //build tree structure
         for (rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
             cells = data.rows[rowIndex];
             curNode = this.tree;
             //groupbys
             for (i = 0; i < this.alGroupByCols.length; i += 1) {
-                groupbyValue = trim(cells[this.alGroupByCols[i].colvalue]);
-                groupbyText = cells[this.alGroupByCols[i].coltext];
-                sortbyValue = trim(cells[this.alGroupByCols[i].sortbycol]);
+                groupbyValue = trim(getDataValue(cells, this.alGroupByCols[i].colvalue));
+                groupbyText = getDataValue(cells, this.alGroupByCols[i].coltext);
+                sortbyValue = trim(getDataValue(cells, this.alGroupByCols[i].sortbycol));
                 newObj = lib.find(curNode.children, findGroupByFunc, groupbyValue);
                 if (!newObj) {
                     newObj = new this.TreeNode();
@@ -447,9 +460,9 @@
                 curNode = newObj;
             }
             //pivot
-            pivotValue = trim(cells[this.pivotCol.colvalue]);
-            pivotSortBy = trim(cells[this.pivotCol.sortbycol]);
-            result = trim(cells[this.resultCol.colvalue]);
+            pivotValue = trim(getDataValue(cells, this.pivotCol.colvalue));
+            pivotSortBy = trim(getDataValue(cells, this.pivotCol.sortbycol));
+            result = trim(getDataValue(cells, this.resultCol.colvalue));
             if (!curNode.pivotvalues) {
                 curNode.pivotvalues = [];
             }
