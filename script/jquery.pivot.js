@@ -1,10 +1,10 @@
 ﻿/*global jQuery, JSON, $, alert, document, AdapterObject, PagerObject, FilterObject, SortObject, HideColumns */
 (function ($) {
     var lib = {};
-    lib.StringBuilder = function (value) { this.strings = [""]; this.append(value); };
+    lib.StringBuilder = function (value) { this.strings = ['']; this.append(value); };
     lib.StringBuilder.prototype.append = function (value) { if (value !== null) { this.strings.push(value); } };
     lib.StringBuilder.prototype.clear = function () { this.strings.length = 1; };
-    lib.StringBuilder.prototype.toString = function () { return this.strings.join(""); };
+    lib.StringBuilder.prototype.toString = function () { return this.strings.join(''); };
     //Returns a new array with elements where a call to fun(item, index, extra) returns non null
     lib.map = function (array, fun, extra) {
         var i, len, res = [], item;
@@ -58,7 +58,7 @@
                 var el = $(this),
                 adapter = el.closest('table.pivot').data('jquery.pivot.adapter'),
                 aGroupBys = [],
-                data = el.data("def"),
+                data = el.data('def'),
                 curNode = data.treeNode,
                 dataObj;
 
@@ -110,9 +110,12 @@
         }
 
         function appendChildRows(treeNode, belowThisRow, adapter) {
-            var i, col, col1, sb, item, itemtext, result, resCell, aggVals,
+            var i, col, col1, sb, item, itemtext, result, resCell, aggVals, spanFoldUnfold,
             gbCols = adapter.alGroupByCols,
-            pivotCols = adapter.uniquePivotValues;
+            pivotCols = adapter.uniquePivotValues,
+            foldunfoldclass = opts.bCollapsible ? 'foldunfold' : 'nonfoldunfold',
+            foldunfoldclassSelector = '.' + foldunfoldclass;
+
 
             for (i = 0; i < treeNode.children.length; i += 1) {
                 sb = new lib.StringBuilder();
@@ -127,7 +130,9 @@
                     sb.append('">');
                     if (gbCols[col].colindex === item.colindex) {
                         if (item.children.length > 0) {
-                            sb.append('<span class="foldunfold collapsed">');
+                            sb.append('<span class="');
+                            sb.append(foldunfoldclass);
+                            sb.append(' collapsed">');
                             sb.append(itemtext);
                             sb.append(' </span>');
                         }
@@ -143,7 +148,7 @@
                 }
                 sb.append('</tr>');
                 belowThisRow = $(sb.toString()).insertAfter(belowThisRow);
-                belowThisRow.find('.foldunfold').data("status", { bDatabound: false, treeNode: item });
+                belowThisRow.find(foldunfoldclassSelector).data('status', { bDatabound: false, treeNode: item });
 
                 aggVals = [];
                 for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
@@ -156,7 +161,7 @@
                     sb.append(opts.formatFunc(result));
                     sb.append('</td>');
                     resCell = $(sb.toString()).appendTo(belowThisRow);
-                    resCell.data("def", { pivot: pivotCols[col1], treeNode: item });
+                    resCell.data('def', { pivot: pivotCols[col1], treeNode: item });
                 }
 
                 if (opts.bTotals) {
@@ -165,6 +170,17 @@
                     sb.append(opts.formatFunc(opts.aggregatefunc(aggVals)));
                     sb.append('</td>');
                     $(sb.toString()).appendTo(belowThisRow);
+                }
+
+                if (!opts.bCollapsible) {
+                    spanFoldUnfold = belowThisRow.find(foldunfoldclassSelector);
+                    if (spanFoldUnfold.length > 0) {
+                        var status = spanFoldUnfold.removeClass('collapsed').data('status');
+                        status.treeNode.collapsed = false;
+                        status.bDatabound = true;
+                        appendChildRows(status.treeNode, belowThisRow, adapter);
+                        belowThisRow = belowThisRow.nextUntil('.total').last();
+                    }
                 }
             }
         }
@@ -226,13 +242,12 @@
             appendChildRows(adapter.tree, $('tr:first', $pivottable), adapter);
         }
 
-        function foldunfold(eventSource) {
-            var el = $(this),
-            adapter = el.closest('table.pivot').data('jquery.pivot.adapter'),
-            status = el.data("status"),
-            parentRow = el.closest('tr'),
-            visible = false,
-            row, rowstatus, thisrowstatus;
+        function foldunfoldElem(el) {
+            var adapter = el.closest('table.pivot').data('jquery.pivot.adapter'),
+                status = el.data('status'),
+                parentRow = el.closest('tr'),
+                visible = false,
+                row, rowstatus, thisrowstatus;
 
             status.treeNode.collapsed = !status.treeNode.collapsed;
 
@@ -251,7 +266,7 @@
                 row = parentRow;
                 rowstatus = status;
                 while ((row = row.next()).length > 0) {
-                    thisrowstatus = row.find('.foldunfold').data("status");
+                    thisrowstatus = row.find('.foldunfold').data('status');
 
                     // break if row is total row or belongs to other grouping
                     if ((thisrowstatus && thisrowstatus.treeNode.groupbylevel <= status.treeNode.groupbylevel) || row.is('.total')) {
@@ -272,6 +287,10 @@
             }
         }
 
+        function foldunfold(eventSource) {
+            foldunfoldElem($(this));
+        }
+
         return this.each(function () {
             var $obj = $(this),
                 adapter = new AdapterObject();
@@ -288,13 +307,13 @@
                 }
 
                 //clean up previous event handlers
-                $obj.find(".pivot .foldunfold").die('click');
-                $obj.find(".resultcell").die('click');
+                $obj.find('.pivot .foldunfold').die('click');
+                $obj.find('.resultcell').die('click');
 
                 //set up eventhandlers
-                $obj.find(".pivot .foldunfold").live('click', foldunfold);
+                $obj.find('.pivot .foldunfold').live('click', foldunfold);
                 if (opts.onResultCellClicked) {
-                    $obj.find(".resultcell").live('click', resultCellClicked);
+                    $obj.find('.resultcell').live('click', resultCellClicked);
                 }
 
                 makeCollapsed(adapter, $obj);
@@ -346,10 +365,10 @@
 
     //    getDetails = function(sUrl, data, onsucces) {
     //        $.ajax({
-    //            type: "POST",
+    //            type: 'POST',
     //            url: sUrl,
     //            data: opts.detailsWebServiceIsActionMethod ? { 'jsondata': JSON.stringify(data)} : JSON.stringify({ 'jsondata': data }),
-    //            contentType: opts.detailsWebServiceIsActionMethod ? "application/x-www-form-urlencoded" : "application/json; charset=utf-8",
+    //            contentType: opts.detailsWebServiceIsActionMethod ? 'application/x-www-form-urlencoded' : 'application/json; charset=utf-8',
     //            dataType: opts.detailsdatatype,
     //            success: onsucces,
     //            error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -402,7 +421,7 @@
                 groupbyrank: col.groupbyrank
             };
 
-            if (typeof cell.groupbyrank === "number" && isFinite(cell.groupbyrank)) {
+            if (typeof cell.groupbyrank === 'number' && isFinite(cell.groupbyrank)) {
                 this.alGroupByCols.push(cell);
             }
             else if (col.pivot) {
@@ -466,7 +485,7 @@
 
     AdapterObject.prototype.parseFromXhtmlTable = function (sourceTable) {
         var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1, el, eltext, col, cells, row,
-            data = { dataid: sourceTable.attr("dataid"), columns: [], rows: [] },
+            data = { dataid: sourceTable.attr('dataid'), columns: [], rows: [] },
         //exctract header info
             rows = $('tbody > tr', sourceTable),
             columnNames = [];
@@ -475,15 +494,15 @@
             el = $(rows[0].cells[cellIndex]);
             eltext = el.text();
             col = {
-                colvalue: el.attr("colvalue") || eltext,
-                coltext: el.attr("coltext") || eltext,
-                header: el.attr("header") || el.text(),
-                datatype: el.attr("datatype"),
-                sortbycol: el.attr("sortbycol") || eltext,
-                dataid: el.attr("dataid"),
-                groupbyrank: parseInt(el.attr("groupbyrank"), 10),
-                pivot: el.attr('pivot') === "true",
-                result: el.attr('result') === "true"
+                colvalue: el.attr('colvalue') || eltext,
+                coltext: el.attr('coltext') || eltext,
+                header: el.attr('header') || el.text(),
+                datatype: el.attr('datatype'),
+                sortbycol: el.attr('sortbycol') || eltext,
+                dataid: el.attr('dataid'),
+                groupbyrank: parseInt(el.attr('groupbyrank'), 10),
+                pivot: el.attr('pivot') === 'true',
+                result: el.attr('result') === 'true'
             };
             data.columns.push(col);
             columnNames.push(eltext);
@@ -494,7 +513,7 @@
             cells = rows[rowIndex].cells;
             row = {};
             for (cellIndex1 = 0, cellcount1 = columnNames.length; cellIndex1 < cellcount1; cellIndex1 += 1) {
-                if (data.columns[cellIndex1].datatype === "number") {
+                if (data.columns[cellIndex1].datatype === 'number') {
                     row[columnNames[cellIndex1]] = parseFloat(cells[cellIndex1].innerHTML);
                 }
                 else {

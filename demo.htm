@@ -79,7 +79,7 @@ $.fn.pivot.defaults = {
     .....
     </pre>
         <h3>Example 2 (source is html table)</h3>
-        <p>Example with danish number formatting</p>
+        <p>Example with danish number formatting and no fold unfold buttons and every row open</p>
         <a href="#" title="example2" class="runexample">run</a>
         <p>
             Source:
@@ -90,7 +90,8 @@ $.fn.pivot.defaults = {
         source: $('#example2'),
         formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
         parseNumFunc: function (n) { return +((typeof n === "string") ? +n.replace('.', '').replace(',', '.') : n); },
-        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); },
+        bCollapsible : false
     });
 &lt;/script>
 .....
