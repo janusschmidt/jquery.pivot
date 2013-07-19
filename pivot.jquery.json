@@ -1,5 +1,5 @@
 ﻿{
-    "name": "Pivot",
+    "name": "pivot",
     "version": "1.0.0",
     "title": "jQuery.pivot",
     "author": {
@@ -23,7 +23,7 @@
     "homepage": "http://metalogic.dk/jquery.pivot/demo.htm",
     "maintainers": [
         {
-            "name": "Janus Schmidt",
+            "name": "Janus Schmidt"
         }
     ]
 }
