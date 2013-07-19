@@ -1,50 +1,29 @@
 ﻿{
     "name": "Pivot",
     "version": "1.0.0",
-    "title": "jQuery pivot",
+    "title": "jQuery.pivot",
     "author": {
-        "name": "Janus Schmidt",
-        "url": "http://metalogic.dk/jquery.pivot/demo.htm"
+        "name": "Janus Schmidt"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "http://www.opensource.org/licenses/MIT"
+            "url": "https://github.com/janusschmidt/jquery.pivot/blob/master/license.txt"
         }
     ],
     "dependencies": {
-        "jquery": ">=1.6"
+        "jquery": ">=1.4.2"
     },
-    "description": "File Upload widget with multiple file selection, drag&amp;drop support, progress bar, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads. Works with any server-side platform (Google App Engine, PHP, Python, Ruby on Rails, Java, etc.) that supports standard HTML form file uploads.",
+    "description": "The jquery.pivot plugin can be used for presenting table data in pivot form",
     "keywords": [
         "jquery",
-        "file",
-        "upload",
-        "widget",
-        "multiple",
-        "selection",
-        "drag",
-        "drop",
-        "progress",
-        "preview",
-        "cross-domain",
-        "cross-site",
-        "chunk",
-        "resume",
-        "gae",
-        "go",
-        "python",
-        "php",
-        "bootstrap"
+        "data",
+        "pivot"
     ],
-    "homepage": "https://github.com/blueimp/jQuery-File-Upload",
-    "docs": "https://github.com/blueimp/jQuery-File-Upload/wiki",
-    "demo": "http://blueimp.github.io/jQuery-File-Upload/",
-    "bugs": "https://github.com/blueimp/jQuery-File-Upload/issues",
+    "homepage": "http://metalogic.dk/jquery.pivot/demo.htm",
     "maintainers": [
         {
-            "name": "Sebastian Tschan",
-            "url": "https://blueimp.net"
+            "name": "Janus Schmidt",
         }
     ]
 }
