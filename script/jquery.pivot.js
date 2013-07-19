@@ -287,7 +287,7 @@
             }
         }
 
-        function foldunfold(eventSource) {
+        function foldunfold() {
             foldunfoldElem($(this));
         }
 
@@ -296,7 +296,7 @@
                 adapter = new AdapterObject(opts.sortPivotColumnHeaders);
 
             adapter.sortPivotColumnHeaders = opts.sortPivotColumnHeaders;
-            $obj.html('');
+            $obj.empty('');
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
                 if (opts.source.jquery) {
                     if (opts.source.find('tr').length > 0) {
@@ -307,14 +307,13 @@
                     adapter.parseJSONsource(opts.source);
                 }
 
-                //clean up previous event handlers
-                $obj.find('.pivot .foldunfold').die('click');
-                $obj.find('.resultcell').die('click');
+                //remove previous eventhandlers on $obj.
+                $obj.off('click.jquery.pivot');
 
                 //set up eventhandlers
-                $obj.find('.pivot .foldunfold').live('click', foldunfold);
+                $obj.on('click.jquery.pivot','.pivot .foldunfold', foldunfold);
                 if (opts.onResultCellClicked) {
-                    $obj.find('.resultcell').live('click', resultCellClicked);
+                    $obj.on('click.jquery.pivot', '.resultcell', resultCellClicked);
                 }
 
                 makeCollapsed(adapter, $obj);

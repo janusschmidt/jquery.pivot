@@ -1,6 +1,6 @@
 ﻿{
     "name": "pivot",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "jQuery.pivot",
     "author": {
         "name": "Janus Schmidt"
@@ -12,18 +12,9 @@
         }
     ],
     "dependencies": {
-        "jquery": ">=1.4.2"
+        "jquery": ">=1.7.0"
     },
-    "description": "The jquery.pivot plugin can be used for presenting table data in pivot form",
-    "keywords": [
-        "jquery",
-        "data",
-        "pivot"
-    ],
-    "homepage": "http://metalogic.dk/jquery.pivot/demo.htm",
-    "maintainers": [
-        {
-            "name": "Janus Schmidt"
-        }
-    ]
+    "description": "The jquery.pivot plugin can be used for presenting table data in pivot form. Data can be read from a html table or json. Use v1.0.1 for jquery 1.7.0 and above. Use v1.0.0 for jquery below 1.7.0",
+    "keywords": ["data","pivot","pivottable","table","analyze"],
+    "homepage": "http://metalogic.dk/jquery.pivot/demo.htm"
 }
