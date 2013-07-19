@@ -313,9 +313,9 @@ $(document).ready(function () {
             onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
         });
     });
-
-
+    
     $('a.runexample').click(function () {
+        var i, beforetime, rows, JSONdata;
         var exampleId = $(this).attr('title');
         $('#sourcetables table').hide();
         $('#' + exampleId).show();
@@ -351,52 +351,23 @@ $(document).ready(function () {
                 onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
             });
         } else if (exampleId === 'example7') {
-            $('#res').html('fetching data from netflix. please wait.');
-            $.ajax({
-                dataType: 'jsonp',
-                url: 'http://odata.netflix.com/v2/Catalog/TitleAwards?$expand=Person,Title&$format=json',
-                //                http://services.odata.org/Northwind/Northwind.svc/Orders()?$top=10&$expand=Customer, Order_Details/Product/Supplier
+            JSONdata =$.extend({}, example5JSONdata);
+            rows = JSONdata.rows.slice(0, 100);
+            JSONdata.rows = [];
 
-                jsonp: '$callback',
-                success: function (data) {
-                    var i, beforetime;
-                    var rows = jQuery.map(data.d.results, function (award) {
-                        if (award.Person) {
-                            jQuery.extend(award, { personid: award.Person.Id, personname: award.Person.Name });
-                        }
-                        if (award.Title) {
-                            jQuery.extend(award, { movieid: award.Title.Id, moviename: award.Title.Name, movieruntime: award.Title.Runtime, movieparentalrating: award.Title.Rating, movieavaragerating: award.Title.AverageRating });
-                        }
-                        return award;
-                    });
+            for (i = 0; i < 200; i = i + 1) {
+                $.merge(JSONdata.rows, rows);
+            }
 
-                    var JSONdata = {
-                        dataid: 'An optional sourcetable identifier',
-                        columns: [
-                                { colvalue: 'movieruntime', coltext: 'movieruntime', header: 'Runtime minutes', sortbycol: 'movieruntime', result: true },
-                                { colvalue: 'movieavaragerating', coltext: 'movieavaragerating', header: 'Average rating', sortbycol: 'movieavaragerating', pivot: 1 },
-                                { colvalue: 'Type', coltext: 'Type', header: 'Award Type', sortbycol: 'Type', groupbyrank: 1 },
-                                { colvalue: 'Category', coltext: 'Category', header: 'Award Category', sortbycol: 'Category', groupbyrank: 2 },
-                                { colvalue: 'personname', coltext: 'personname', header: 'Person', sortbycol: 'personname', groupbyrank: 4 },
-                                { colvalue: 'movieid', coltext: 'moviename', header: 'Movie name', sortbycol: 'movieid', groupbyrank: 3}],
-                        rows: $.merge([], rows)
-                    };
-
-                    for (i = 1; i < 20; i = i + 1) {
-                        $.merge(JSONdata.rows, rows);
-                    }
-
-                    //time the pivot
-                    beforetime = (new Date()).getTime();
-                    $('#res').pivot({
-                        source: JSONdata,
-                        bTotals: true,
-                        onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
-                    });
-                    alert('time taken ' + ((new Date()).getTime() - beforetime) + ' ms. Proccessed ' + JSONdata.rows.length + ' rows.');
-                },
-                error: function () { alert('odata api not available');}
+            //time the pivot
+            beforetime = (new Date()).getTime();
+            $('#res').pivot({
+                source: JSONdata,
+                formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
+                parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+                onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
             });
+            alert('time taken ' + ((new Date()).getTime() - beforetime) + ' ms. Proccessed ' + JSONdata.rows.length + ' rows.');
         }
     });
 

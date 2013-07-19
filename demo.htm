@@ -263,30 +263,37 @@ var example5JSONdata = {
    };
 &lt;/script>
     </pre>
-    <h3>Example 7 (source is json from netflix odata source)</h3>
-    <p>Performance test. This example fetches 500 rows of data from netflix and multiplies it by 20, to get 10000 rows of data.</p>
+    <h3>Example 7 (performance test)</h3>
+    <p>Performance test. This example takes 100 rows from example5 and repeats them 200 times to get a total of 20.000 rows of data</p>
     <a href="#" title="example7" class="runexample">run</a> 
     <pre>
-var JSONdata = {
-    dataid: "An optional sourcetable identifier",
-    columns: [
-            { colvalue: "movieruntime", coltext: "movieruntime", header: "Runtime minutes", sortbycol: "movieruntime", result: true },
-            { colvalue: "movieavaragerating", coltext: "movieavaragerating", header: "Average rating", sortbycol: "movieavaragerating", pivot: 1 },
-            { colvalue: "Type", coltext: "Type", header: "Award Type", sortbycol: "Type", groupbyrank: 1 },
-            { colvalue: "Category", coltext: "Category", header: "Award Category", sortbycol: "Category", groupbyrank: 2 },
-            { colvalue: "personname", coltext: "personname", header: "Person", sortbycol: "personname", groupbyrank: 4 },
-            { colvalue: "movieid", coltext: "moviename", header: "Movie name", sortbycol: "movieid", groupbyrank: 3}],
-    rows: ...netflixdata as json....)
-};
-                    
-//time the pivot
-beforetime = (new Date()).getTime();
-$('#res').pivot({
-    source: JSONdata,
-    bTotals: true,
-    onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
-});
+&lt;script>
+    $('#res').pivot({
+        source: example5JSONdata, //same as example 2
+        formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
+        parseNumFunc: function (n) { return +((typeof n === "string") ? +n.replace('.', '').replace(',', '.') : n); },
+        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+    });
 
+var JSONdata = {
+        "dataid": "An identifier for the table",
+        "columns": [
+            { "colvalue": "companyid ", "coltext": "companyid ", "header": "companyid ", "datatype": "number", "sortbycol": "companyid ", "groupbyrank": 2, "pivot": false, "result": false },
+            { "colvalue": "userid ", "coltext": "userid ", "header": "userid ", "datatype": "number", "sortbycol": "userid ", "groupbyrank": 3, "pivot": false, "result": false },
+            { "colvalue": "date ", "coltext": "date ", "header": "date ", "sortbycol": "date ", "dataid": "idforpivot", "groupbyrank": null, "pivot": true, "result": false },
+            { "colvalue": "regMinutes ", "coltext": "regMinutes ", "header": "regMinutes ", "sortbycol": "regMinutes ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "flexMinutes ", "coltext": "flexMinutes ", "header": "flexMinutes ", "sortbycol": "flexMinutes ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "correction ", "coltext": "correction ", "header": "correction ", "sortbycol": "correction ", "groupbyrank": null, "pivot": false, "result": false },
+            { "colvalue": "diffMinutes ", "coltext": "diffMinutes ", "header": "diffMinutes ", "sortbycol": "diffMinutes ", "groupbyrank": null, "pivot": false, "result": true}],
+        "rows": [
+            { "companyid ": 2, "userid ": 1, "date ": "02-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            { "companyid ": 2, "userid ": 1, "date ": "03-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "330 ", "correction ": "0 ", "diffMinutes ": "-330 " },
+            { "companyid ": 2, "userid ": 1, "date ": "01-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "0 ", "correction ": "0 ", "diffMinutes ": "0 " },
+            .....
+            { "companyid ": 4, "userid ": 95, "date ": "12-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "450 ", "correction ": "0 ", "diffMinutes ": "-450 " },
+            { "companyid ": 4, "userid ": 121, "date ": "12-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 "}]
+};
+&lt;/script>
     </pre>
     </div>
     <div id="demos" style="display: none;">
