@@ -49,6 +49,7 @@ $.fn.pivot.defaults = {
                                 //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
     noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.
     noDataText: "No data" //Text used if source data is empty.
+    sortPivotColumnHeaders: true //if false pivot columns will appear in the order they are discovered in the source.
 };
     </pre>
         <h2>Examples:</h2>
@@ -65,7 +66,8 @@ $.fn.pivot.defaults = {
     $('#res').pivot({
         source: $('#example1'),
         formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
-        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); },
+        sortPivotColumnHeaders:false //we want months non sorted to get them in the right order.
     });
 &lt;/script>
 .....
@@ -147,7 +149,8 @@ $.fn.pivot.defaults = {
     $('#res').pivot({
         source: example4JSONdata,
         formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
-        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); }
+        onResultCellClicked: function (data) { alert(dumpObj(data, "data")); },
+        sortPivotColumnHeaders:false //we want months non sorted to get them in the right order.
     });
 
 var example4JSONdata = {

@@ -216,32 +216,31 @@ $(document).ready(function () {
             { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 '}]
         },
 
-    example6JSONdata = {
-        dataid: 'Application Information.',
-        columns: [
-       { colvalue: 'password', coltext: 'password', header: 'password', sortbycol: 'password', result: true },
-       { colvalue: 'username', coltext: 'username', header: 'username', sortbycol: 'username', pivot: true },
-       { colvalue: 'hostname', coltext: 'hostname', header: 'hostname', sortbycol: 'hostname', groupbyrank: 2 },
-       { colvalue: 'sysid', coltext: 'sysid', header: 'sysid', sortbycol: 'sysid', dataid: 'sysid', groupbyrank: 1}],
-        rows: [
-       { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user1', 'password': 'a' },
-       { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user2', 'password': 'b' },
-       { 'sysid': 'SID1', 'hostname': 'host51', 'username': 'user1', 'password': 'c' },
-       { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user1', 'password': 'd' },
-       { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e' },
-       { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e1' },
-       { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e2' },
-       { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e3' },
-       { 'sysid': 'SID1', 'hostname': 'host54', 'username': 'user1', 'password': 'f' },
-       { 'sysid': 'SID2', 'hostname': 'host55', 'username': 'user1', 'password': 'g' },
-       { 'sysid': 'SID2', 'hostname': 'host55', 'username': 'user2', 'password': 'h' },
-       { 'sysid': 'SID2', 'hostname': 'host02', 'username': 'user1', 'password': 'i' },
-       { 'sysid': 'SID2', 'hostname': 'host02', 'username': 'user1', 'password': 'j' },
-       { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user1', 'password': 'k' },
-       { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user2', 'password': 'l' },
-       { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user3', 'password': 'm'}]
-    };
-
+        example6JSONdata = {
+            dataid: 'Application Information.',
+            columns: [
+           { colvalue: 'password', coltext: 'password', header: 'password', sortbycol: 'password', result: true },
+           { colvalue: 'username', coltext: 'username', header: 'username', sortbycol: 'username', pivot: true },
+           { colvalue: 'hostname', coltext: 'hostname', header: 'hostname', sortbycol: 'hostname', groupbyrank: 2 },
+           { colvalue: 'sysid', coltext: 'sysid', header: 'sysid', sortbycol: 'sysid', dataid: 'sysid', groupbyrank: 1}],
+            rows: [
+           { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user1', 'password': 'a' },
+           { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user2', 'password': 'b' },
+           { 'sysid': 'SID1', 'hostname': 'host51', 'username': 'user1', 'password': 'c' },
+           { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user1', 'password': 'd' },
+           { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e' },
+           { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e1' },
+           { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e2' },
+           { 'sysid': 'SID1', 'hostname': 'host52', 'username': 'user2', 'password': 'e3' },
+           { 'sysid': 'SID1', 'hostname': 'host54', 'username': 'user1', 'password': 'f' },
+           { 'sysid': 'SID2', 'hostname': 'host55', 'username': 'user1', 'password': 'g' },
+           { 'sysid': 'SID2', 'hostname': 'host55', 'username': 'user2', 'password': 'h' },
+           { 'sysid': 'SID2', 'hostname': 'host02', 'username': 'user1', 'password': 'i' },
+           { 'sysid': 'SID2', 'hostname': 'host02', 'username': 'user1', 'password': 'j' },
+           { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user1', 'password': 'k' },
+           { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user2', 'password': 'l' },
+           { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user3', 'password': 'm'}]
+        };
 
     function dumpObj(obj, name, depth) {
         var indentTpl = '    ',
@@ -291,7 +290,8 @@ $(document).ready(function () {
         $('#res').pivot({
             source: $(this),
             formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
-            onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
+            onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); },
+            sortPivotColumnHeaders:false
         });
     });
     $('#example2').click(function () {
@@ -328,7 +328,8 @@ $(document).ready(function () {
             $('#res').pivot({
                 source: example4JSONdata,
                 formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
-                onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
+                onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); },
+                sortPivotColumnHeaders: false
             });
         } else if (exampleId === 'example5') {
             $('#res').pivot({

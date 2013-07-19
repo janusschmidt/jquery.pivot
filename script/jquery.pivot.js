@@ -293,8 +293,9 @@
 
         return this.each(function () {
             var $obj = $(this),
-                adapter = new AdapterObject();
+                adapter = new AdapterObject(opts.sortPivotColumnHeaders);
 
+            adapter.sortPivotColumnHeaders = opts.sortPivotColumnHeaders;
             $obj.html('');
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
                 if (opts.source.jquery) {
@@ -331,10 +332,14 @@
         bCollapsible: true, // Set to false to expand all and remove open/close buttons
         aggregatefunc: calcsum, //defaults to numeric sum. Set to null for no totals. Set to concatenation for strings.
         formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
-        parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. Ie. for non US numeric formats.
+        parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. 
+                                                    //Ie. for non US numeric formats. 
+                                                    //Set to null if result column should be considered string data.
         onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
+                                    //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
         noGroupByText: 'No value', //Text used if no data is available for specific groupby and pivot value.
-        noDataText: 'No data' //Text used if source data is empty.
+        noDataText: 'No data', //Text used if source data is empty.
+        sortPivotColumnHeaders: true //if false pivot columns will appear in the order they are discovered in the source.
     };
 
     $.fn.pivot.formatDK = function (num, decimals) { return this.formatLocale(num, decimals, '.', ','); };
@@ -386,6 +391,7 @@
         this.tree = { children: [] };
         this.uniquePivotValues = [];
         this.dataid = null;
+        this.sortPivotColumnHeaders = true;
     }
 
     function sortgroupbys(rowA, rowB) {
@@ -480,7 +486,9 @@
         }
 
         this.sortTree(this.tree);
-        this.uniquePivotValues.sort(this.getcomparer(this.bInvSort)[this.pivotCol.datatype]);
+        if (this.sortPivotColumnHeaders) {
+            this.uniquePivotValues.sort(this.getcomparer(this.bInvSort)[this.pivotCol.datatype]);
+        }
     };
 
     AdapterObject.prototype.parseFromXhtmlTable = function (sourceTable) {
