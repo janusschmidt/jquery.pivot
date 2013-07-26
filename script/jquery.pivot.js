@@ -410,7 +410,7 @@
     }
 
     AdapterObject.prototype.parseJSONsource = function (data) {
-        var cellIndex, cellcount, rowIndex, rowcount, col, cell, cells, curNode, i, groupbyValue, groupbyText, sortbyValue, newObj, pivotValue, pivotSortBy, result, newPivotValue;
+        var cellIndex, cellcount, rowIndex, rowcount, col, cell, cells, curNode, i, groupbyValue, groupbyText, sortbyValue, newObj, pivotValue, dataIdValue, pivotSortBy, result, newPivotValue;
         this.dataid = data.dataid;
         //exctract header info
         for (cellIndex = 0, cellcount = data.columns.length; cellIndex < cellcount; cellIndex += 1) {
@@ -473,11 +473,12 @@
             //pivot
             pivotValue = trim(cells[this.pivotCol.colvalue]);
             pivotSortBy = trim(cells[this.pivotCol.sortbycol]);
+            dataIdValue = trim(cells[this.pivotCol.dataid]);
             result = trim(cells[this.resultCol.colvalue]);
             if (!curNode.pivotvalues) {
                 curNode.pivotvalues = [];
             }
-            newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
+            newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: dataIdValue };
             curNode.pivotvalues.push(newPivotValue);
             if (!lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
                 this.uniquePivotValues.push(newPivotValue);
