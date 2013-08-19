@@ -1,4 +1,4 @@
-﻿/// <reference path="definitions/jquery.d.ts"/>
+﻿///<reference path="definitions/jquery.d.ts"/>
 ///<reference path="lib.ts"/>
 module data {
     function sortgroupbys(rowA, rowB) {
@@ -17,57 +17,86 @@ module data {
         }
     }
 
-    class TreeNode {
+    export interface column{
+        colvalue: string;
+        coltext: string;
+        header?: string;
+        sortbycol: string;
+        groupbyrank: number;
+        pivot?: boolean;
+        result?: boolean;
+        dataid: string;
+        datatype: string;
+        text?: string;
+        colindex?: number;
+    }
+
+    export interface jsonsource{
+        dataid: string;
+        columns: column[];
+        rows: any[];
+    }
+
+    export interface pivotItem {
+        pivotValue: any; 
+        result: any; 
+        sortby: any; 
+        dataid: any
+    }
+
+    export class TreeNode {
         groupbyValue: string;
         groupbyText: string;
         colindex: number;
-        children: TreeNode[];
+        children:TreeNode[] = [];
         sortby: string;
         parent: TreeNode;
         dataid: string;
         collapsed: boolean;
         groupbylevel: number;
+        pivotvalues:pivotItem[] =[];
         visible() {
-            return !this.parent.collapsed && (!this.parent.visible || this.parent.visible());
+            return this.parent === undefined || (!this.parent.collapsed && (!this.parent.visible || this.parent.visible()));
         }
 
     }
 
-    export interface Cell {
-        colvalue: string;
-        coltext: string;
-        text: string;
-        colindex: number;
-        datatype: string;
-        sortbycol: string;
-        dataid: string;
-        groupbyrank: number;
-    };
+    //export interface Cell {
+    //    colvalue: string;
+    //    coltext: string;
+    //    text: string;
+    //    colindex: number;
+    //    datatype: string;
+    //    sortbycol: string;
+    //    dataid: string;
+    //    groupbyrank: number;
+    //}
 
     export class adapter {
 
         dataid: string;
-        alGroupByCols: Cell[];
+        alGroupByCols: column[];
         bInvSort: boolean;
-        pivotCol: Cell;
-        resultCol: Cell;
-        tree: { children: any[] };
-        uniquePivotValues: string[];
-        sortPivotColumnHeaders: bool;
+        pivotCol: column;
+        resultCol: column;
+        tree: TreeNode;
+        uniquePivotValues: pivotItem[];
+        sortPivotColumnHeaders: boolean;
 
         constructor() {
             this.alGroupByCols = [];
             this.pivotCol = null;
             this.resultCol = null;
             this.bInvSort = false;
-            this.tree = { children: [] };
+            this.tree = new TreeNode();
             this.uniquePivotValues = [];
             this.dataid = null;
             this.sortPivotColumnHeaders = true;
         }
 
-        sortTree(treeNode) {
-            var i, datatype;
+        sortTree(treeNode : TreeNode) {
+            var i: number,
+                datatype: string;
             if (treeNode.children && treeNode.children.length > 0) {
                 for (i = 0; i < treeNode.children.length; i += 1) {
                     this.sortTree(treeNode.children[i]);
@@ -78,70 +107,91 @@ module data {
             }
         }
 
-        findCell(arCells, colIndex) {
-            return lib.find(arCells, function (item, index) {
-                return (item.colindex == (+this)) ? item : null;
+        findCell(arCells: column[], colIndex: number) {
+            return lib.find(arCells, function (item: column, index: number) {
+                return item.colindex == this;
             }, colIndex);
         }
 
-        getcomparer(bInv) {
-        return {
-                string:
-                function (rowA, rowB) {
-                    var out = (rowA.sortby < rowB.sortby) ? -1 : (rowA.sortby > rowB.sortby) ? 1 : 0;
-                    return bInv ? -out : out;
-                },
-                number:
-                function (rowA, rowB) {
-                    var out = (+rowA.sortby < +rowB.sortby) ? -1 : (+rowA.sortby > +rowB.sortby) ? 1 : 0;
+        getcomparer(bInv: boolean) {
+            function comp(f) {
+                return function (rowA: TreeNode, rowB: TreeNode) {
+                    var out = (f(rowA.sortby) < f(rowB.sortby)) ? -1 : (f(rowA.sortby) > f(rowB.sortby)) ? 1 : 0;
                     return bInv ? -out : out;
                 }
             }
-        }
 
+            return  { 
+                'string': comp(s => { return s }), 
+                'number': comp(i => { return +i }) 
+            };
+        }
         
-        parseJSONsource(data) {
-            var cellIndex, cellcount, rowIndex, rowcount, col, cell: Cell, cells, curNode, i, groupbyValue, groupbyText, sortbyValue, newObj, pivotValue, pivotSortBy, result, newPivotValue;
+        parseJSONsource(data : jsonsource) {
+            var cellIndex:number, 
+                cellcount:number, 
+                rowIndex:number, 
+                rowcount:number, 
+                i:number, 
+                sourcecol:column, 
+                treecol: column, 
+                curNode:TreeNode, 
+                newObj:TreeNode, 
+                groupbyValue, 
+                groupbyText, 
+                sortbyValue, 
+                pivotValue, 
+                pivotSortBy, 
+                result, 
+                newPivotValue:pivotItem,
+                rowitem:any,
+                row:any[];
+
             this.dataid = data.dataid;
             //exctract header info
             for (cellIndex = 0, cellcount = data.columns.length; cellIndex < cellcount; cellIndex += 1) {
-                col = data.columns[cellIndex];
-                cell = {
-                    colvalue: col.colvalue,
-                    coltext: col.coltext,
-                    text: col.header || col.coltext || col.colvalue,
+                sourcecol = data.columns[cellIndex];
+                treecol = {
+                    colvalue: sourcecol.colvalue,
+                    coltext: sourcecol.coltext,
+                    text: sourcecol.header || sourcecol.coltext || sourcecol.colvalue,
                     colindex: cellIndex,
-                    datatype: col.datatype || 'string',
-                    sortbycol: col.sortbycol || col.coltext || col.colvalue,
-                    dataid: col.dataid || col.colvalue,
-                    groupbyrank: col.groupbyrank
+                    datatype: sourcecol.datatype || 'string',
+                    sortbycol: sourcecol.sortbycol || sourcecol.coltext || sourcecol.colvalue,
+                    dataid: sourcecol.dataid || sourcecol.colvalue,
+                    groupbyrank: sourcecol.groupbyrank
                 };
 
-                if (typeof cell.groupbyrank === 'number' && isFinite(cell.groupbyrank)) {
-                    this.alGroupByCols.push(cell);
+                if (typeof(treecol.groupbyrank) === 'number' && isFinite(treecol.groupbyrank)) {
+                    this.alGroupByCols.push(treecol);
                 }
-                else if (col.pivot) {
-                    this.pivotCol = cell;
+                else if (sourcecol.pivot) {
+                    this.pivotCol = treecol;
                 }
-                else if (col.result) {
-                    this.resultCol = cell;
+                else if (sourcecol.result) {
+                    this.resultCol = treecol;
                 }
             }
 
             this.alGroupByCols.sort(sortgroupbys);
 
-            function findGroupByFunc(item, index) { return item.groupbyValue == this ? item : null; }
-            function findPivotFunc(item, index) { return item.pivotValue == this ? item : null; }
+            function findGroupByFunc(item:TreeNode, index:number) { 
+                return item.groupbyValue == this; 
+            }
+            function findPivotFunc(item:pivotItem, index:number) { 
+                return item.pivotValue == this; 
+            }
+
             //build tree structure
             for (rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
-                cells = data.rows[rowIndex];
+                row = data.rows[rowIndex];
                 curNode = this.tree;
                 //groupbys
                 for (i = 0; i < this.alGroupByCols.length; i += 1) {
-                    groupbyValue = trim(cells[this.alGroupByCols[i].colvalue]);
-                    groupbyText = cells[this.alGroupByCols[i].coltext];
-                    sortbyValue = trim(cells[this.alGroupByCols[i].sortbycol]);
-                    newObj = lib.find(curNode.children, findGroupByFunc, groupbyValue);
+                    groupbyValue = trim(row[this.alGroupByCols[i].colvalue]);
+                    groupbyText = row[this.alGroupByCols[i].coltext];
+                    sortbyValue = trim(row[this.alGroupByCols[i].sortbycol]);
+                    newObj = lib.find<TreeNode>(curNode.children, findGroupByFunc, groupbyValue);
                     if (!newObj) {
                         newObj = new TreeNode();
                         newObj.groupbyValue = groupbyValue;
@@ -159,12 +209,9 @@ module data {
                     curNode = newObj;
                 }
                 //pivot
-                pivotValue = trim(cells[this.pivotCol.colvalue]);
-                pivotSortBy = trim(cells[this.pivotCol.sortbycol]);
-                result = trim(cells[this.resultCol.colvalue]);
-                if (!curNode.pivotvalues) {
-                    curNode.pivotvalues = [];
-                }
+                pivotValue = trim(row[this.pivotCol.colvalue]);
+                pivotSortBy = trim(row[this.pivotCol.sortbycol]);
+                result = trim(row[this.resultCol.colvalue]);
                 newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
                 curNode.pivotvalues.push(newPivotValue);
                 if (!lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
@@ -178,13 +225,25 @@ module data {
             }
         }
 
-        parseFromXhtmlTable(sourceTable) {
-            var cellIndex, cellcount, rowIndex, rowcount, cellIndex1, cellcount1, el, eltext, col, cells, row,
-                data = { dataid: sourceTable.attr('dataid'), columns: [], rows: [] },
+        parseFromXhtmlTable(sourceTable: JQuery) {
+            var cellIndex:number, 
+                cellcount:number, 
+                rowIndex:number, 
+                rowcount:number, 
+                el: JQuery, 
+                eltext:string, 
+                col:column, 
+                cells:HTMLTableCellElement[], 
+                row: {},
+                data :jsonsource = { 
+                    dataid: sourceTable.attr('dataid'), 
+                    columns: [], 
+                    rows: [] 
+                },
                 //exctract header info
                 rows = <HTMLTableRowElement[]><any> $('tbody > tr', sourceTable),
-                columnNames = [];
-
+                columnNames:string[] = [];
+            
             for (cellIndex = 0, cellcount = rows[0].cells.length; cellIndex < cellcount; cellIndex += 1) {
                 el = $(rows[0].cells[cellIndex]);
                 eltext = el.text();
@@ -205,15 +264,11 @@ module data {
 
             //extract rows
             for (rowIndex = 1, rowcount = rows.length; rowIndex < rowcount; rowIndex += 1) {
-                cells = rows[rowIndex].cells;
+                cells =  <HTMLTableCellElement[]><any>rows[rowIndex].cells;
                 row = {};
-                for (cellIndex1 = 0, cellcount1 = columnNames.length; cellIndex1 < cellcount1; cellIndex1 += 1) {
-                    if (data.columns[cellIndex1].datatype === 'number') {
-                        row[columnNames[cellIndex1]] = parseFloat(cells[cellIndex1].innerHTML);
-                    }
-                    else {
-                        row[columnNames[cellIndex1]] = cells[cellIndex1].innerHTML;
-                    }
+                for (cellIndex = 0, cellcount = columnNames.length; cellIndex < cellcount; cellIndex += 1) {
+                    eltext = cells[cellIndex].innerHTML;
+                    row[columnNames[cellIndex]] = (data.columns[cellIndex].datatype === 'number') ? <any>parseFloat(eltext) : <any>eltext;
                 }
                 data.rows.push(row);
             }

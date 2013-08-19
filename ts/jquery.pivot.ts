@@ -1,6 +1,15 @@
 ﻿/// <reference path="definitions/jquery.d.ts"/>
 /// <reference path="lib.ts"/>
 /// <reference path="adapter.ts"/>
+
+interface jqueryPivotOptions { 
+
+}
+
+interface JQuery {
+    pivot(jqueryPivotOptions?): JQuery;
+}
+
 (function ($) {
    
     function calcsum(values) {
