@@ -14,27 +14,28 @@
             },
             base: {
                 files: [
-                    { src: 'ts/jquery.pivot.ts', dest: 'build/jquery.pivot.js' },
-                    { src: 'ts/demo.ts', dest: 'build/demo.js' }
+                    { src: 'src/ts/jquery.pivot.ts', dest: 'build/jquery.pivot.js' },
+                    { src: 'src/ts/demo.ts', dest: 'demo/demo.js' }
                 ]
             }
         },
         jshint: {
-            all: ['Gruntfile.js', 'pivot.jquery.json', 'package.json', 'build/**/*.js', '!build/**/*.min.js']
+            all: ['Gruntfile.js', 'pivot.jquery.json', 'package.json', 'build/**/*.js', '!build/**/*.min.js', 'tests/**/*.js', '!tests/**/*.min.js', 'demo/**/*.js', '!demo/**/*.min.js']
         },
         uglify: {
             build: {
                 files: [
-                    { src: 'build/jquery.pivot.js', dest: 'build/jquery.pivot.min.js' },
-                    { src: 'build/demo.js', dest: 'build/demo.min.js' }
-                //{
-                //    expand: true,     // Enable dynamic expansion.
-                //    cwd: 'build',      // Src matches are relative to this path.
-                //    src: ['**/*.*.js', '**/*.js', '!**/*.min.js'], // Actual pattern(s) to match.
-                //    dest: 'build',   // Destination path prefix.
-                //    ext: '.min.js',   // Dest filepaths will have this extension.
-                //}
+                    { src: 'build/jquery.pivot.js', dest: 'build/jquery.pivot.min.js' }
                 ]
+            }
+        },
+        jasmine: {
+            jquerypivot: {
+                src: 'build/jquery.pivot.min.js',
+                options: {
+                    vendor: 'tools/jquery.min.js',
+                    specs: 'tests/*spec.js'
+                }
             }
         }
     });
@@ -43,7 +44,8 @@
     grunt.loadNpmTasks('grunt-typescript');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default task(s).
-    grunt.registerTask('default', ['typescript', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['typescript', 'jshint', 'uglify', 'jasmine']);
 };

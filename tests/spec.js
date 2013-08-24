@@ -1,0 +1,474 @@
+﻿/// <reference path="../src/ts/definitions/jasmine.d.ts" />
+/// <reference path="../src/ts/definitions/jquery.d.ts"/>
+/// <reference path="../src/ts/adapter.ts"/>
+/// <reference path="../src/ts/jquery.pivot.ts"/>
+var example5JSONdata = {
+    'dataid': 'An identifier for the table',
+    'columns': [
+        { 'colvalue': 'companyid ', 'coltext': 'companyid ', 'header': 'companyid ', 'datatype': 'number', 'sortbycol': 'companyid ', 'groupbyrank': 2, 'pivot': false, 'result': false },
+        { 'colvalue': 'userid ', 'coltext': 'userid ', 'header': 'userid ', 'datatype': 'number', 'sortbycol': 'userid ', 'groupbyrank': 3, 'pivot': false, 'result': false },
+        { 'colvalue': 'date ', 'coltext': 'date ', 'header': 'date ', 'sortbycol': 'date ', 'dataid': 'idforpivot', 'groupbyrank': null, 'pivot': true, 'result': false },
+        { 'colvalue': 'regMinutes ', 'coltext': 'regMinutes ', 'header': 'regMinutes ', 'sortbycol': 'regMinutes ', 'groupbyrank': null, 'pivot': false, 'result': false },
+        { 'colvalue': 'flexMinutes ', 'coltext': 'flexMinutes ', 'header': 'flexMinutes ', 'sortbycol': 'flexMinutes ', 'groupbyrank': null, 'pivot': false, 'result': false },
+        { 'colvalue': 'correction ', 'coltext': 'correction ', 'header': 'correction ', 'sortbycol': 'correction ', 'groupbyrank': null, 'pivot': false, 'result': false },
+        { 'colvalue': 'diffMinutes ', 'coltext': 'diffMinutes ', 'header': 'diffMinutes ', 'sortbycol': 'diffMinutes ', 'groupbyrank': null, 'pivot': false, 'result': true }
+    ],
+    'rows': [
+        { 'companyid ': 2, 'userid ': 1, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '330 ', 'correction ': '0 ', 'diffMinutes ': '-330 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '330 ', 'correction ': '0 ', 'diffMinutes ': '-330 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 2, 'userid ': 1, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '300 ', 'correction ': '0 ', 'diffMinutes ': '-300 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '01-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '04-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '480 ', 'correction ': '0 ', 'diffMinutes ': '-480 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '05-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '06-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '07-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '08-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '09-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '420 ', 'correction ': '0 ', 'diffMinutes ': '-420 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '10-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '11-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 18, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 86, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 87, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' },
+        { 'companyid ': 4, 'userid ': 88, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 89, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 90, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 91, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 92, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '390 ', 'correction ': '0 ', 'diffMinutes ': '-390 ' },
+        { 'companyid ': 4, 'userid ': 93, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '480 ', 'correction ': '0 ', 'diffMinutes ': '-480 ' },
+        { 'companyid ': 4, 'userid ': 94, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 95, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
+        { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' }
+    ]
+};
+
+describe("Adapter", function () {
+    var JSONdata = $.extend({}, example5JSONdata), rows = JSONdata.rows.slice(0, 100), maxMilliSeconds = 1000, i;
+
+    JSONdata.rows = rows.slice(0);
+    for (i = 1; i < 100; i = i + 1) {;;;
+        $.merge(JSONdata.rows, rows);
+    }
+
+    it("processes " + JSONdata.rows.length + " lines in less than " + maxMilliSeconds + " ms (Rough test that nothing has has broken performance)", function () {
+        var sut, ticks;
+
+        ticks = (new Date()).getTime();
+        sut = new jquerypivot.Adapter();
+        sut.parseJSONsource(JSONdata);
+        ticks = (new Date()).getTime() - ticks;
+        expect(ticks).toBeLessThan(maxMilliSeconds);
+    });
+});
+
+describe("Pivot", function () {
+    var sut;
+
+    beforeEach(function () {
+        $('body').append('<div id="pivotdiv"></div>');
+        sut = $('#pivotdiv').pivot({
+            source: example5JSONdata,
+            formatFunc: function (n) {
+                return jQuery.fn.pivot.formatDK(n, 2);
+            },
+            parseNumFunc: function (n) {
+                return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n);
+            },
+            bCollapsible: false
+        });
+    });
+
+    afterEach(function () {
+        $('#pivotdiv').remove();
+    });
+
+    describe(" with format function and expand all", function () {
+        it("shows the correct amount of groupby columns", function () {
+            expect(sut.find('table.pivot tr.head th.groupby').length).toEqual(2);
+        });
+
+        it("shows the correct amount of sorted pivot columns headers", function () {
+            var shouldbe = [
+                '01-08-2009',
+                '02-08-2009',
+                '03-08-2009',
+                '04-08-2009',
+                '05-08-2009',
+                '06-08-2009',
+                '07-08-2009',
+                '08-08-2009',
+                '09-08-2009',
+                '10-08-2009',
+                '11-08-2009',
+                '12-08-2009'
+            ];
+
+            var res = sut.find('table.pivot tr.head th.pivotcol').map(function () {
+                return $(this).text();
+            }).get();
+            expect(sut.find('table.pivot tr.head th.pivotcol').length).toEqual(12);
+            expect(res).toEqual(shouldbe);
+        });
+
+        it("Has the right level0 groupby values", function () {
+            var expectedLevelGroupByValues = ['2', '', '4', ''];
+            var expectedSums = [
+                '0,00',
+                '0,00',
+                '-330,00',
+                '-300,00',
+                '-300,00',
+                '-300,00',
+                '-300,00',
+                '0,00',
+                '0,00',
+                '-330,00',
+                '-300,00',
+                '-300,00',
+                '0,00',
+                '0,00',
+                '-5.040,00',
+                '-5.040,00',
+                '-5.130,00',
+                '-4.650,00',
+                '-4.380,00',
+                '0,00',
+                '0,00',
+                '-5.040,00',
+                '-5.040,00',
+                '-5.130,00'
+            ];
+
+            var levelGroupbyValues = $('table.pivot tr.level0 th').map(function () {
+                return $.trim($(this).text());
+            }).get();
+            var rowSums = $('table.pivot tr.level0 td.resultcell').map(function () {
+                return $(this).text();
+            }).get();
+
+            expect(expectedLevelGroupByValues).toEqual(levelGroupbyValues);
+            expect(rowSums).toEqual(expectedSums);
+        });
+
+        it("Has the right level1 groupby values", function () {
+            var expectedLevelGroupByValues = ["", "1", "", "18", "", "86", "", "87", "", "88", "", "89", "", "90", "", "91", "", "92", "", "93", "", "94", "", "95", "", "121"];
+            var expectedSums = [
+                '0,00',
+                '0,00',
+                '-330,00',
+                '-300,00',
+                '-300,00',
+                '-300,00',
+                '-300,00',
+                '0,00',
+                '0,00',
+                '-330,00',
+                '-300,00',
+                '-300,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-390,00',
+                '-390,00',
+                '-390,00',
+                '-390,00',
+                '-360,00',
+                '0,00',
+                '0,00',
+                '-390,00',
+                '-390,00',
+                '-390,00',
+                '0,00',
+                '0,00',
+                '-420,00',
+                '-390,00',
+                '-390,00',
+                '0,00',
+                '0,00',
+                '0,00',
+                '0,00',
+                '-420,00',
+                '-390,00',
+                '-390,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-390,00',
+                '-480,00',
+                '-390,00',
+                '-360,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-390,00',
+                '-480,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '-420,00',
+                '0,00',
+                '0,00',
+                '-450,00',
+                '-450,00',
+                '-450,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '-360,00',
+                '0,00',
+                '0,00',
+                '-360,00',
+                '-360,00',
+                '-360,00'
+            ];
+
+            var levelGroupbyValues = $('table.pivot tr.level1 th').map(function () {
+                return $.trim($(this).text());
+            }).get();
+            var levelSums = $('table.pivot tr.level1 td.resultcell').map(function () {
+                return $(this).text();
+            }).get();
+
+            expect(expectedLevelGroupByValues).toEqual(levelGroupbyValues);
+            expect(levelSums).toEqual(expectedSums);
+        });
+
+        it("Has the right row totals", function () {
+            var expectedRowTotals = ["-2.460,00", "-2.460,00", "-39.450,00", "-3.570,00", "-3.570,00", "-2.880,00", "-3.570,00", "-3.570,00", "-3.570,00", "-3.090,00", "-2.400,00", "-3.210,00", "-3.570,00", "-3.570,00", "-2.880,00"];
+            var rowTotals = $('table.pivot tr:not(.total) td.total').map(function () {
+                return $.trim($(this).text());
+            }).get();
+
+            expect(rowTotals).toEqual(expectedRowTotals);
+        });
+
+        it("Has the right pivot column totals", function () {
+            var expectedPivotColumnTotals = ["0,00", "0,00", "-5.370,00", "-5.340,00", "-5.430,00", "-4.950,00", "-4.680,00", "0,00", "0,00", "-5.370,00", "-5.340,00", "-5.430,00", "-41.910,00"];
+            var pivotColumnTotals = $('table.pivot tr.total td').map(function () {
+                return $.trim($(this).text());
+            }).get();
+
+            expect(pivotColumnTotals).toEqual(expectedPivotColumnTotals);
+        });
+    });
+});
