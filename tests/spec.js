@@ -177,7 +177,7 @@ describe("Adapter", function () {
     var JSONdata = $.extend({}, example5JSONdata), rows = JSONdata.rows.slice(0, 100), maxMilliSeconds = 1000, i;
 
     JSONdata.rows = rows.slice(0);
-    for (i = 1; i < 100; i = i + 1) {;;;
+    for (i = 1; i < 100; i = i + 1) {
         $.merge(JSONdata.rows, rows);
     }
 
