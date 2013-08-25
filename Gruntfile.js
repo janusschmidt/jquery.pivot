@@ -7,9 +7,9 @@
             options: {
                 module: 'amd', //or commonjs
                 target: 'es3', //or es3
-                base_path: 'ts/',
-                sourcemap: false,
-                fullSourceMapPath: false,
+                base_path: 'src/ts/',
+                sourcemap: true,
+                fullSourceMapPath: true,
                 declaration: true
             },
             base: {

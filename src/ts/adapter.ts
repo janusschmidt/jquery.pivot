@@ -61,19 +61,7 @@ module jquerypivot {
 
     }
 
-    //export interface Cell {
-    //    colvalue: string;
-    //    coltext: string;
-    //    text: string;
-    //    colindex: number;
-    //    datatype: string;
-    //    sortbycol: string;
-    //    dataid: string;
-    //    groupbyrank: number;
-    //}
-
     export class Adapter {
-
         dataid: string;
         alGroupByCols: column[];
         bInvSort: boolean;

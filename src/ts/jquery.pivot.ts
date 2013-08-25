@@ -40,7 +40,33 @@ module jquerypivot {
         return y.join('');
     }
 
-    export class jqueryPivotOptions {constructor(
+    export interface IjqueryPivotOptions {
+            //Must be json or a jquery element containing a table
+            source: any;
+            //Includes total row and column
+            bTotals?: boolean;
+            // Set to false to expand all and remove open/close buttons
+            bCollapsible?: boolean;
+            //defaults to numeric sum. Set to null for no totals. Set to concatenation for strings.
+            aggregatefunc?: Function;
+            //A function to format numeric result/total cells. Ie. for non US numeric formats
+            formatFunc?: (n: number) => string;
+            //Can be used if parsing a html table and want a non standard method of parsing data. 
+            //Ie. for non US numeric formats. 
+            //Set to null if result column should be considered string data.
+            parseNumFunc?: (n: string) => number;
+            //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
+            //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
+            onResultCellClicked?: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any;
+            //Text used if no data is available for specific groupby and pivot value.
+            noGroupByText?: string;
+            //Text used if source data is empty.
+            noDataText?: string;
+            //if false pivot columns will appear in the order they are discovered in the source.
+            sortPivotColumnHeaders?: boolean;
+    }
+
+    export class jqueryPivotOptions implements IjqueryPivotOptions {constructor(
             //Must be json or a jquery element containing a table
             public source: any = null, 
             //Includes total row and column
@@ -94,7 +120,7 @@ module jquerypivot {
 
     export class pivot {
         public opts: jqueryPivotOptions;
-        constructor(suppliedoptions? : jqueryPivotOptions){ 
+        constructor(suppliedoptions? : IjqueryPivotOptions){ 
             this.opts = $.extend({}, $.fn.pivot.defaults, suppliedoptions);
         }
 
@@ -377,7 +403,7 @@ module jquerypivot {
 }
 
 interface JQuery {
-    pivot(jqueryPivotOptions?:jquerypivot.jqueryPivotOptions): JQuery;
+    pivot(jqueryPivotOptions?:jquerypivot.IjqueryPivotOptions): JQuery;
 }
 
 

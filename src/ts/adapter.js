@@ -1,4 +1,4 @@
-///<reference path="definitions/jquery.d.ts"/>
+﻿///<reference path="definitions/jquery.d.ts"/>
 ///<reference path="lib.ts"/>
 var jquerypivot;
 (function (jquerypivot) {
@@ -28,16 +28,6 @@ var jquerypivot;
     })();
     jquerypivot.TreeNode = TreeNode;
 
-    //export interface Cell {
-    //    colvalue: string;
-    //    coltext: string;
-    //    text: string;
-    //    colindex: number;
-    //    datatype: string;
-    //    sortbycol: string;
-    //    dataid: string;
-    //    groupbyrank: number;
-    //}
     var Adapter = (function () {
         function Adapter() {
             this.alGroupByCols = [];

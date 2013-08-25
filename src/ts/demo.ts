@@ -1,5 +1,5 @@
 ﻿/// <reference path="definitions/jquery.d.ts"/>
-/// <reference path="jquery.pivot.ts"/>
+/// <reference path="../../build/jquery.pivot.d.ts"/>
 
 $(document).ready(function () {
     

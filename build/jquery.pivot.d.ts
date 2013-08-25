@@ -70,7 +70,19 @@ declare module jquerypivot {
     }
 }
 declare module jquerypivot {
-    class jqueryPivotOptions {
+    interface IjqueryPivotOptions {
+        source: any;
+        bTotals?: boolean;
+        bCollapsible?: boolean;
+        aggregatefunc?: Function;
+        formatFunc?: (n: number) => string;
+        parseNumFunc?: (n: string) => number;
+        onResultCellClicked?: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any;
+        noGroupByText?: string;
+        noDataText?: string;
+        sortPivotColumnHeaders?: boolean;
+    }
+    class jqueryPivotOptions implements IjqueryPivotOptions {
         public source: any;
         public bTotals: boolean;
         public bCollapsible: boolean;
@@ -102,7 +114,7 @@ declare module jquerypivot {
     }
     class pivot {
         public opts: jqueryPivotOptions;
-        constructor(suppliedoptions?: jqueryPivotOptions);
+        constructor(suppliedoptions?: IjqueryPivotOptions);
         public resultCellClicked: (e: JQueryEventObject) => void;
         public getResValue: (treeNode: jquerypivot.TreeNode, pivotValue: any) => any;
         public appendChildRows: (treeNode: jquerypivot.TreeNode, belowThisRow: JQuery, adapter: jquerypivot.Adapter) => void;
@@ -112,5 +124,5 @@ declare module jquerypivot {
     }
 }
 interface JQuery {
-    pivot(jqueryPivotOptions?: jquerypivot.jqueryPivotOptions): JQuery;
+    pivot(jqueryPivotOptions?: jquerypivot.IjqueryPivotOptions): JQuery;
 }
