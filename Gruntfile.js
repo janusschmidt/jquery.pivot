@@ -15,12 +15,19 @@
             base: {
                 files: [
                     { src: 'src/ts/jquery.pivot.ts', dest: 'build/jquery.pivot.js' },
-                    { src: 'src/ts/demo.ts', dest: 'demo/demo.js' }
+                    { src: 'src/ts/demo.ts', dest: 'demo/demo.js' },
+                    { src: 'tests/spec.ts', dest: 'tests/spec.js' },
+                    { src: 'tests/startJasmineHtmlRunner.ts', dest: 'tests/startJasmineHtmlRunner.js' }
                 ]
             }
         },
         jshint: {
-            all: ['Gruntfile.js', 'pivot.jquery.json', 'package.json', 'build/**/*.js', '!build/**/*.min.js', 'tests/**/*.js', '!tests/**/*.min.js', 'demo/**/*.js', '!demo/**/*.min.js']
+            all: ['Gruntfile.js',
+                'pivot.jquery.json',
+                'package.json',
+                'build/**/*.js', '!build/**/*.min.js',
+                'tests/**/*.js', '!tests/**/*.min.js',
+                'demo/**/*.js', '!demo/**/*.min.js']
         },
         uglify: {
             build: {

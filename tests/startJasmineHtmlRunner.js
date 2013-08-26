@@ -19,4 +19,4 @@
         jasmineEnv.execute();
     }
 })();
-//@ sourceMappingURL=startJasmineHtmlRunner.js.map
+//# sourceMappingURL=file:///C:/Users/Administrator/Documents/Visual Studio 2012/Projects/jquery.pivot/jquery.pivot/tests/startJasmineHtmlRunner.js.map

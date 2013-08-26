@@ -172,6 +172,232 @@ var example5JSONdata : jquerypivot.jsonsource = {
             { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 '}]
 };
 
+var htmlTableData = '<table id="htmlTableData" dataid="An optional sourcetable identifier" style="display: none;"> '+
+'                <tr>                                                                                         '+
+'                    <th pivot="true">Month </th>                                                             '+
+'                    <th groupbyrank="2">Subject </th>                                                        '+
+'                    <th groupbyrank="1" dataid="An optional id.">Student </th>                               '+
+'                    <th result="true">Score </th>                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January</td>                                                                         '+
+'                    <td>English</td>                                                                         '+
+'                    <td>Elisa</td>                                                                           '+
+'                    <td>8.7</td>                                                                             '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>6.5 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>5.8 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>8.9 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>8.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>6.2 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>English </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>5.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>7.2 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>8.9 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>8.3 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>8.4 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>5.7 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>English </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>4.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>7.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>4.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>9.2 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>9.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Elisa </td>                                                                          '+
+'                    <td>5.6 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>english </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>8.7 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>5.3 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>3.5 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>6.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>5.8 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>January </td>                                                                        '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>9.2 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>english </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>6.8 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>5.4 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>5.6 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>5.9 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>6.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>February </td>                                                                       '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>9.3 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>english </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>4.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Maths </td>                                                                          '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>3.5 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Science </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>4.1 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>Art </td>                                                                            '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>4.8 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>History </td>                                                                        '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>6.7 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'                <tr>                                                                                         '+
+'                    <td>March </td>                                                                          '+
+'                    <td>French </td>                                                                         '+
+'                    <td>Mary </td>                                                                           '+
+'                    <td>9.0 </td>                                                                            '+
+'                </tr>                                                                                        '+
+'            </table>                                                                                         ';
+
+
 describe("Adapter", () => {
     var JSONdata: any = $.extend({}, example5JSONdata),
         rows = JSONdata.rows.slice(0, 100),
@@ -194,7 +420,7 @@ describe("Adapter", () => {
     });
 });
 
-describe("Pivot", function() {
+describe("Pivot from json", function() {
     var sut: JQuery;
 
     beforeEach(() => {
@@ -209,7 +435,7 @@ describe("Pivot", function() {
 
     afterEach(() => { $('#pivotdiv').remove()});
 
-    describe(" with format function and expand all", function () {
+    describe("with format function and expand all", function () {
         it("shows the correct amount of groupby columns", function () {
             expect(sut.find('table.pivot tr.head th.groupby').length).toEqual(2);
         });
@@ -262,7 +488,7 @@ describe("Pivot", function() {
             var levelGroupbyValues = $('table.pivot tr.level1 th').map(function () { return $.trim($(this).text()); }).get();
             var levelSums = $('table.pivot tr.level1 td.resultcell').map(function () { return $(this).text(); }).get()
 
-        expect(expectedLevelGroupByValues).toEqual(levelGroupbyValues);
+            expect(levelGroupbyValues).toEqual(expectedLevelGroupByValues);
             expect(levelSums).toEqual(expectedSums);
         });
 
@@ -275,6 +501,72 @@ describe("Pivot", function() {
 
         it("Has the right pivot column totals", function () {
             var expectedPivotColumnTotals = ["0,00", "0,00", "-5.370,00", "-5.340,00", "-5.430,00", "-4.950,00", "-4.680,00", "0,00", "0,00", "-5.370,00", "-5.340,00", "-5.430,00", "-41.910,00"];
+            var pivotColumnTotals = $('table.pivot tr.total td').map(function () { return $.trim($(this).text()); }).get();
+
+            expect(pivotColumnTotals).toEqual(expectedPivotColumnTotals);
+        });
+    });
+});
+
+describe("Pivot from html table", function() {
+    var sut: JQuery;
+
+    beforeEach(() => {
+        $('body').append(htmlTableData).append('<div id="pivotdiv"></div>');
+        sut = $('#pivotdiv').pivot({
+            source: $('#htmlTableData'),
+            formatFunc: function (n) { return jQuery.fn.pivot.formatUK(n, 2); },
+            bCollapsible: false,
+            sortPivotColumnHeaders:false
+        });
+    });
+
+    afterEach(() => { $('#pivotdiv, #htmlTableData').remove()});
+
+    describe("with format function and expand all", function () {
+        it("shows the correct amount of groupby columns", function () {
+            expect(sut.find('table.pivot tr.head th.groupby').length).toEqual(2);
+        });
+
+        it("shows the correct amount of sorted pivot columns headers", function () {
+            var shouldbe = ['January', 'February', 'March'];
+
+            var res = sut.find('table.pivot tr.head th.pivotcol').map(function () { return $(this).text(); }).get();
+            expect(sut.find('table.pivot tr.head th.pivotcol').length).toEqual(3);
+            expect(res).toEqual(shouldbe);
+        });
+
+        it("Has the right level0 groupby values", function () {
+            var expectedLevelGroupByValues = [ 'Elisa','', 'Mary', ''];
+            var expectedSums = [ '44.20', '43.60', '39.20', '38.60', '39.10', '32.20' ];
+
+            var levelGroupbyValues = $('table.pivot tr.level0 th').map(function () { return $.trim($(this).text()); }).get();
+            var rowSums = $('table.pivot tr.level0 td.resultcell').map(function () { return $(this).text(); }).get();
+
+            expect(expectedLevelGroupByValues).toEqual(levelGroupbyValues);
+            expect(rowSums).toEqual(expectedSums);
+        });
+
+        it("Has the right level1 groupby values", function () {
+            var expectedLevelGroupByValues = [ '', 'Art', '', 'English', '', 'French', '', 'History', '', 'Maths', '', 'Science', '', 'Art', '', 'French', '', 'History', '', 'Maths', '', 'Science', '', 'english' ];
+            var expectedSums = [ '8.90', '8.30', '9.20', '8.70', '5.10', '4.10', '6.20', '5.70', '5.60', '8.10', '8.40', '9.10', '6.50', '7.20', '7.10', '5.80', '8.90', '4.10', '6.10', '5.90', '4.80', '9.20', '9.30', '9.00', '5.80', '6.10', '6.70', '5.30', '5.40', '3.50', '3.50', '5.60', '4.10', '8.70', '6.80', '4.10' ];
+
+            var levelGroupbyValues = $('table.pivot tr.level1 th').map(function () { return $.trim($(this).text()); }).get();
+            var levelSums = $('table.pivot tr.level1 td.resultcell').map(function () { return $(this).text(); }).get()
+
+            expect(levelGroupbyValues).toEqual(expectedLevelGroupByValues);
+            expect(levelSums).toEqual(expectedSums);
+        });
+
+        it("Has the right row totals", function () {
+            var expectedRowTotals = [ '127.00', '26.40', '17.90', '17.50', '25.60', '20.80', '18.80', '109.90', '16.80', '27.50', '18.60', '14.20', '13.20', '19.60' ];
+            var rowTotals = $('table.pivot tr:not(.total) td.total').map(function () { return $.trim($(this).text()); }).get()
+
+        expect(rowTotals).toEqual(expectedRowTotals);
+        });
+
+        it("Has the right pivot column totals", function () {
+            var expectedPivotColumnTotals = [ '82.80', '82.70', '71.40', '236.90' ];
             var pivotColumnTotals = $('table.pivot tr.total td').map(function () { return $.trim($(this).text()); }).get();
 
             expect(pivotColumnTotals).toEqual(expectedPivotColumnTotals);
