@@ -224,9 +224,9 @@ var jquerypivot;
             }
         };
 
-        Adapter.prototype.parseFromXhtmlTable = function (sourceTable) {
+        Adapter.prototype.parseFromHtmlTable = function (sourceTable) {
             var cellIndex, cellcount, rowIndex, rowcount, el, eltext, col, cells, row, data = {
-                dataid: sourceTable.attr('dataid'),
+                dataid: sourceTable.data('pivot-dataid'),
                 columns: [],
                 rows: []
             }, rows = $('tbody > tr', sourceTable), columnNames = [];
@@ -235,15 +235,15 @@ var jquerypivot;
                 el = $(rows[0].cells[cellIndex]);
                 eltext = el.text();
                 col = {
-                    colvalue: el.attr('colvalue') || eltext,
-                    coltext: el.attr('coltext') || eltext,
-                    header: el.attr('header') || el.text(),
-                    datatype: el.attr('datatype'),
-                    sortbycol: el.attr('sortbycol') || eltext,
-                    dataid: el.attr('dataid'),
-                    groupbyrank: parseInt(el.attr('groupbyrank'), 10),
-                    pivot: el.attr('pivot') === 'true',
-                    result: el.attr('result') === 'true'
+                    colvalue: el.data('pivot-colvalue') || eltext,
+                    coltext: el.data('pivot-coltext') || eltext,
+                    header: el.data('pivot-header') || el.text(),
+                    datatype: el.data('pivot-datatype'),
+                    sortbycol: el.data('pivot-sortbycol') || eltext,
+                    dataid: el.data('pivot-dataid'),
+                    groupbyrank: parseInt(el.data('pivot-groupbyrank'), 10),
+                    pivot: el.data('pivot-pivot'),
+                    result: el.data('pivot-result')
                 };
                 data.columns.push(col);
                 columnNames.push(eltext);
@@ -585,7 +585,7 @@ var jquerypivot;
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
                 if (opts.source.jquery) {
                     if (opts.source.find('tr').length > 0) {
-                        adapter.parseFromXhtmlTable(opts.source);
+                        adapter.parseFromHtmlTable(opts.source);
                     }
                 } else {
                     adapter.parseJSONsource(opts.source);

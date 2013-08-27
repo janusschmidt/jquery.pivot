@@ -172,12 +172,12 @@ var example5JSONdata : jquerypivot.jsonsource = {
             { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 '}]
 };
 
-var htmlTableData = '<table id="htmlTableData" dataid="An optional sourcetable identifier" style="display: none;"> '+
+var htmlTableData = '<table id="htmlTableData" data-pivot-dataid="An optional sourcetable identifier" style="display: none;"> '+
 '                <tr>                                                                                         '+
-'                    <th pivot="true">Month </th>                                                             '+
-'                    <th groupbyrank="2">Subject </th>                                                        '+
-'                    <th groupbyrank="1" dataid="An optional id.">Student </th>                               '+
-'                    <th result="true">Score </th>                                                            '+
+'                    <th data-pivot-pivot="true">Month </th>                                                  '+
+'                    <th data-pivot-groupbyrank="2">Subject </th>                                             '+
+'                    <th data-pivot-groupbyrank="1" data-pivot-dataid="An optional id.">Student </th>         '+
+'                    <th data-pivot-result="true">Score </th>                                                 '+
 '                </tr>                                                                                        '+
 '                <tr>                                                                                         '+
 '                    <td>January</td>                                                                         '+

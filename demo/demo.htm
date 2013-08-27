@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html>
 <head>
     <title>jquery.pivot test page</title>
     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
@@ -71,12 +71,12 @@ $.fn.pivot.defaults = {
     });
 &lt;/script>
 .....
-&lt;table id="example1" <span class="em">dataid</span>="An optional sourcetable identifier">
+&lt;table id="example1" <span class="em">data-pivot-dataid</span>="An optional sourcetable identifier">
     &lt;tr>
-        &lt;th <span class="em">pivot</span>="true">Month &lt;/th>
-        &lt;th <span class="em">groupbyrank</span>="2">Subject &lt;/th>
-        &lt;th <span class="em">groupbyrank</span>="1" <span class="em">dataid</span>="An optional id.">Student &lt;/th>
-        &lt;th <span class="em">result</span>="true">Score &lt;/th>
+        &lt;th <span class="em">data-pivot-pivot</span>="true">Month &lt;/th>
+        &lt;th <span class="em">data-pivot-groupbyrank</span>="2">Subject &lt;/th>
+        &lt;th <span class="em">data-pivot-groupbyrank</span>="1" <span class="em">data-pivot-dataid</span>="An optional id.">Student &lt;/th>
+        &lt;th <span class="em">data-pivot-result</span>="true">Score &lt;/th>
     &lt;/tr>
     .....
     </pre>
@@ -97,15 +97,15 @@ $.fn.pivot.defaults = {
     });
 &lt;/script>
 .....
-&lt;table id="example2" <span class="em">dataid</span>="An identifier for the table">
+&lt;table id="example2" <span class="em">data-pivot-dataid</span>="An identifier for the table">
     &lt;tr>
-        &lt;th <span class="em">groupbyrank</span>="2" <span class="em">datatype</span>="number">companyid &lt;/th>
-        &lt;th <span class="em">groupbyrank</span>="3" <span class="em">datatype</span>="number">userid &lt;/th>
-        &lt;th <span class="em">pivot</span>="true" <span class="em">dataid</span>="idforpivot" <span class="em">sortbycolindex</span>="2">date &lt;/th>
+        &lt;th <span class="em">data-pivot-groupbyrank</span>="2" <span class="em">data-pivot-datatype</span>="number">companyid &lt;/th>
+        &lt;th <span class="em">data-pivot-groupbyrank</span>="3" <span class="em">data-pivot-datatype</span>="number">userid &lt;/th>
+        &lt;th <span class="em">data-pivot-pivot</span>="true" <span class="em">data-pivot-dataid</span>="idforpivot" <span class="em">data-pivot-sortbycol</span>="2">date &lt;/th>
         &lt;th>regMinutes &lt;/th>
         &lt;th>flexMinutes &lt;/th>
         &lt;th>correction &lt;/th>
-        &lt;th <span class="em">result</span>="true">diffMinutes &lt;/th>
+        &lt;th <span class="em">data-pivot-result</span>="true">diffMinutes &lt;/th>
     &lt;/tr>
     .....
     </pre>
@@ -128,13 +128,13 @@ $.fn.pivot.defaults = {
 &lt;table id="example3">
     &lt;tbody>
         &lt;tr>
-            &lt;th <span class="em">groupbyrank</span>="1">Ansat &lt;/th>
-            &lt;th <span class="em">groupbyrank</span>="2">Kunde &lt;/th>
-            &lt;th <span class="em">groupbyrank</span>="3">Projekt &lt;/th>
-            &lt;th <span class="em">result</span>="true">sum &lt;/th>
+            &lt;th <span class="em">data-pivot-groupbyrank</span>="1">Ansat &lt;/th>
+            &lt;th <span class="em">data-pivot-groupbyrank</span>="2">Kunde &lt;/th>
+            &lt;th <span class="em">data-pivot-groupbyrank</span>="3">Projekt &lt;/th>
+            &lt;th <span class="em">data-pivot-result</span>="true">sum &lt;/th>
             &lt;th>Fakturerbar &lt;/th>
             &lt;th>sort &lt;/th>
-            &lt;th <span class="em">pivot</span>="true" <span class="em">dataid</span>="idforpivot">dato &lt;/th>
+            &lt;th <span class="em">data-pivot-pivot</span>="true" <span class="em">data-pivot-dataid</span>="idforpivot">dato &lt;/th>
         &lt;/tr>
         .....
     </pre>
@@ -306,12 +306,12 @@ var JSONdata = {
         <div id="res2">
         </div>
         <div id="sourcetables">
-            <table id="example1" dataid="An optional sourcetable identifier" style="display: none;">
+            <table id="example1" data-pivot-dataid="An optional sourcetable identifier" style="display: none;">
                 <tr>
-                    <th pivot="true">Month </th>
-                    <th groupbyrank="2">Subject </th>
-                    <th groupbyrank="1" dataid="An optional id.">Student </th>
-                    <th result="true">Score </th>
+                    <th data-pivot-pivot="true">Month </th>
+                    <th data-pivot-groupbyrank="2">Subject </th>
+                    <th data-pivot-groupbyrank="1" data-pivot-dataid="An optional id.">Student </th>
+                    <th data-pivot-result="true">Score </th>
                 </tr>
                 <tr>
                     <td>January</td>
@@ -530,15 +530,15 @@ var JSONdata = {
                     <td>9.0 </td>
                 </tr>
             </table>
-            <table id="example2" dataid="An identifier for the table" style="display: none;">
+            <table id="example2" data-pivot-dataid="An identifier for the table" style="display: none;">
                 <tr>
-                    <th groupbyrank="2" datatype="number">companyid </th>
-                    <th groupbyrank="3" datatype="number">userid </th>
-                    <th pivot="true" dataid="idforpivot" sortbycolindex="2">date </th>
+                    <th data-pivot-groupbyrank="2" data-pivot-datatype="number">companyid </th>
+                    <th data-pivot-groupbyrank="3" data-pivot-datatype="number">userid </th>
+                    <th data-pivot-pivot="true" data-pivot-dataid="idforpivot" data-pivot-sortbycol="2">date </th>
                     <th>regMinutes </th>
                     <th>flexMinutes </th>
                     <th>correction </th>
-                    <th result="true">diffMinutes </th>
+                    <th data-pivot-result="true">diffMinutes </th>
                 </tr>
                 <tr>
                     <td>2 </td>
@@ -1948,13 +1948,13 @@ var JSONdata = {
             <table id="example3" style="display: none;">
                 <tbody>
                     <tr>
-                        <th groupbyrank="1">Ansat </th>
-                        <th groupbyrank="2">Kunde </th>
-                        <th groupbyrank="3">Projekt </th>
-                        <th result="true">sum </th>
+                        <th data-pivot-groupbyrank="1">Ansat </th>
+                        <th data-pivot-groupbyrank="2">Kunde </th>
+                        <th data-pivot-groupbyrank="3">Projekt </th>
+                        <th data-pivot-result="true">sum </th>
                         <th>Fakturerbar </th>
                         <th>sort </th>
-                        <th pivot="true" dataid="idforpivot">dato </th>
+                        <th data-pivot-pivot="true" data-pivot-dataid="idforpivot">dato </th>
                     </tr>
                     <tr>
                         <td>Janus Schmidt </td>

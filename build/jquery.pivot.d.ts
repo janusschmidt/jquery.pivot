@@ -66,7 +66,7 @@ declare module jquerypivot {
             'number': (rowA: TreeNode, rowB: TreeNode) => number;
         };
         public parseJSONsource(data: jsonsource): void;
-        public parseFromXhtmlTable(sourceTable: JQuery): void;
+        public parseFromHtmlTable(sourceTable: JQuery): void;
     }
 }
 declare module jquerypivot {

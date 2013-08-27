@@ -213,7 +213,7 @@ module jquerypivot {
             }
         }
 
-        parseFromXhtmlTable(sourceTable: JQuery) {
+        parseFromHtmlTable(sourceTable: JQuery) {
             var cellIndex:number, 
                 cellcount:number, 
                 rowIndex:number, 
@@ -224,7 +224,7 @@ module jquerypivot {
                 cells:HTMLTableCellElement[], 
                 row: {},
                 data :jsonsource = { 
-                    dataid: sourceTable.attr('dataid'), 
+                    dataid: sourceTable.data('pivot-dataid'), 
                     columns: [], 
                     rows: [] 
                 },
@@ -236,15 +236,15 @@ module jquerypivot {
                 el = $(rows[0].cells[cellIndex]);
                 eltext = el.text();
                 col = {
-                    colvalue: el.attr('colvalue') || eltext,
-                    coltext: el.attr('coltext') || eltext,
-                    header: el.attr('header') || el.text(),
-                    datatype: el.attr('datatype'),
-                    sortbycol: el.attr('sortbycol') || eltext,
-                    dataid: el.attr('dataid'),
-                    groupbyrank: parseInt(el.attr('groupbyrank'), 10),
-                    pivot: el.attr('pivot') === 'true',
-                    result: el.attr('result') === 'true'
+                    colvalue: el.data('pivot-colvalue') || eltext,
+                    coltext: el.data('pivot-coltext') || eltext,
+                    header: el.data('pivot-header') || el.text(),
+                    datatype: el.data('pivot-datatype'),
+                    sortbycol: el.data('pivot-sortbycol') || eltext,
+                    dataid: el.data('pivot-dataid'),
+                    groupbyrank: parseInt(el.data('pivot-groupbyrank'), 10),
+                    pivot: <boolean> el.data('pivot-pivot'),
+                    result:<boolean> el.data('pivot-result')
                 };
                 data.columns.push(col);
                 columnNames.push(eltext);

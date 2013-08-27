@@ -1,4 +1,4 @@
-﻿/// <reference path="definitions/jquery.d.ts"/>
+/// <reference path="definitions/jquery.d.ts"/>
 /// <reference path="lib.ts"/>
 /// <reference path="adapter.ts"/>
 var jquerypivot;
@@ -339,7 +339,7 @@ var jquerypivot;
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
                 if (opts.source.jquery) {
                     if (opts.source.find('tr').length > 0) {
-                        adapter.parseFromXhtmlTable(opts.source);
+                        adapter.parseFromHtmlTable(opts.source);
                     }
                 } else {
                     adapter.parseJSONsource(opts.source);

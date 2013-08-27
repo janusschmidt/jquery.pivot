@@ -371,7 +371,7 @@ module jquerypivot {
             if ((typeof opts.source === 'object' && opts.source.jquery) || opts.source.columns) {
                 if (opts.source.jquery) {
                     if (opts.source.find('tr').length > 0) {
-                        adapter.parseFromXhtmlTable(opts.source);
+                        adapter.parseFromHtmlTable(opts.source);
                     }
                 }
                 else {
