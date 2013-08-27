@@ -26,7 +26,7 @@ yourself. The fold unfold images are defined in the css.
 
 The plugins accepts these parameters:
 
-```JSON
+```javascript
 $.fn.pivot.defaults = {
     source: null, //Must be json or a jquery element containing a table
     bTotals: true, //Includes total row and column
