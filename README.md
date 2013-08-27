@@ -7,7 +7,7 @@ The jquery.pivot plugin can be used for presenting table data in pivot form. It 
 The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 
 ##Demo
-For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot)
+For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot/demo/demo.htm)
 
 ##History
 

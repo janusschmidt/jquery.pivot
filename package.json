@@ -1,6 +1,6 @@
 {
 	"name": "pivot",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"title": "jQuery.pivot",
 	"devDependencies": {
 		"grunt": "~0.4.1",
