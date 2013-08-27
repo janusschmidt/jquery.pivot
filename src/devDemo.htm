@@ -2,59 +2,36 @@
 <html>
 <head>
     <title>jquery.pivot test page</title>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
-    <script src="../tools/jquery.min.js"></script>
     
+    <link href="../demo/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="../tools/bootstrap.min.css" rel="stylesheet" />
+    <link href="../tools/highlight.js/github.css" rel="stylesheet" />
+    <script src="../tools/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../tools/jquery.min.js"></script>
+        
     <script src="ts/lib.js"></script>
     <script src="ts/adapter.js"></script>
     <script src="ts/jquery.pivot.js"></script>
     <script src="ts/demo.js"></script>
 </head>
 <body>
+    <div class="container">
+    <div class="row">
+        <div class="span12">
+
     <div id="doc">
-        <h1>jquery.pivot plugin</h1>
+        <h1>jquery.pivot plugin examples</h1>
         <h2>Description</h2>
         <p>
             The jquery.pivot plugin can be used for presenting table data in pivot form. It is made and maintained me, Janus Schmidt, currently employed by <a href="http://metalogic.dk">Metalogic.dk</a>.
         </p>
         <p>
-            The project lives on github. You can find it at <a href="http://github.com/janusschmidt/jquery.pivot">http://github.com/janusschmidt/jquery.pivot</a>.
-        </p>
-        <h2>History</h2>
-        <p>
-            I made this some time ago, for a web application that enables people to keep track of time (<a href="http://styrpaatiden.dk">styrpaatiden.dk</a>). As i am a big fan of jQuery, i decided, it was time for
-            me to give back to the community.
-        </p>
-        <h2>Usage:</h2>
-        <p>
-            This is only a scarce description, so look in the examples to get more information.<br />
-            The data can be parsed from a html table with special markup or from json data. As i live in denmark i've built in the possibility to pass in format and parse functions for numbers. You can also supply a
-            function that will be called when the user clicks a result cell. The function is passed info on which groupby value and pivot value is clicked. This can be used to fetch and present more details from
-            the server.<br />
-            <br />
-            To use the plugin you need a script reference to jquery (tested with jquery version 1.4.2), the plugin <a href="build/jquery.pivot.min.js">jquery.pivot.min.js</a> and maybe the <a href="stylesheet.css">demo css</a>
-            if you don't want to style the pivot yourself. The fold unfold images are defined in the css.
+            The plugin was originally made for the time tracking site <a href="http://styrpaatiden.dk">styrpaatiden.dk</a>
         </p>
         <p>
-            The plugins accepts these parameters:
+            The project lives on <a href="http://github.com/janusschmidt/jquery.pivot">github</a>. 
         </p>
-        <pre>
-$.fn.pivot.defaults = {
-    source: null, //Must be json or a jquery element containing a table
-    bTotals: true, //Includes total row and column
-    bCollapsible: true, // Set to false to expand all and remove open/close buttons
-    aggregatefunc: calcsum, //defaults to sum. Set to null for no totals. Set to function that concatenates for strings.
-    formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats
-    parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. 
-                                                //Ie. for non US numeric formats.
-                                                //Set to null if result column should be considered string data.
-    onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell. 
-                                //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
-    noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.
-    noDataText: "No data" //Text used if source data is empty.
-    sortPivotColumnHeaders: true //if false pivot columns will appear in the order they are discovered in the source.
-};
-    </pre>
         <h2>Examples:</h2>
         <p>
             To run an example, click run. The raw table data will be shown. Then click the table and it will be transformed into a pivot table
@@ -64,7 +41,7 @@ $.fn.pivot.defaults = {
         <p>
             Source:
         </p>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: $('#example1'),
@@ -82,14 +59,14 @@ $.fn.pivot.defaults = {
         &lt;th <span class="em">data-pivot-result</span>="true">Score &lt;/th>
     &lt;/tr>
     .....
-    </pre>
+    </code></pre>
         <h3>Example 2 (source is html table)</h3>
         <p>Example with danish number formatting and no fold unfold buttons and every row open</p>
         <a href="#" title="example2" class="runexample">run</a>
         <p>
             Source:
         </p>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: $('#example2'),
@@ -111,14 +88,14 @@ $.fn.pivot.defaults = {
         &lt;th <span class="em">data-pivot-result</span>="true">diffMinutes &lt;/th>
     &lt;/tr>
     .....
-    </pre>
+    </code></pre>
         <h3>Example 3 (source is html table)</h3>
         <p>Example with 3 groupby columns.</p>
         <a href="#" title="example3" class="runexample">run</a>
         <p>
             Source:
         </p>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: $('#example3'),
@@ -140,14 +117,14 @@ $.fn.pivot.defaults = {
             &lt;th <span class="em">data-pivot-pivot</span>="true" <span class="em">data-pivot-dataid</span>="idforpivot">dato &lt;/th>
         &lt;/tr>
         .....
-    </pre>
+    </code></pre>
         <h3>Example 4 (source is json)</h3>
         <p>This is the same as example 1 except the source is JSON data.</p>
         <a href="#" title="example4" class="runexample">run</a>
         <p>
             Source:
         </p>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: example4JSONdata,
@@ -172,12 +149,12 @@ var example4JSONdata = {
         { "Month ": "March ", "Subject ": "French ", "Student ": "Mary ", "Score ": "9.0 "}]
 };
 &lt;/script>
-    </pre>
+    </code></pre>
         <h3>Example 5 (source is json)</h3>
         <p>
             Example with 2 simultaneous tables from json sources. Same as example 1 and 2 but from json sources.</p>
         <a href="#" title="example5" class="runexample">run</a>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: example4JSONdata, //same as example 1
@@ -226,13 +203,13 @@ var example5JSONdata = {
             { "companyid ": 4, "userid ": 121, "date ": "12-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 "}]
 };
 &lt;/script>
-    </pre>
+    </code></pre>
 
     <h3>Example 6 (source is json)</h3>
         <p>
             Example with text data in result column from json sources.</p>
         <a href="#" title="example6" class="runexample">run</a>
-        <pre>
+        <pre><code>
 &lt;script>
     $('#res').pivot({
         source: example6JSONdata,
@@ -268,11 +245,11 @@ var example5JSONdata = {
        { "sysid": "SID2", "hostname": "host53", "username": "user3", "password": "m"}]
    };
 &lt;/script>
-    </pre>
+    </code></pre>
     <h3>Example 7 (performance test)</h3>
     <p>Performance test. This example takes 100 rows from example5 and repeats them 200 times to get a total of 20.000 rows of data</p>
     <a href="#" title="example7" class="runexample">run</a> 
-    <pre>
+    <pre><code>
 &lt;script>
     $('#res').pivot({
         source: example5JSONdata, //same as example 2
@@ -300,7 +277,7 @@ var JSONdata = {
             { "companyid ": 4, "userid ": 121, "date ": "12-08-2009 ", "regMinutes ": "0 ", "flexMinutes ": "360 ", "correction ": "0 ", "diffMinutes ": "-360 "}]
 };
 &lt;/script>
-    </pre>
+    </code></pre>
     </div>
     <div id="demos" style="display: none;">
         <a href="#" id="backToDoc">Back</a><br />
@@ -4392,6 +4369,6 @@ var JSONdata = {
                 </tbody>
             </table>
         </div>
-     </div>
+     </div></div></div></div>
 </body>
 </html>

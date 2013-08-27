@@ -1168,4 +1168,4 @@ describe("Pivot from html table", function () {
         });
     });
 });
-//# sourceMappingURL=file:///C:/Users/Administrator/Documents/Visual Studio 2012/Projects/jquery.pivot/jquery.pivot/tests/spec.js.map
+//# sourceMappingURL=spec.js.map

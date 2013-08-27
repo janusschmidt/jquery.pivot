@@ -409,4 +409,4 @@ $(document).ready(function () {
         $('#doc').show();
     });
 });
-//# sourceMappingURL=file:///C:/Users/Administrator/Documents/Visual Studio 2012/Projects/jquery.pivot/jquery.pivot/demo/demo.js.map
+//# sourceMappingURL=demo.js.map

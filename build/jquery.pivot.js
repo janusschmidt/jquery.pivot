@@ -612,4 +612,4 @@ var jquerypivot;
     $.fn.pivot.formatUK = formatUK;
     $.fn.pivot.formatLocale = formatLocale;
 })(jquerypivot || (jquerypivot = {}));
-//# sourceMappingURL=file:///C:/Users/Administrator/Documents/Visual Studio 2012/Projects/jquery.pivot/jquery.pivot/build/jquery.pivot.js.map
+//# sourceMappingURL=jquery.pivot.js.map

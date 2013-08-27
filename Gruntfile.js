@@ -9,7 +9,7 @@
                 target: 'es3', //or es3
                 base_path: 'src/ts/',
                 sourcemap: true,
-                fullSourceMapPath: true,
+                fullSourceMapPath: false,
                 declaration: true
             },
             base: {
@@ -52,7 +52,7 @@
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
-
+    
     // Default task(s).
     grunt.registerTask('default', ['typescript', 'jshint', 'uglify', 'jasmine']);
 };
