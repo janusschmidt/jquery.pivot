@@ -5,7 +5,6 @@ declare module jasmine {
 }
 
 (() => {
-
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 250;
     var reporter = new jasmine.TapReporter();

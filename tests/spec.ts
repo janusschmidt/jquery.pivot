@@ -398,27 +398,30 @@ var htmlTableData = '<table id="htmlTableData" data-pivot-dataid="An optional so
 '            </table>                                                                                         ';
 
 
-describe("Adapter", () => {
-    var JSONdata: any = $.extend({}, example5JSONdata),
-        rows = JSONdata.rows.slice(0, 100),
-        maxMilliSeconds = 1000,
-        i;
+//Don't run performance test in testlingCI as older browsers are too slow.
+if (typeof (jasmine.HtmlReporter) == 'function') {
+    describe("Adapter", () => {
+        var JSONdata: any = $.extend({}, example5JSONdata),
+            rows = JSONdata.rows.slice(0, 100),
+            maxMilliSeconds = 1000,
+            i;
 
         JSONdata.rows = rows.slice(0);
-         for (i = 1; i < 100; i = i + 1) {
-                $.merge(JSONdata.rows, rows);
-            }
+        for (i = 1; i < 100; i = i + 1) {
+            $.merge(JSONdata.rows, rows);
+        }
 
-    it("processes " + JSONdata.rows.length + " lines in less than " + maxMilliSeconds + " ms (Rough test that nothing has has broken performance)", function () {
-        var sut, ticks;
+        it("processes " + JSONdata.rows.length + " lines in less than " + maxMilliSeconds + " ms (Rough test that nothing has has broken performance)", function () {
+            var sut, ticks;
 
-        ticks = (new Date()).getTime();
-        sut = new jquerypivot.Adapter();
-        sut.parseJSONsource(JSONdata);
-        ticks = (new Date()).getTime() - ticks;
-        expect(ticks).toBeLessThan(maxMilliSeconds);
+            ticks = (new Date()).getTime();
+            sut = new jquerypivot.Adapter();
+            sut.parseJSONsource(JSONdata);
+            ticks = (new Date()).getTime() - ticks;
+            expect(ticks).toBeLessThan(maxMilliSeconds);
+        });
     });
-});
+}
 
 describe("Pivot from json", function() {
     var sut: JQuery;
