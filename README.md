@@ -9,6 +9,9 @@ The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 ##Demo
 For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot/demo/demo.htm)
 
+##Compatibility
+[![browser support](https://ci.testling.com/janusschmidt/jquery.pivot.png)](https://ci.testling.com/janusschmidt/jquery.pivot)
+
 ##History
 
 I made this some time ago, for a web application that enables people to keep track of time [styrpaatiden.dk](http://styrpaatiden.dk). As i am a big fan of jQuery, i decided, it was time for

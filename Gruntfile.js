@@ -17,7 +17,8 @@
                     { src: 'src/ts/jquery.pivot.ts', dest: 'build/jquery.pivot.js' },
                     { src: 'src/ts/demo.ts', dest: 'demo/demo.js' },
                     { src: 'tests/spec.ts', dest: 'tests/spec.js' },
-                    { src: 'tests/startJasmineHtmlRunner.ts', dest: 'tests/startJasmineHtmlRunner.js' }
+                    { src: 'tests/startJasmineHtmlRunner.ts', dest: 'tests/startJasmineHtmlRunner.js' },
+                    { src: 'tests/testlingCIRunner.ts', dest: 'tests/testlingCIRunner.js' }
                 ]
             }
         },
@@ -27,7 +28,10 @@
                 'package.json',
                 'build/**/*.js', '!build/**/*.min.js',
                 'tests/**/*.js', '!tests/**/*.min.js',
-                'demo/**/*.js', '!demo/**/*.min.js']
+                'demo/**/*.js', '!demo/**/*.min.js'],
+            options: {
+                smarttabs: true /*supress warnings about mixed spaces and tabs*/
+            }
         },
         uglify: {
             build: {

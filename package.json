@@ -2,6 +2,13 @@
 	"name": "pivot",
 	"version": "2.0.1",
 	"title": "jQuery.pivot",
+	"testling" : {
+		"scripts": [
+		  "tools/jasmine.js",
+		  "tools/jasmine.tap_reporter.js",
+		  "tests/specs.js",
+		  "tests/testlingrunner.js"]
+	},
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-contrib-uglify": "~0.2.2",
