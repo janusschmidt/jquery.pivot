@@ -9,8 +9,10 @@ The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 ##Demo
 For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot/demo/demo.htm)
 
-##Compatibility
+<!--
+##Compatibility (Jasmine test results)
 [![browser support](https://ci.testling.com/janusschmidt/jquery.pivot.png)](https://ci.testling.com/janusschmidt/jquery.pivot)
+-->
 
 ##History
 
