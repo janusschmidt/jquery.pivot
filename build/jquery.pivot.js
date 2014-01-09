@@ -1,4 +1,4 @@
-var jquerypivot;
+﻿var jquerypivot;
 (function (jquerypivot) {
     (function (lib) {
         var StringBuilder = (function () {

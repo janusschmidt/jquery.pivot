@@ -1,3 +1,4 @@
+﻿
 (function () {
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 250;

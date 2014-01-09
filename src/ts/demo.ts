@@ -299,7 +299,7 @@ $(document).ready(function () {
         $('#res').pivot({
             source: $(this),
             formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
-            parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+            parseNumFunc: function (n) { return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n); },
             onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); },
             bCollapsible : false
         });
@@ -309,7 +309,7 @@ $(document).ready(function () {
         $('#res').pivot({
             source: $(this),
             formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
-            parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+            parseNumFunc: function (n) { return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n); },
             onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
         });
     });
@@ -340,7 +340,7 @@ $(document).ready(function () {
             $('#res2').pivot({
                 source: example5JSONdata, //same as example 2
                 formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
-                parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+                parseNumFunc: function (n) { return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n); },
                 onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
             });
         } else if (exampleId === 'example6') {
@@ -365,7 +365,7 @@ $(document).ready(function () {
             $('#res').pivot({
                 source: JSONdata,
                 formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
-                parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+                parseNumFunc: function (n) { return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n); },
                 onResultCellClicked: function (data) { alert(dumpObj(data, 'data')); }
             });
             alert('time taken ' + ((new Date()).getTime() - beforetime) + ' ms. Proccessed ' + JSONdata.rows.length + ' rows.');

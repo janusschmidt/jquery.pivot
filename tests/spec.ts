@@ -431,7 +431,7 @@ describe("Pivot from json", function() {
         sut = $('#pivotdiv').pivot({
             source: example5JSONdata,
             formatFunc: function (n) { return jQuery.fn.pivot.formatDK(n, 2); },
-            parseNumFunc: function (n) { return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n); },
+            parseNumFunc: function (n) { return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n); },
             bCollapsible: false
         });
     });

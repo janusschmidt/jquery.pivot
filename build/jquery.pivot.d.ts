@@ -1,9 +1,9 @@
-/// <reference path="../src/ts/definitions/jquery.d.ts" />
+﻿/// <reference path="../src/ts/definitions/jquery.d.ts" />
 declare module jquerypivot.lib {
     class StringBuilder {
         public strings: string[];
         constructor(value?: string);
-        public append(value): void;
+        public append(value: any): void;
         public clear(): void;
         public toString(): string;
     }
@@ -47,7 +47,7 @@ declare module jquerypivot {
         public collapsed: boolean;
         public groupbylevel: number;
         public pivotvalues: pivotItem[];
-        public visible();
+        public visible(): any;
     }
     class Adapter {
         public dataid: string;

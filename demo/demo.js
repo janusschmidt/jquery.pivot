@@ -1,12 +1,11 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     var example4JSONdata = {
         dataid: 'An optional sourcetable identifier',
         columns: [
             { colvalue: 'Month ', coltext: 'Month ', header: 'Month ', sortbycol: 'Month ', groupbyrank: null, pivot: true, result: false },
             { colvalue: 'Subject ', coltext: 'Subject ', header: 'Subject ', sortbycol: 'Subject ', groupbyrank: 2, pivot: false, result: false },
             { colvalue: 'Student ', coltext: 'Student ', header: 'Student ', sortbycol: 'Student ', dataid: 'An optional id.', groupbyrank: 1, pivot: false, result: false },
-            { colvalue: 'Score ', coltext: 'Score ', header: 'Score ', sortbycol: 'Score ', groupbyrank: null, pivot: false, result: true }
-        ],
+            { colvalue: 'Score ', coltext: 'Score ', header: 'Score ', sortbycol: 'Score ', groupbyrank: null, pivot: false, result: true }],
         rows: [
             { 'Month ': 'January', 'Subject ': 'English', 'Student ': 'Elisa', 'Score ': '8.7' },
             { 'Month ': 'January ', 'Subject ': 'Maths ', 'Student ': 'Elisa ', 'Score ': '6.5 ' },
@@ -43,8 +42,7 @@ $(document).ready(function () {
             { 'Month ': 'March ', 'Subject ': 'Science ', 'Student ': 'Mary ', 'Score ': '4.1 ' },
             { 'Month ': 'March ', 'Subject ': 'Art ', 'Student ': 'Mary ', 'Score ': '4.8 ' },
             { 'Month ': 'March ', 'Subject ': 'History ', 'Student ': 'Mary ', 'Score ': '6.7 ' },
-            { 'Month ': 'March ', 'Subject ': 'French ', 'Student ': 'Mary ', 'Score ': '9.0 ' }
-        ]
+            { 'Month ': 'March ', 'Subject ': 'French ', 'Student ': 'Mary ', 'Score ': '9.0 ' }]
     }, example5JSONdata = {
         'dataid': 'An identifier for the table',
         'columns': [
@@ -54,8 +52,7 @@ $(document).ready(function () {
             { 'colvalue': 'regMinutes ', 'coltext': 'regMinutes ', 'header': 'regMinutes ', 'sortbycol': 'regMinutes ', 'groupbyrank': null, 'pivot': false, 'result': false },
             { 'colvalue': 'flexMinutes ', 'coltext': 'flexMinutes ', 'header': 'flexMinutes ', 'sortbycol': 'flexMinutes ', 'groupbyrank': null, 'pivot': false, 'result': false },
             { 'colvalue': 'correction ', 'coltext': 'correction ', 'header': 'correction ', 'sortbycol': 'correction ', 'groupbyrank': null, 'pivot': false, 'result': false },
-            { 'colvalue': 'diffMinutes ', 'coltext': 'diffMinutes ', 'header': 'diffMinutes ', 'sortbycol': 'diffMinutes ', 'groupbyrank': null, 'pivot': false, 'result': true }
-        ],
+            { 'colvalue': 'diffMinutes ', 'coltext': 'diffMinutes ', 'header': 'diffMinutes ', 'sortbycol': 'diffMinutes ', 'groupbyrank': null, 'pivot': false, 'result': true }],
         'rows': [
             { 'companyid ': 2, 'userid ': 1, 'date ': '02-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '0 ', 'correction ': '0 ', 'diffMinutes ': '0 ' },
             { 'companyid ': 2, 'userid ': 1, 'date ': '03-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '330 ', 'correction ': '0 ', 'diffMinutes ': '-330 ' },
@@ -212,16 +209,14 @@ $(document).ready(function () {
             { 'companyid ': 4, 'userid ': 93, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '480 ', 'correction ': '0 ', 'diffMinutes ': '-480 ' },
             { 'companyid ': 4, 'userid ': 94, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
             { 'companyid ': 4, 'userid ': 95, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '450 ', 'correction ': '0 ', 'diffMinutes ': '-450 ' },
-            { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' }
-        ]
+            { 'companyid ': 4, 'userid ': 121, 'date ': '12-08-2009 ', 'regMinutes ': '0 ', 'flexMinutes ': '360 ', 'correction ': '0 ', 'diffMinutes ': '-360 ' }]
     }, example6JSONdata = {
         dataid: 'Application Information.',
         columns: [
             { colvalue: 'password', coltext: 'password', header: 'password', sortbycol: 'password', result: true },
             { colvalue: 'username', coltext: 'username', header: 'username', sortbycol: 'username', pivot: true },
             { colvalue: 'hostname', coltext: 'hostname', header: 'hostname', sortbycol: 'hostname', groupbyrank: 2 },
-            { colvalue: 'sysid', coltext: 'sysid', header: 'sysid', sortbycol: 'sysid', dataid: 'sysid', groupbyrank: 1 }
-        ],
+            { colvalue: 'sysid', coltext: 'sysid', header: 'sysid', sortbycol: 'sysid', dataid: 'sysid', groupbyrank: 1 }],
         rows: [
             { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user1', 'password': 'a' },
             { 'sysid': 'SID1', 'hostname': 'host01', 'username': 'user2', 'password': 'b' },
@@ -238,8 +233,7 @@ $(document).ready(function () {
             { 'sysid': 'SID2', 'hostname': 'host02', 'username': 'user1', 'password': 'j' },
             { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user1', 'password': 'k' },
             { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user2', 'password': 'l' },
-            { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user3', 'password': 'm' }
-        ]
+            { 'sysid': 'SID2', 'hostname': 'host53', 'username': 'user3', 'password': 'm' }]
     };
 
     function dumpObj(obj, name, depth) {
@@ -299,7 +293,7 @@ $(document).ready(function () {
                 return jQuery.fn.pivot.formatDK(n, 2);
             },
             parseNumFunc: function (n) {
-                return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n);
+                return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n);
             },
             onResultCellClicked: function (data) {
                 alert(dumpObj(data, 'data'));
@@ -315,7 +309,7 @@ $(document).ready(function () {
                 return jQuery.fn.pivot.formatDK(n, 2);
             },
             parseNumFunc: function (n) {
-                return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n);
+                return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n);
             },
             onResultCellClicked: function (data) {
                 alert(dumpObj(data, 'data'));
@@ -360,7 +354,7 @@ $(document).ready(function () {
                     return jQuery.fn.pivot.formatDK(n, 2);
                 },
                 parseNumFunc: function (n) {
-                    return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n);
+                    return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n);
                 },
                 onResultCellClicked: function (data) {
                     alert(dumpObj(data, 'data'));
@@ -394,7 +388,7 @@ $(document).ready(function () {
                     return jQuery.fn.pivot.formatDK(n, 2);
                 },
                 parseNumFunc: function (n) {
-                    return +((typeof n === 'string') ? +n.replace('.', '').replace(',', '.') : n);
+                    return +((typeof n === 'string') ? n.replace('.', '').replace(',', '.') : n);
                 },
                 onResultCellClicked: function (data) {
                     alert(dumpObj(data, 'data'));
