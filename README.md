@@ -52,21 +52,26 @@ $.fn.pivot.defaults = {
 ##Development
 The source is in Typescript.
 
-When developing edit the `src\ts\*.ts` files and check your changes in `src\devdemo.htm` and `tests\specrunner.html`. 
+The project is setup for using grunt.
 
-Either use an editor that can compile typescript to javascript or use *grunt* via *node* 
-
+###To use *grunt* via *node* 
 1. Install node.
 2. In *node* console install grunt `npm install -g grunt-cli`.
-2. In *node* console `cd` to project directory and run `npm install`
-3. In *node* console run `grunt`command
+3. In *node* console `cd` to project directory and run `npm install`
+4. In *node* console run `grunt` command
 
-*grunt* is set up to:
-
+###*grunt* is set up to:
 1. Generate javascript files from typescripts.
 2. Jshint all (non minified) javascript.
 3. Minify selected files.
 4. Run jasmine tests via phantomjs.
+
+When developing edit the `src\ts\*.ts` files run `grunt typescript:demo` in a nodejs console and check your
+changes in `demo\demo.htm` and/or `tests\specrunner.html`.
+When you're done coding and think everything is in order run `grunt` without arguments to run everything. 
+Always complete this step without errors before sending a pull request.
+
+
 
 If you wan't to send a pull request, make sure you run *grunt* without errors first.
 

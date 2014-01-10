@@ -1,5 +1,4 @@
-/// <reference path="../src/ts/definitions/jasmine.d.ts" />
-(() => {
+﻿(function () {
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 250;
     var htmlReporter = new jasmine.HtmlReporter();
@@ -8,12 +7,11 @@
         return htmlReporter.specFilter(spec);
     };
     var currentWindowOnload = window.onload;
-    window.onload = () => {
+    window.onload = function () {
         if (currentWindowOnload) {
             currentWindowOnload(null);
         }
 
-        //(<HTMLElement>document.querySelector('.version')).innerHTML = jasmineEnv.versionString();
         execJasmine();
     };
 

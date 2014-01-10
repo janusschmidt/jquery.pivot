@@ -1,12 +1,12 @@
-﻿/// <reference path="definitions/jquery.d.ts"/>
+﻿///<reference path="definitions/jquery.d.ts"/>
 /// <reference path="lib.ts"/>
 /// <reference path="adapter.ts"/>
 
-module jquerypivot { 
+module Jquerypivot.Pivot { 
 
     $ = jQuery;
 
-    function calcsum(values) {
+    function calcsum(values: number[]) {
         var i, length;
         var total = 0.0;
         for (i = 0, length = values.length; i < length; i += 1) {
@@ -48,16 +48,16 @@ module jquerypivot {
             // Set to false to expand all and remove open/close buttons
             bCollapsible?: boolean;
             //defaults to numeric sum. Set to null for no totals. Set to concatenation for strings.
-            aggregatefunc?: Function;
+            aggregatefunc?: (arr:any[]) => any;
             //A function to format numeric result/total cells. Ie. for non US numeric formats
             formatFunc?: (n: number) => string;
             //Can be used if parsing a html table and want a non standard method of parsing data. 
             //Ie. for non US numeric formats. 
             //Set to null if result column should be considered string data.
-            parseNumFunc?: (n: string) => number;
+            parseNumFunc?: (s: string) => number;
             //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
             //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
-            onResultCellClicked?: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any;
+            onResultCellClicked?: (dataObjectWithInformationOnClikedCell: Pivot.resultCellClickedInfo, jqueryElementThatsClicked?: JQuery) => any;
             //Text used if no data is available for specific groupby and pivot value.
             noGroupByText?: string;
             //Text used if source data is empty.
@@ -66,31 +66,32 @@ module jquerypivot {
             sortPivotColumnHeaders?: boolean;
     }
 
-    export class jqueryPivotOptions implements IjqueryPivotOptions {constructor(
+    export class jqueryPivotOptions implements IjqueryPivotOptions {
+        constructor(
             //Must be json or a jquery element containing a table
-            public source: any = null, 
+            public source: any = null,
             //Includes total row and column
-            public bTotals = true, 
+            public bTotals = true,
             // Set to false to expand all and remove open/close buttons
-            public bCollapsible= true, 
+            public bCollapsible= true,
             //defaults to numeric sum. Set to null for no totals. Set to concatenation for strings.
-            public aggregatefunc: Function = calcsum, 
+            public aggregatefunc: (arr:any[])=> any = calcsum,
             //A function to format numeric result/total cells. Ie. for non US numeric formats
-            public formatFunc: (n)=>string = (n) => { return n; }, 
+            public formatFunc: (n:number) => string = (n) => { return n === null ? null : n.toString(); },
             //Can be used if parsing a html table and want a non standard method of parsing data. 
             //Ie. for non US numeric formats. 
             //Set to null if result column should be considered string data.
-            public parseNumFunc : (n:string)=>number = (n) => { return +n; },  
+            public parseNumFunc: (n: string) => number = (n) => { return +n; },
             //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell.
             //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)
-            public onResultCellClicked: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked? : JQuery) => any = null,  
+            public onResultCellClicked: (dataObjectWithInformationOnClikedCell: Pivot.resultCellClickedInfo, jqueryElementThatsClicked?: JQuery) => any = null,
             //Text used if no data is available for specific groupby and pivot value.
-            public noGroupByText = 'No value', 
+            public noGroupByText = 'No value',
             //Text used if source data is empty.
-            public noDataText = 'No data', 
+            public noDataText = 'No data',
             //if false pivot columns will appear in the order they are discovered in the source.
-            public sortPivotColumnHeaders = true 
-            ) { }
+            public sortPivotColumnHeaders = true
+            ) {}
     }
 
     export class resultCellClickedInfoPivotInfo {
@@ -106,19 +107,35 @@ module jquerypivot {
             public groupbyval: string) { }
     }
 
+    export class resultCellClickedInfoResultColInfo {
+        constructor(
+            public colKeyName: string,
+            public colName: string) { }
+    }
+
     export class resultCellClickedInfo {
         constructor(
             public dataidTable: string,
             public pivot: resultCellClickedInfoPivotInfo,
-            public groups: resultCellClickedInfoGroupByInfo[]) { }
+            public groups: resultCellClickedInfoGroupByInfo[],
+            //Added in case of multiple result columns
+            public resultcol: resultCellClickedInfoResultColInfo) { }
+    }
+
+    class resultCellInfo {
+        constructor(
+            public pivot: Adapter.pivotItem,
+            public treeNode: Adapter.TreeNode,
+            public resultcol: Adapter.column) { }
     }
 
     class groupbynodeStatus { constructor(
         public bDatabound :boolean, 
-        public treeNode: TreeNode) { }
+        public treeNode: Adapter.TreeNode) { }
     }
 
     export class pivot {
+        private adapter: Adapter.Adapter;
         public opts: jqueryPivotOptions;
         constructor(suppliedoptions? : IjqueryPivotOptions){ 
             this.opts = $.extend({}, $.fn.pivot.defaults, suppliedoptions);
@@ -126,10 +143,10 @@ module jquerypivot {
 
         resultCellClicked = (e:JQueryEventObject) => {
             var el = $(e.target),
-                adapter = <Adapter>el.closest('table.pivot').data('jquery.pivot.adapter'),
+                adapter = <Adapter.Adapter>el.closest('table.pivot').data('jquery.pivot.adapter'),
                 aGroupBys : resultCellClickedInfoGroupByInfo[] = [],
-                data = el.data('def'),
-                curNode = <TreeNode> data.treeNode,
+                data = <resultCellInfo> el.data('def'),
+                curNode = <Adapter.TreeNode> data.treeNode,
                 dataObj : resultCellClickedInfo;
 
             if (this.opts.onResultCellClicked) {
@@ -142,50 +159,69 @@ module jquerypivot {
                 }
                 dataObj = new resultCellClickedInfo(
                     adapter.dataid,
-                    new resultCellClickedInfoPivotInfo(data.pivot.dataid, data.pivot.pivotValue, data.pivot.sortby)
-                    , aGroupBys);
+                    new resultCellClickedInfoPivotInfo(data.pivot.dataid, data.pivot.pivotValue, data.pivot.sortby),
+                    aGroupBys,
+                    new resultCellClickedInfoResultColInfo(data.resultcol.dataid, data.resultcol.coltext));
                 this.opts.onResultCellClicked(dataObj, el);
             }
         }
 
-        getResValue = (treeNode : TreeNode, pivotValue) => {
-            var i : number, res,
-                aggVals = [],
-                pivotCells = lib.map(treeNode.pivotvalues || [], (item : pivotItem, index:number) => {
-                    return item.pivotValue === pivotValue ? item.result : null;
+        flattenFunc = (index) => { return (item) => { return item[index]; } };
+
+        getResValues = (treeNode : Adapter.TreeNode, pivotValue) :any[] => {
+            var i: number,
+                res = [],
+                aggVals : any[][] = [],
+                pivotResultValues = <string[][]> Lib.map(treeNode.pivotvalues || [], (item: Adapter.pivotItem, index: number) => {
+                    return item.pivotValue === pivotValue ? item.resultValues : null;
                 });
 
+
             if (this.opts.aggregatefunc) {
-                if (pivotCells.length >= 1) {
-                    for (i = 0; i < pivotCells.length; i += 1) {
-                        aggVals.push(this.opts.parseNumFunc ? this.opts.parseNumFunc(pivotCells[i]) : pivotCells[i]);
+                if (pivotResultValues.length >= 1) {
+                    var parseNums = (n) => { return this.opts.parseNumFunc(n); };
+                    for (i = 0; i < pivotResultValues.length; i += 1) {
+                        if (this.opts.parseNumFunc) {
+                            aggVals.push(Lib.map(pivotResultValues[i], parseNums));
+                        }
+                        else
+                        {
+                            aggVals.push(pivotResultValues[i]);
+                        }
                     }
                 } else if (this.opts.bTotals) {
                     for (i = 0; i < treeNode.children.length; i += 1) {
                         /*ignore jslint start*/
-                        aggVals.push(this.getResValue(treeNode.children[i], pivotValue));
+                        aggVals.push(this.getResValues(treeNode.children[i], pivotValue));
                         /*ignore jslint end*/
                     }
                 }
-                res = this.opts.aggregatefunc(aggVals);
+
+                for (i = 0; i < this.adapter.resultCol.length; i += 1) {
+                    var resColVals = Lib.map(aggVals, this.flattenFunc(i));
+                    res.push(this.opts.aggregatefunc(resColVals));
+                }
             } else {
                 res = null;
             }
 
             return res;
         }
-
-        appendChildRows = (treeNode:TreeNode, belowThisRow:JQuery, adapter : Adapter) => {
-            var i, col, col1, sb, item, itemtext, result, resCell, aggVals, spanFoldUnfold,
-            gbCols = adapter.alGroupByCols,
-            pivotCols = adapter.uniquePivotValues,
-            foldunfoldclass = this.opts.bCollapsible ? 'foldunfold' : 'nonfoldunfold',
-            foldunfoldclassSelector = '.' + foldunfoldclass,
-            status : groupbynodeStatus;
-
+       
+        appendChildRows = (treeNode: Adapter.TreeNode, belowThisRow: JQuery, adapter: Adapter.Adapter) => {
+            var i, j, col, col1, sb, item: Adapter.TreeNode, itemtext, resCell: JQuery, spanFoldUnfold,
+                gbCols = adapter.alGroupByCols,
+                pivotCols = adapter.uniquePivotValues,
+                foldunfoldclass = this.opts.bCollapsible ? 'foldunfold' : 'nonfoldunfold',
+                foldunfoldclassSelector = '.' + foldunfoldclass,
+                status: groupbynodeStatus,
+                valsToSumOn = [],
+                sums:any[],
+                aggregateValues = (v) => { return this.opts.aggregatefunc(v); },
+                results: any[];
 
             for (i = 0; i < treeNode.children.length; i += 1) {
-                sb = new lib.StringBuilder();
+                sb = new Lib.StringBuilder();
                 item = treeNode.children[i];
                 itemtext = (item.groupbyText === undefined || item.groupbyText === null || item.groupbyText === '&nbsp;' || item.groupbyText === '') ? this.opts.noGroupByText : item.groupbyText;
                 sb.append('<tr class="level');
@@ -217,25 +253,46 @@ module jquerypivot {
                 belowThisRow = $(sb.toString()).insertAfter(belowThisRow);
                 belowThisRow.find(foldunfoldclassSelector).data('status', new groupbynodeStatus(false, item));
 
-                aggVals = [];
+                valsToSumOn = [];
                 for (col1 = 0; col1 < pivotCols.length; col1 += 1) {
-                    result = this.getResValue(item, pivotCols[col1].pivotValue);
+                    results = this.getResValues(item, pivotCols[col1].pivotValue);
                     if (this.opts.bTotals) {
-                        aggVals.push(result);
+                        valsToSumOn.push(results);
                     }
                     sb.clear();
-                    sb.append('<td class="resultcell">');
-                    sb.append(this.opts.formatFunc(result));
-                    sb.append('</td>');
+                    for (j = 0; j < results.length; j += 1) {
+                        sb.append('<td class="resultcell resultcell');
+                        sb.append(j);
+                        sb.append('" title="');
+                        sb.append(this.adapter.resultCol[j].coltext);
+                        sb.append('">');
+                        sb.append(this.opts.formatFunc(results[j]));
+                        sb.append('</td>');
+                    }
                     resCell = $(sb.toString()).appendTo(belowThisRow);
-                    resCell.data('def', { pivot: pivotCols[col1], treeNode: item });
+                    for (j = 0; j < results.length; j += 1) {
+                        resCell.eq(j).data('def', new resultCellInfo(pivotCols[col1], item, this.adapter.resultCol[j]));
+                    }
                 }
 
                 if (this.opts.bTotals) {
                     sb.clear();
-                    sb.append('<td class="total">');
-                    sb.append(this.opts.formatFunc(this.opts.aggregatefunc(aggVals)));
-                    sb.append('</td>');
+
+                    sums = [];
+                    for (j = 0; j < this.adapter.resultCol.length; j += 1) {
+                        var resColVals = Lib.map(valsToSumOn, this.flattenFunc(j));
+                        sums.push(this.opts.aggregatefunc(resColVals));
+                    }
+
+                    for (j = 0; j < results.length; j += 1) {
+                        sb.append('<td class="total total');
+                        sb.append(j);
+                        sb.append('" title="');
+                        sb.append(this.adapter.resultCol[j].coltext);
+                        sb.append('">');
+                        sb.append(this.opts.formatFunc(sums[j]));
+                        sb.append('</td>');
+                    }
                     $(sb.toString()).appendTo(belowThisRow);
                 }
 
@@ -252,13 +309,15 @@ module jquerypivot {
             }
         }
 
-        makeCollapsed = (adapter : Adapter, $obj :JQuery) => {
-            var i, col, result, $pivottable,
+        makeCollapsed = (adapter: Adapter.Adapter, $obj :JQuery) => {
+            var i, j, col, $pivottable,
                 aggVals = [],
-                sb = new lib.StringBuilder('<table class="pivot">'),
+                sb = new Lib.StringBuilder('<table class="pivot">'),
                 gbCols = adapter.alGroupByCols,
-                pivotCols = adapter.uniquePivotValues;
+                pivotCols = adapter.uniquePivotValues,
+                results: any[];
 
+            this.adapter = adapter;
             //headerrow
             sb.append('<tr class="head">');
             for (i = 0; i < gbCols.length; i += 1) {
@@ -270,13 +329,17 @@ module jquerypivot {
             }
 
             for (i = 0; i < pivotCols.length; i += 1) {
-                sb.append('<th class="pivotcol">');
+                sb.append('<th class="pivotcol" colspan="');
+                sb.append(this.adapter.resultCol.length);
+                sb.append('">');
                 sb.append(pivotCols[i].pivotValue);
                 sb.append('</th>');
             }
 
             if (this.opts.bTotals) {
-                sb.append('<th class="total">Total</th>');
+                sb.append('<th class="total" colspan="');
+                sb.append(this.adapter.resultCol.length);
+                sb.append('">Total</th>');
             }
             sb.append('</tr>');
 
@@ -287,17 +350,30 @@ module jquerypivot {
                 sb.append(gbCols.length);
                 sb.append('">Total</th>');
                 for (col = 0; col < pivotCols.length; col += 1) {
-                    result = this.getResValue(adapter.tree, pivotCols[col].pivotValue);
+                    results = this.getResValues(adapter.tree, pivotCols[col].pivotValue);
                     if (this.opts.bTotals) {
-                        aggVals.push(result);
+                        aggVals.push(results);
                     }
-                    sb.append('<td>');
-                    sb.append(this.opts.formatFunc(result));
+                    for (j = 0; j < this.adapter.resultCol.length; j += 1) {
+                        sb.append('<td class="coltotal total');
+                        sb.append(j);
+                        sb.append('" title="');
+                        sb.append(this.adapter.resultCol[j].coltext);
+                        sb.append('">');
+                        sb.append(this.opts.formatFunc(results[j]));
+                        sb.append('</td>');
+                    }
+                }
+                for (j = 0; j < this.adapter.resultCol.length; j += 1) {
+                    var resColVals = Lib.map(aggVals, this.flattenFunc(j));
+                    sb.append('<td class="total total');
+                    sb.append(j);
+                    sb.append('" title="');
+                    sb.append(this.adapter.resultCol[j].coltext);
+                    sb.append('">');
+                    sb.append(this.opts.formatFunc(this.opts.aggregatefunc(resColVals)));
                     sb.append('</td>');
                 }
-                sb.append('<td class="total">');
-                sb.append(this.opts.formatFunc(this.opts.aggregatefunc(aggVals)));
-                sb.append('</td>');
                 sb.append('</tr>');
             }
             sb.append('</table>');
@@ -310,7 +386,7 @@ module jquerypivot {
         }
 
         foldunfoldElem = (el:JQuery) => {
-            var adapter = <Adapter>el.closest('table.pivot').data('jquery.pivot.adapter'),
+            var adapter = <Adapter.Adapter>el.closest('table.pivot').data('jquery.pivot.adapter'),
                 status = <groupbynodeStatus> el.data('status'),
                 parentRow = el.closest('tr'),
                 visible = false,
@@ -363,7 +439,7 @@ module jquerypivot {
         var p = new pivot(options);
         return this.each(function () {
             var item = $(this),
-                adapter = new Adapter(),
+                adapter = new Adapter.Adapter(),
                 opts = p.opts;
 
             adapter.sortPivotColumnHeaders = opts.sortPivotColumnHeaders;
@@ -403,7 +479,7 @@ module jquerypivot {
 }
 
 interface JQuery {
-    pivot(jqueryPivotOptions?:jquerypivot.IjqueryPivotOptions): JQuery;
+    pivot(jqueryPivotOptions?:Jquerypivot.Pivot.IjqueryPivotOptions): JQuery;
 }
 
 

@@ -12,4 +12,3 @@
         jasmineEnv.execute();
     };
 })();
-//# sourceMappingURL=testlingCIRunner.js.map

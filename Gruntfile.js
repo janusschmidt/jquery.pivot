@@ -4,31 +4,50 @@
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         typescript: {
-            options: {
-                module: 'amd', //or commonjs
-                target: 'es3', //or es3
-                base_path: 'src/ts/',
-                sourcemap: true,
-                fullSourceMapPath: false,
-                declaration: true
-            },
-            base: {
+            build: {
                 files: [
-                    { src: 'src/ts/jquery.pivot.ts', dest: 'build/jquery.pivot.js' },
-                    { src: 'src/ts/demo.ts', dest: 'demo/demo.js' },
-                    { src: 'tests/spec.ts', dest: 'tests/spec.js' },
-                    { src: 'tests/startJasmineHtmlRunner.ts', dest: 'tests/startJasmineHtmlRunner.js' },
-                    { src: 'tests/testlingCIRunner.ts', dest: 'tests/testlingCIRunner.js' }
-                ]
+                    { src: 'src/jquery.pivot.ts', dest: 'build/jquery.pivot.js' }
+                ],
+                options: {
+                    module: 'amd', //or commonjs
+                    target: 'es3', //or es3
+                    sourcemap: true,
+                    fullSourceMapPath: false,
+                    declaration: true
+                }
+            },
+            tests: {
+                files: [
+                        { src: 'tests/ts/spec.ts', dest: 'tests/js/spec.js' },
+                        { src: 'tests/ts/startJasmineHtmlRunner.ts', dest: 'tests/js/startJasmineHtmlRunner.js' },
+                        { src: 'tests/ts/testlingCIRunner.ts', dest: 'tests/js/testlingCIRunner.js' }
+                ],
+                options: {
+                    module: 'amd', //or commonjs
+                    target: 'es3', //or es3
+                    sourcemap: false,
+                    fullSourceMapPath: false,
+                    declaration: false
+                }
+            },
+            demo: {
+                files: [{ src: 'src/*.ts', dest: 'demo'}],
+                options: {
+                    module: 'amd', //or commonjs
+                    target: 'es3', //or es3
+                    sourcemap: true,
+                    fullSourceMapPath: false,
+                    declaration: false
+                }
             }
         },
         jshint: {
             all: ['Gruntfile.js',
                 'pivot.jquery.json',
                 'package.json',
+                'demo/**/*.js',
                 'build/**/*.js', '!build/**/*.min.js',
-                'tests/**/*.js', '!tests/**/*.min.js',
-                'demo/**/*.js', '!demo/**/*.min.js'],
+                'tests/**/*.js', '!tests/**/*.min.js'],
             options: {
                 smarttabs: true /*supress warnings about mixed spaces and tabs*/
             }
@@ -45,7 +64,7 @@
                 src: 'build/jquery.pivot.min.js',
                 options: {
                     vendor: 'tools/jquery.min.js',
-                    specs: 'tests/*spec.js'
+                    specs: 'tests/js/*spec.js'
                 }
             }
         }
@@ -56,7 +75,7 @@
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
-    
+
     // Default task(s).
     grunt.registerTask('default', ['typescript', 'jshint', 'uglify', 'jasmine']);
 };

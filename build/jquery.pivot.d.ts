@@ -1,5 +1,5 @@
-﻿/// <reference path="../src/ts/definitions/jquery.d.ts" />
-declare module jquerypivot.lib {
+﻿/// <reference path="../src/definitions/jquery.d.ts" />
+declare module Jquerypivot.Lib {
     class StringBuilder {
         public strings: string[];
         constructor(value?: string);
@@ -11,7 +11,7 @@ declare module jquerypivot.lib {
     function find<T>(ar: T[], fun: (value: T, index: number, array?: T[]) => boolean, extra?: any): T;
     function exists<T>(ar: T[], fun: (value: T, index: number, array?: T[]) => boolean, extra?: any): boolean;
 }
-declare module jquerypivot {
+declare module Jquerypivot.Adapter {
     interface column {
         colvalue: string;
         coltext: string;
@@ -32,7 +32,7 @@ declare module jquerypivot {
     }
     interface pivotItem {
         pivotValue: any;
-        result: any;
+        resultValues: string[];
         sortby: any;
         dataid: any;
     }
@@ -54,7 +54,7 @@ declare module jquerypivot {
         public alGroupByCols: column[];
         public bInvSort: boolean;
         public pivotCol: column;
-        public resultCol: column;
+        public resultCol: column[];
         public tree: TreeNode;
         public uniquePivotValues: pivotItem[];
         public sortPivotColumnHeaders: boolean;
@@ -69,15 +69,15 @@ declare module jquerypivot {
         public parseFromHtmlTable(sourceTable: JQuery): void;
     }
 }
-declare module jquerypivot {
+declare module Jquerypivot.Pivot {
     interface IjqueryPivotOptions {
         source: any;
         bTotals?: boolean;
         bCollapsible?: boolean;
-        aggregatefunc?: Function;
+        aggregatefunc?: (arr: any[]) => any;
         formatFunc?: (n: number) => string;
-        parseNumFunc?: (n: string) => number;
-        onResultCellClicked?: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any;
+        parseNumFunc?: (s: string) => number;
+        onResultCellClicked?: (dataObjectWithInformationOnClikedCell: resultCellClickedInfo, jqueryElementThatsClicked?: JQuery) => any;
         noGroupByText?: string;
         noDataText?: string;
         sortPivotColumnHeaders?: boolean;
@@ -86,14 +86,14 @@ declare module jquerypivot {
         public source: any;
         public bTotals: boolean;
         public bCollapsible: boolean;
-        public aggregatefunc: Function;
-        public formatFunc: (n: any) => string;
+        public aggregatefunc: (arr: any[]) => any;
+        public formatFunc: (n: number) => string;
         public parseNumFunc: (n: string) => number;
-        public onResultCellClicked: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any;
+        public onResultCellClicked: (dataObjectWithInformationOnClikedCell: resultCellClickedInfo, jqueryElementThatsClicked?: JQuery) => any;
         public noGroupByText: string;
         public noDataText: string;
         public sortPivotColumnHeaders: boolean;
-        constructor(source?: any, bTotals?: boolean, bCollapsible?: boolean, aggregatefunc?: Function, formatFunc?: (n: any) => string, parseNumFunc?: (n: string) => number, onResultCellClicked?: (dataObjectWithInformationOnClikedCell: {}, jqueryElementThatsClicked?: JQuery) => any, noGroupByText?: string, noDataText?: string, sortPivotColumnHeaders?: boolean);
+        constructor(source?: any, bTotals?: boolean, bCollapsible?: boolean, aggregatefunc?: (arr: any[]) => any, formatFunc?: (n: number) => string, parseNumFunc?: (n: string) => number, onResultCellClicked?: (dataObjectWithInformationOnClikedCell: resultCellClickedInfo, jqueryElementThatsClicked?: JQuery) => any, noGroupByText?: string, noDataText?: string, sortPivotColumnHeaders?: boolean);
     }
     class resultCellClickedInfoPivotInfo {
         public dataidPivot: string;
@@ -106,23 +106,31 @@ declare module jquerypivot {
         public groupbyval: string;
         constructor(dataidGroup: string, groupbyval: string);
     }
+    class resultCellClickedInfoResultColInfo {
+        public colKeyName: string;
+        public colName: string;
+        constructor(colKeyName: string, colName: string);
+    }
     class resultCellClickedInfo {
         public dataidTable: string;
         public pivot: resultCellClickedInfoPivotInfo;
         public groups: resultCellClickedInfoGroupByInfo[];
-        constructor(dataidTable: string, pivot: resultCellClickedInfoPivotInfo, groups: resultCellClickedInfoGroupByInfo[]);
+        public resultcol: resultCellClickedInfoResultColInfo;
+        constructor(dataidTable: string, pivot: resultCellClickedInfoPivotInfo, groups: resultCellClickedInfoGroupByInfo[], resultcol: resultCellClickedInfoResultColInfo);
     }
     class pivot {
+        private adapter;
         public opts: jqueryPivotOptions;
         constructor(suppliedoptions?: IjqueryPivotOptions);
         public resultCellClicked: (e: JQueryEventObject) => void;
-        public getResValue: (treeNode: jquerypivot.TreeNode, pivotValue: any) => any;
-        public appendChildRows: (treeNode: jquerypivot.TreeNode, belowThisRow: JQuery, adapter: jquerypivot.Adapter) => void;
-        public makeCollapsed: (adapter: jquerypivot.Adapter, $obj: JQuery) => void;
+        public flattenFunc: (index: any) => (item: any) => any;
+        public getResValues: (treeNode: Jquerypivot.Adapter.TreeNode, pivotValue: any) => any[];
+        public appendChildRows: (treeNode: Jquerypivot.Adapter.TreeNode, belowThisRow: JQuery, adapter: Jquerypivot.Adapter.Adapter) => void;
+        public makeCollapsed: (adapter: Jquerypivot.Adapter.Adapter, $obj: JQuery) => void;
         public foldunfoldElem: (el: JQuery) => void;
         public foldunfold: (e: JQueryEventObject) => void;
     }
 }
 interface JQuery {
-    pivot(jqueryPivotOptions?: jquerypivot.IjqueryPivotOptions): JQuery;
+    pivot(jqueryPivotOptions?: Jquerypivot.Pivot.IjqueryPivotOptions): JQuery;
 }

@@ -24,6 +24,8 @@ table.pivot tr.total td, table.pivot tr.total th{border-top : solid 1px black;}
 
 table.pivot td.total{border-left : solid 1px black;}
 
+table.pivot td.total.total1{border-left : none;}
+
 table.pivot tr.head th.groupby{background-color : #ddd;}
 
 table.pivot tr.head th.pivotcol{background-color : #eee;font-size : smaller;border : solid 1px black;}

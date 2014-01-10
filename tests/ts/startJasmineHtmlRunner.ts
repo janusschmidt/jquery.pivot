@@ -1,4 +1,5 @@
-﻿(function () {
+/// <reference path="../../src/definitions/jasmine.d.ts" />
+(() => {
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 250;
     var htmlReporter = new jasmine.HtmlReporter();
@@ -7,11 +8,12 @@
         return htmlReporter.specFilter(spec);
     };
     var currentWindowOnload = window.onload;
-    window.onload = function () {
+    window.onload = () => {
         if (currentWindowOnload) {
             currentWindowOnload(null);
         }
 
+        //(<HTMLElement>document.querySelector('.version')).innerHTML = jasmineEnv.versionString();
         execJasmine();
     };
 
@@ -19,4 +21,3 @@
         jasmineEnv.execute();
     }
 })();
-//# sourceMappingURL=startJasmineHtmlRunner.js.map

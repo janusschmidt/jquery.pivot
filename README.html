@@ -1,0 +1,88 @@
+﻿<h1>jquery.pivot plugin</h1>
+
+<h2>Description</h2>
+
+<p>The jquery.pivot plugin can be used for presenting table data in pivot form. It is made and maintained me, Janus Schmidt, currently employed by <a href="http://Metalogic.dk">Metalogic.dk</a>.</p>
+
+<p>The project lives on <a href="http://github.com/janusschmidt/jquery.pivot">github</a>.</p>
+
+<h2>Demo</h2>
+
+<p>For further info on how to use the plugin, have a look at the <a href="http://metalogic.dk/jquery.pivot/demo/demo.htm">demo</a></p>
+
+<!--
+##Compatibility (Jasmine test results)
+[![browser support](https://ci.testling.com/janusschmidt/jquery.pivot.png)](https://ci.testling.com/janusschmidt/jquery.pivot)
+-->
+
+<h2>History</h2>
+
+<p>I made this some time ago, for a web application that enables people to keep track of time <a href="http://styrpaatiden.dk">styrpaatiden.dk</a>. As i am a big fan of jQuery, i decided, it was time for<br/>
+me to give back to the community.</p>
+
+<h2>Usage:</h2>
+
+<p>This is only a scarce description, so look in the examples to get more information.<br/>
+The data can be parsed from a html table with special markup or from json data. As i live in denmark i've built in the possibility to pass in format and parse functions for numbers.<br/>
+You can also supply a function that will be called when the user clicks a result cell. The function is passed info on which groupby value and pivot value is clicked. This can be used<br/>
+to fetch and present more details from the server.</p>
+
+<p>To use the plugin you need a script reference to <code>jquery</code>, the plugin <code>build/jquery.pivot.min.js</code> and maybe the <code>demo/stylesheet.css</code> if you don't want to style the pivot<br/>
+yourself. The fold unfold images are defined in the css.</p>
+
+<p>The plugins accepts these parameters:</p>
+
+<p><code>javascript<br/>
+$.fn.pivot.defaults = {<br/>
+    source: null, //Must be json or a jquery element containing a table<br/>
+    bTotals: true, //Includes total row and column<br/>
+    bCollapsible: true, // Set to false to expand all and remove open/close buttons<br/>
+    aggregatefunc: calcsum, //defaults to sum. Set to null for no totals. Set to function that concatenates for strings.<br/>
+    formatFunc: function (n) { return n; }, //A function to format numeric result/total cells. Ie. for non US numeric formats<br/>
+    parseNumFunc: function (n) { return +n; },  //Can be used if parsing a html table and want a non standard method of parsing data. <br/>
+                                                //Ie. for non US numeric formats.<br/>
+                                                //Set to null if result column should be considered string data.<br/>
+    onResultCellClicked: null,  //Method thats called when a result cell is clicked. This can be used to call server and present details for that cell. <br/>
+                                //Signature = function(dataObjectWithInformationOnClikedCell, jqueryElementThatsClicked)<br/>
+    noGroupByText: "No value", //Text used if no data is available for specific groupby and pivot value.<br/>
+    noDataText: "No data" //Text used if source data is empty.<br/>
+    sortPivotColumnHeaders: true //if false pivot columns will appear in the order they are discovered in the source.<br/>
+};<br/>
+</code></p>
+
+<h2>Development</h2>
+
+<p>The source is in Typescript.</p>
+
+<p>The project is setup for using grunt.</p>
+
+<h3>To use <em>grunt</em> via <em>node</em></h3>
+
+<ol>
+<li>Install node.</li>
+<li>In <em>node</em> console install grunt <code>npm install -g grunt-cli</code>.</li>
+<li>In <em>node</em> console <code>cd</code> to project directory and run <code>npm install</code></li>
+<li>In <em>node</em> console run <code>grunt</code> command</li>
+</ol>
+
+<h3><em>grunt</em> is set up to:</h3>
+
+<ol>
+<li>Generate javascript files from typescripts.</li>
+<li>Jshint all (non minified) javascript.</li>
+<li>Minify selected files.</li>
+<li>Run jasmine tests via phantomjs.</li>
+</ol>
+
+<p>When developing edit the <code>src\ts\*.ts</code> files run <code>grunt typescript:demo</code> in a nodejs console and check your<br/>
+changes in <code>demo\demo.htm</code> and/or <code>tests\specrunner.html</code>.<br/>
+When you're done coding and think everything is in order run <code>grunt</code> without arguments to run everything. <br/>
+Always complete this step without errors before sending a pull request.</p>
+
+<p>If you wan't to send a pull request, make sure you run <em>grunt</em> without errors first.</p>
+
+<p>If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javacript</p>
+
+<h2>License</h2>
+
+<p>The project uses the MIT license.</p>

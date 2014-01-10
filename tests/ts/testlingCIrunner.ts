@@ -1,4 +1,4 @@
-/// <reference path="../src/ts/definitions/jasmine.d.ts" />
+/// <reference path="../../src/definitions/jasmine.d.ts" />
 
 declare module jasmine {
     export var TapReporter: any;

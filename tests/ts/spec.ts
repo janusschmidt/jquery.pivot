@@ -1,9 +1,9 @@
-﻿/// <reference path="../src/ts/definitions/jasmine.d.ts" />
-/// <reference path="../src/ts/definitions/jquery.d.ts"/>
-/// <reference path="../src/ts/adapter.ts"/>
-/// <reference path="../src/ts/jquery.pivot.ts"/>
+﻿/// <reference path="../../src/definitions/jasmine.d.ts" />
+/// <reference path="../../src/definitions/jquery.d.ts"/>
+/// <reference path="../../src/adapter.ts"/>
+/// <reference path="../../src/jquery.pivot.ts"/>
 
-var example5JSONdata : jquerypivot.jsonsource = {
+var example5JSONdata: Jquerypivot.Adapter.jsonsource = {
     'dataid': 'An identifier for the table',
     'columns': [
         { 'colvalue': 'companyid ', 'coltext': 'companyid ', 'header': 'companyid ', 'datatype': 'number', 'sortbycol': 'companyid ', 'groupbyrank': 2, 'pivot': false, 'result': false },
@@ -415,7 +415,7 @@ if (typeof (jasmine.HtmlReporter) == 'function') {
             var sut, ticks;
 
             ticks = (new Date()).getTime();
-            sut = new jquerypivot.Adapter();
+            sut = new Jquerypivot.Adapter.Adapter();
             sut.parseJSONsource(JSONdata);
             ticks = (new Date()).getTime() - ticks;
             expect(ticks).toBeLessThan(maxMilliSeconds);

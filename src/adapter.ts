@@ -1,6 +1,6 @@
 ﻿///<reference path="definitions/jquery.d.ts"/>
 ///<reference path="lib.ts"/>
-module jquerypivot {
+module Jquerypivot.Adapter {
     function sortgroupbys(rowA, rowB) {
         var a = +rowA.groupbyrank,
             b = +rowB.groupbyrank;
@@ -39,7 +39,7 @@ module jquerypivot {
 
     export interface pivotItem {
         pivotValue: any; 
-        result: any; 
+        resultValues: string[]; 
         sortby: any; 
         dataid: any
     }
@@ -58,7 +58,6 @@ module jquerypivot {
         visible() {
             return this.parent === undefined || (!this.parent.collapsed && (!this.parent.visible || this.parent.visible()));
         }
-
     }
 
     export class Adapter {
@@ -66,15 +65,15 @@ module jquerypivot {
         alGroupByCols: column[];
         bInvSort: boolean;
         pivotCol: column;
-        resultCol: column;
+        resultCol: column[];
         tree: TreeNode;
         uniquePivotValues: pivotItem[];
         sortPivotColumnHeaders: boolean;
-
+       
         constructor() {
             this.alGroupByCols = [];
             this.pivotCol = null;
-            this.resultCol = null;
+            this.resultCol = [];
             this.bInvSort = false;
             this.tree = new TreeNode();
             this.uniquePivotValues = [];
@@ -96,7 +95,7 @@ module jquerypivot {
         }
 
         findCell(arCells: column[], colIndex: number) {
-            return lib.find(arCells, function (item: column, index: number) {
+            return Lib.find(arCells, function (item: column, index: number) {
                 return item.colindex == this;
             }, colIndex);
         }
@@ -130,10 +129,10 @@ module jquerypivot {
                 sortbyValue, 
                 pivotValue, 
                 pivotSortBy, 
-                result, 
+                resultValues:any[], 
                 newPivotValue:pivotItem,
                 rowitem:any,
-                row:any[];
+                row: any[];
 
             this.dataid = data.dataid;
             //exctract header info
@@ -157,7 +156,7 @@ module jquerypivot {
                     this.pivotCol = treecol;
                 }
                 else if (sourcecol.result) {
-                    this.resultCol = treecol;
+                    this.resultCol.push(treecol);
                 }
             }
 
@@ -179,7 +178,7 @@ module jquerypivot {
                     groupbyValue = trim(row[this.alGroupByCols[i].colvalue]);
                     groupbyText = row[this.alGroupByCols[i].coltext];
                     sortbyValue = trim(row[this.alGroupByCols[i].sortbycol]);
-                    newObj = lib.find<TreeNode>(curNode.children, findGroupByFunc, groupbyValue);
+                    newObj = Lib.find<TreeNode>(curNode.children, findGroupByFunc, groupbyValue);
                     if (!newObj) {
                         newObj = new TreeNode();
                         newObj.groupbyValue = groupbyValue;
@@ -199,10 +198,13 @@ module jquerypivot {
                 //pivot
                 pivotValue = trim(row[this.pivotCol.colvalue]);
                 pivotSortBy = trim(row[this.pivotCol.sortbycol]);
-                result = trim(row[this.resultCol.colvalue]);
-                newPivotValue = { pivotValue: pivotValue, result: result, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
+                resultValues = [];
+                for (i = 0; i < this.resultCol.length; i += 1) {
+                    resultValues.push(trim(row[this.resultCol[i].colvalue]));
+                }
+                newPivotValue = { pivotValue: pivotValue, resultValues: resultValues, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
                 curNode.pivotvalues.push(newPivotValue);
-                if (!lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
+                if (!Lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
                     this.uniquePivotValues.push(newPivotValue);
                 }
             }

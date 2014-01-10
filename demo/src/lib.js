@@ -1,6 +1,6 @@
-var jquerypivot;
-(function (jquerypivot) {
-    (function (lib) {
+﻿var Jquerypivot;
+(function (Jquerypivot) {
+    (function (Lib) {
         var StringBuilder = (function () {
             function StringBuilder(value) {
                 this.strings = [''];
@@ -21,16 +21,15 @@ var jquerypivot;
             };
             return StringBuilder;
         })();
-        lib.StringBuilder = StringBuilder;
+        Lib.StringBuilder = StringBuilder;
 
-        //implement array.map. Removes null items as opposed to native array.map.
         function map(ar, fun, extra) {
             var i, len, res = [], item;
             if (ar) {
                  {
                     for (i = 0, len = ar.length; i < len; i += 1) {
                         item = fun.call(extra, ar[i], i, ar);
-                        if (item) {
+                        if (item !== null) {
                             res.push(item);
                         }
                     }
@@ -38,21 +37,20 @@ var jquerypivot;
                 return res;
             }
         }
-        lib.map = map;
+        Lib.map = map;
 
-        //Returns the found element or null
         function find(ar, fun, extra) {
             var res;
             if (typeof (ar.filter) === 'function') {
                 res = ar.filter(fun, extra);
             } else {
-                res = lib.map(ar, function (value, index, array) {
+                res = Lib.map(ar, function (value, index, array) {
                     return fun.call(extra, value, index, array) ? value : null;
                 }, extra);
             }
             return res.length > 0 ? res[0] : null;
         }
-        lib.find = find;
+        Lib.find = find;
 
         function exists(ar, fun, extra) {
             var i, len, item;
@@ -69,7 +67,8 @@ var jquerypivot;
             }
             return false;
         }
-        lib.exists = exists;
-    })(jquerypivot.lib || (jquerypivot.lib = {}));
-    var lib = jquerypivot.lib;
-})(jquerypivot || (jquerypivot = {}));
+        Lib.exists = exists;
+    })(Jquerypivot.Lib || (Jquerypivot.Lib = {}));
+    var Lib = Jquerypivot.Lib;
+})(Jquerypivot || (Jquerypivot = {}));
+//# sourceMappingURL=lib.js.map
