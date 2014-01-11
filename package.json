@@ -9,7 +9,7 @@
 		  "tools/jasmine-1.3.1/jasmine.tap_reporter.js",
 		  "tests/js/spec.js",
 		  "tests/js/testlingCIrunner.js"],
-		 "browsers": ["iexplore/6.0","iexplore/7.0","iexplore/8.0","iexplore/9.0","iexplore/10.0","chrome/25.0","chrome/canary","firefox/19.0","firefox/nightly","opera/12.0","opera/next","iphone/6.0","ipad/6.0","safari/6.0","android-browser/4.2"]
+		 "browsers": ["iexplore/7.0","iexplore/8.0","iexplore/9.0","iexplore/10.0","chrome/25.0","chrome/canary","firefox/19.0","firefox/nightly","opera/12.0","opera/next","iphone/6.0","ipad/6.0","safari/6.0","android-browser/4.2"]
 	},
 	"devDependencies": {
 		"grunt": "~0.4.2",
