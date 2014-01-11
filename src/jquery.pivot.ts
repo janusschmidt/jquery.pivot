@@ -171,41 +171,45 @@ module Jquerypivot.Pivot {
         getResValues = (treeNode : Adapter.TreeNode, pivotValue) :any[] => {
             var i: number,
                 res = [],
-                aggVals : any[][] = [],
-                pivotResultValues = <string[][]> Lib.map(treeNode.pivotvalues || [], (item: Adapter.pivotItem, index: number) => {
-                    return item.pivotValue === pivotValue ? item.resultValues : null;
-                });
+                valsToAggregate: any[][] = [],
+                pivotResultValues: string[][];
 
+            var parseNums = (n) => { return this.opts.parseNumFunc(n); };
 
-            if (this.opts.aggregatefunc) {
-                if (pivotResultValues.length >= 1) {
-                    var parseNums = (n) => { return this.opts.parseNumFunc(n); };
-                    for (i = 0; i < pivotResultValues.length; i += 1) {
+            if (!treeNode.pivotResultValuesLookup.hasOwnProperty(pivotValue)) {
+                if (this.opts.aggregatefunc) {
+                    if (treeNode.pivotvalues.length > 0) {
+                        pivotResultValues = <string[][]> Lib.map(treeNode.pivotvalues || [], (item: Adapter.pivotItem, index: number) => {
+                            return item.pivotValue === pivotValue ? item.resultValues : null;
+                        });
+
                         if (this.opts.parseNumFunc) {
-                            aggVals.push(Lib.map(pivotResultValues[i], parseNums));
+                            for (i = 0; i < pivotResultValues.length; i += 1) {
+                                valsToAggregate.push(Lib.map(pivotResultValues[i], parseNums));
+                            }
                         }
-                        else
-                        {
-                            aggVals.push(pivotResultValues[i]);
+                        else {
+                            valsToAggregate = pivotResultValues;
+                        }
+                    } else if (this.opts.bTotals) {
+                        for (i = 0; i < treeNode.children.length; i += 1) {
+                            /*ignore jslint start*/
+                            valsToAggregate.push(this.getResValues(treeNode.children[i], pivotValue));
+                            /*ignore jslint end*/
                         }
                     }
-                } else if (this.opts.bTotals) {
-                    for (i = 0; i < treeNode.children.length; i += 1) {
-                        /*ignore jslint start*/
-                        aggVals.push(this.getResValues(treeNode.children[i], pivotValue));
-                        /*ignore jslint end*/
-                    }
-                }
 
-                for (i = 0; i < this.adapter.resultCol.length; i += 1) {
-                    var resColVals = Lib.map(aggVals, this.flattenFunc(i));
-                    res.push(this.opts.aggregatefunc(resColVals));
+                    for (i = 0; i < this.adapter.resultCol.length; i += 1) {
+                        var resColVals = Lib.map(valsToAggregate, this.flattenFunc(i));
+                        res.push(this.opts.aggregatefunc(resColVals));
+                    }
+                } else {
+                    res = null;
                 }
-            } else {
-                res = null;
+                treeNode.pivotResultValuesLookup[pivotValue] = res;
             }
 
-            return res;
+            return treeNode.pivotResultValuesLookup[pivotValue];
         }
        
         appendChildRows = (treeNode: Adapter.TreeNode, belowThisRow: JQuery, adapter: Adapter.Adapter) => {

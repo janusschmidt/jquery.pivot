@@ -48,13 +48,15 @@ module Jquerypivot.Adapter {
         groupbyValue: string;
         groupbyText: string;
         colindex: number;
-        children:TreeNode[] = [];
+        children: TreeNode[] = [];
         sortby: string;
         parent: TreeNode;
         dataid: string;
         collapsed: boolean;
         groupbylevel: number;
-        pivotvalues:pivotItem[] =[];
+        pivotvalues: pivotItem[] = [];
+        uniqueGroupByValuesLookup = {};
+        pivotResultValuesLookup = {};
         visible() {
             return this.parent === undefined || (!this.parent.collapsed && (!this.parent.visible || this.parent.visible()));
         }
@@ -68,6 +70,7 @@ module Jquerypivot.Adapter {
         resultCol: column[];
         tree: TreeNode;
         uniquePivotValues: pivotItem[];
+        uniquePivotValuesLookup = {};
         sortPivotColumnHeaders: boolean;
        
         constructor() {
@@ -162,14 +165,8 @@ module Jquerypivot.Adapter {
 
             this.alGroupByCols.sort(sortgroupbys);
 
-            function findGroupByFunc(item:TreeNode, index:number) { 
-                return item.groupbyValue == this; 
-            }
-            function findPivotFunc(item:pivotItem, index:number) { 
-                return item.pivotValue == this; 
-            }
-
             //build tree structure
+            //first build children structure by populating them as associative arrays, and then make them normal arrays.
             for (rowIndex = 0, rowcount = data.rows.length; rowIndex < rowcount; rowIndex += 1) {
                 row = data.rows[rowIndex];
                 curNode = this.tree;
@@ -178,7 +175,7 @@ module Jquerypivot.Adapter {
                     groupbyValue = trim(row[this.alGroupByCols[i].colvalue]);
                     groupbyText = row[this.alGroupByCols[i].coltext];
                     sortbyValue = trim(row[this.alGroupByCols[i].sortbycol]);
-                    newObj = Lib.find<TreeNode>(curNode.children, findGroupByFunc, groupbyValue);
+                    newObj = curNode.uniqueGroupByValuesLookup[groupbyValue];
                     if (!newObj) {
                         newObj = new TreeNode();
                         newObj.groupbyValue = groupbyValue;
@@ -190,9 +187,9 @@ module Jquerypivot.Adapter {
                         newObj.dataid = this.alGroupByCols[i].dataid;
                         newObj.collapsed = true;
                         newObj.groupbylevel = i;
+                        curNode.uniqueGroupByValuesLookup[groupbyValue] = newObj;
                         curNode.children.push(newObj);
                     }
-
                     curNode = newObj;
                 }
                 //pivot
@@ -204,8 +201,9 @@ module Jquerypivot.Adapter {
                 }
                 newPivotValue = { pivotValue: pivotValue, resultValues: resultValues, sortby: pivotSortBy, dataid: this.pivotCol.dataid };
                 curNode.pivotvalues.push(newPivotValue);
-                if (!Lib.exists(this.uniquePivotValues, findPivotFunc, pivotValue)) {
+                if (!this.uniquePivotValuesLookup.hasOwnProperty(pivotValue)) {
                     this.uniquePivotValues.push(newPivotValue);
+                    this.uniquePivotValuesLookup[pivotValue] = null;
                 }
             }
 

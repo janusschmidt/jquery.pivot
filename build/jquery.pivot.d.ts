@@ -47,6 +47,8 @@ declare module Jquerypivot.Adapter {
         public collapsed: boolean;
         public groupbylevel: number;
         public pivotvalues: pivotItem[];
+        public uniqueGroupByValuesLookup: {};
+        public pivotResultValuesLookup: {};
         public visible(): any;
     }
     class Adapter {
@@ -57,6 +59,7 @@ declare module Jquerypivot.Adapter {
         public resultCol: column[];
         public tree: TreeNode;
         public uniquePivotValues: pivotItem[];
+        public uniquePivotValuesLookup: {};
         public sortPivotColumnHeaders: boolean;
         constructor();
         public sortTree(treeNode: TreeNode): void;

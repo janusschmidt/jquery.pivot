@@ -151,37 +151,43 @@
                     };
                 };
                 this.getResValues = function (treeNode, pivotValue) {
-                    var i, res = [], aggVals = [], pivotResultValues = Jquerypivot.Lib.map(treeNode.pivotvalues || [], function (item, index) {
-                        return item.pivotValue === pivotValue ? item.resultValues : null;
-                    });
+                    var i, res = [], valsToAggregate = [], pivotResultValues;
 
-                    if (_this.opts.aggregatefunc) {
-                        if (pivotResultValues.length >= 1) {
-                            var parseNums = function (n) {
-                                return _this.opts.parseNumFunc(n);
-                            };
-                            for (i = 0; i < pivotResultValues.length; i += 1) {
+                    var parseNums = function (n) {
+                        return _this.opts.parseNumFunc(n);
+                    };
+
+                    if (!treeNode.pivotResultValuesLookup.hasOwnProperty(pivotValue)) {
+                        if (_this.opts.aggregatefunc) {
+                            if (treeNode.pivotvalues.length > 0) {
+                                pivotResultValues = Jquerypivot.Lib.map(treeNode.pivotvalues || [], function (item, index) {
+                                    return item.pivotValue === pivotValue ? item.resultValues : null;
+                                });
+
                                 if (_this.opts.parseNumFunc) {
-                                    aggVals.push(Jquerypivot.Lib.map(pivotResultValues[i], parseNums));
+                                    for (i = 0; i < pivotResultValues.length; i += 1) {
+                                        valsToAggregate.push(Jquerypivot.Lib.map(pivotResultValues[i], parseNums));
+                                    }
                                 } else {
-                                    aggVals.push(pivotResultValues[i]);
+                                    valsToAggregate = pivotResultValues;
+                                }
+                            } else if (_this.opts.bTotals) {
+                                for (i = 0; i < treeNode.children.length; i += 1) {
+                                    valsToAggregate.push(_this.getResValues(treeNode.children[i], pivotValue));
                                 }
                             }
-                        } else if (_this.opts.bTotals) {
-                            for (i = 0; i < treeNode.children.length; i += 1) {
-                                aggVals.push(_this.getResValues(treeNode.children[i], pivotValue));
-                            }
-                        }
 
-                        for (i = 0; i < _this.adapter.resultCol.length; i += 1) {
-                            var resColVals = Jquerypivot.Lib.map(aggVals, _this.flattenFunc(i));
-                            res.push(_this.opts.aggregatefunc(resColVals));
+                            for (i = 0; i < _this.adapter.resultCol.length; i += 1) {
+                                var resColVals = Jquerypivot.Lib.map(valsToAggregate, _this.flattenFunc(i));
+                                res.push(_this.opts.aggregatefunc(resColVals));
+                            }
+                        } else {
+                            res = null;
                         }
-                    } else {
-                        res = null;
+                        treeNode.pivotResultValuesLookup[pivotValue] = res;
                     }
 
-                    return res;
+                    return treeNode.pivotResultValuesLookup[pivotValue];
                 };
                 this.appendChildRows = function (treeNode, belowThisRow, adapter) {
                     var i, j, col, col1, sb, item, itemtext, resCell, spanFoldUnfold, gbCols = adapter.alGroupByCols, pivotCols = adapter.uniquePivotValues, foldunfoldclass = _this.opts.bCollapsible ? 'foldunfold' : 'nonfoldunfold', foldunfoldclassSelector = '.' + foldunfoldclass, status, valsToSumOn = [], sums, aggregateValues = function (v) {
