@@ -66,7 +66,7 @@ The project is setup for using grunt.
 3. Minify selected files.
 4. Run jasmine tests via phantomjs.
 
-When developing edit the `src\ts\*.ts` files run `grunt typescript:demo` in a nodejs console and check your
+When developing edit the `src\*.ts` files run `grunt typescript:demo` in a nodejs console and check your
 changes in `demo\demo.htm` and/or `tests\specrunner.html`.
 When you're done coding and think everything is in order run `grunt` without arguments to run everything. 
 Always complete this step without errors before sending a pull request.
