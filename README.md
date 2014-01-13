@@ -79,4 +79,4 @@ get the unittest run in different target browsers. You must have java installed 
 Don't sweat it if you skip this step. :-)
 
 ##License
-The project uses the MIT license.
+The project uses the [MIT license](license.txt).
