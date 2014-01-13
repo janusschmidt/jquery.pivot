@@ -6,7 +6,7 @@
         typescript: {
             build: {
                 files: [
-                    { src: 'src/jquery.pivot.ts', dest: 'build/jquery.pivot.js' }
+                    { src: 'typescript/src/jquery.pivot.ts', dest: 'build/jquery.pivot.js' }
                 ],
                 options: {
                     module: 'amd', //or commonjs
@@ -16,28 +16,15 @@
                     declaration: true
                 }
             },
-            tests: {
-                files: [
-                        { src: 'tests/ts/spec.ts', dest: 'tests/js/spec.js' },
-                        { src: 'tests/ts/startJasmineHtmlRunner.ts', dest: 'tests/js/startJasmineHtmlRunner.js' },
-                        { src: 'tests/ts/testlingCIRunner.ts', dest: 'tests/js/testlingCIRunner.js' }
-                ],
-                options: {
-                    module: 'amd', //or commonjs
-                    target: 'es3', //or es3
-                    sourcemap: false,
-                    fullSourceMapPath: false,
-                    declaration: false
-                }
-            },
-            demo: {
-                files: [{ src: 'src/*.ts', dest: 'demo'}],
+            dev: {
+                files: [{ src: 'typescript/**/*.ts', dest: 'js' }],
                 options: {
                     module: 'amd', //or commonjs
                     target: 'es3', //or es3
                     sourcemap: true,
                     fullSourceMapPath: false,
-                    declaration: false
+                    declaration: false,
+                    base_path: 'typescript'
                 }
             }
         },
@@ -64,7 +51,36 @@
                 src: 'build/jquery.pivot.min.js',
                 options: {
                     vendor: 'tools/jquery.min.js',
-                    specs: 'tests/js/*spec.js'
+                    specs: 'js/tests/*spec.js'
+                }
+            }
+        },
+        //Remember to have java installed and in your environment path
+        'saucelabs-jasmine': {
+            all: {
+                options: {
+                    username: 'janusschmidt',
+                    key: 'secret-saucelab-api-key', //optinally set up username and key in env. read about it on grunt-saucelabs.
+                    urls: ['http://localhost/jquery.pivot/tests/run.html'],
+                    build: '<%= pkg.version %>',
+                    tunnelTimeout: 5,
+                    concurrency: 3,
+                    browsers: [
+                        { platform: 'Windows XP', browserName: 'internet explorer', version: '6' },
+                        { platform: 'Windows XP', browserName: 'internet explorer', version: '7' },
+                        { platform: 'Windows 7', browserName: 'internet explorer', version: '8' },
+                        { platform: 'Windows 7', browserName: 'internet explorer', version: '9' },
+                        { platform: 'Windows 7', browserName: 'internet explorer', version: '10' },
+                        { platform: 'Windows 7', browserName: 'internet explorer', version: '' },
+                        { platform: 'Windows 7', browserName: 'chrome', version: '' },
+                        { platform: 'Windows 7', browserName: 'firefox', version: '' },
+                        { platform: 'Windows 7', browserName: 'opera', version: '' },
+                        { platform: 'OS X 10.9', browserName: 'safari', version: '' },
+                        { platform: 'OS X 10.9', browserName: 'iphone', version: '' },
+                        { platform: 'OS X 10.8', browserName: 'safari', version: '' },
+                        { platform: 'linux', browserName: 'android', version: '' }
+                    ],
+                    testname: "jasmine tests"
                 }
             }
         }
@@ -75,7 +91,11 @@
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-saucelabs');
 
     // Default task(s).
     grunt.registerTask('default', ['typescript', 'jshint', 'uglify', 'jasmine']);
+
+    //Run tests in target browsers
+    grunt.registerTask('sauce', ['saucelabs-jasmine']);
 };

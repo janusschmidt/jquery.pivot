@@ -9,10 +9,9 @@ The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 ##Demo
 For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot/demo/demo.htm)
 
-<!--
+
 ##Compatibility (Jasmine test results)
-[![browser support](https://ci.testling.com/janusschmidt/jquery.pivot.png)](https://ci.testling.com/janusschmidt/jquery.pivot)
--->
+[![Selenium Test Status](https://saucelabs.com/browser-matrix/janusschmidt.svg)](https://saucelabs.com/u/janusschmidt)
 
 ##History
 
@@ -52,7 +51,9 @@ $.fn.pivot.defaults = {
 ##Development
 The source is in Typescript.
 
-The project is setup for using grunt.
+If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javascript.
+
+The project is setup to use grunt.
 
 ###To use *grunt* via *node* 
 1. Install node.
@@ -66,16 +67,16 @@ The project is setup for using grunt.
 3. Minify selected files.
 4. Run jasmine tests via phantomjs.
 
-When developing edit the `src\*.ts` files run `grunt typescript:demo` in a nodejs console and check your
-changes in `demo\demo.htm` and/or `tests\specrunner.html`.
+When developing edit the `typescript\src\*.ts` files run `grunt typescript:dev` in a nodejs console and check your
+changes in `demo\demo.htm` and/or `tests\run.html`.
 When you're done coding and think everything is in order run `grunt` without arguments to run everything. 
 Always complete this step without errors before sending a pull request.
 
-
-
 If you wan't to send a pull request, make sure you run *grunt* without errors first.
 
-If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javacript
+__Secret bonus *grunt* task.__ If you have a saucelab account you can fill in set your sauce credentials in the environment variables and run `grunt sauce` to
+get the unittest run in different target browsers. You must have java installed and added to your nodejs environment path. Also you must have local webserver serving you web on localhost/jquery.pivot.
+Don't sweat it if you skip this step. :-)
 
 ##License
 The project uses the MIT license.

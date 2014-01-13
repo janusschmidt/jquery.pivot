@@ -1,7 +1,7 @@
-﻿/// <reference path="../../src/definitions/jasmine.d.ts" />
-/// <reference path="../../src/definitions/jquery.d.ts"/>
-/// <reference path="../../src/adapter.ts"/>
-/// <reference path="../../src/jquery.pivot.ts"/>
+﻿/// <reference path="../definitions/jasmine.d.ts" />
+/// <reference path="../definitions/jquery.d.ts"/>
+/// <reference path="../src/adapter.ts"/>
+/// <reference path="../src/jquery.pivot.ts"/>
 
 var example5JSONdata: Jquerypivot.Adapter.jsonsource = {
     'dataid': 'An identifier for the table',

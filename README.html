@@ -10,10 +10,9 @@
 
 <p>For further info on how to use the plugin, have a look at the <a href="http://metalogic.dk/jquery.pivot/demo/demo.htm">demo</a></p>
 
-<!--
-##Compatibility (Jasmine test results)
-[![browser support](https://ci.testling.com/janusschmidt/jquery.pivot.png)](https://ci.testling.com/janusschmidt/jquery.pivot)
--->
+<h2>Compatibility (Jasmine test results)</h2>
+
+<p><a href="https://saucelabs.com/u/janusschmidt"><img src="https://saucelabs.com/browser-matrix/janusschmidt.svg" alt="Selenium Test Status"/></a></p>
 
 <h2>History</h2>
 
@@ -54,7 +53,9 @@ $.fn.pivot.defaults = {<br/>
 
 <p>The source is in Typescript.</p>
 
-<p>The project is setup for using grunt.</p>
+<p>If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javascript.</p>
+
+<p>The project is setup to use grunt.</p>
 
 <h3>To use <em>grunt</em> via <em>node</em></h3>
 
@@ -74,14 +75,16 @@ $.fn.pivot.defaults = {<br/>
 <li>Run jasmine tests via phantomjs.</li>
 </ol>
 
-<p>When developing edit the <code>src\*.ts</code> files run <code>grunt typescript:demo</code> in a nodejs console and check your<br/>
-changes in <code>demo\demo.htm</code> and/or <code>tests\specrunner.html</code>.<br/>
+<p>When developing edit the <code>typescript\src\*.ts</code> files run <code>grunt typescript:dev</code> in a nodejs console and check your<br/>
+changes in <code>demo\demo.htm</code> and/or <code>tests\run.html</code>.<br/>
 When you're done coding and think everything is in order run <code>grunt</code> without arguments to run everything. <br/>
 Always complete this step without errors before sending a pull request.</p>
 
 <p>If you wan't to send a pull request, make sure you run <em>grunt</em> without errors first.</p>
 
-<p>If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javacript</p>
+<p><strong>Secret bonus <em>grunt</em> task.</strong> If you have a saucelab account you can fill in set your sauce credentials in the environment variables and run <code>grunt sauce</code> to<br/>
+get the unittest run in different target browsers. You must have java installed and added to your nodejs environment path. Also you must have local webserver serving you web on localhost/jquery.pivot.<br/>
+Don't sweat it if you skip this step. :-)</p>
 
 <h2>License</h2>
 

@@ -1,4 +1,4 @@
-﻿/// <reference path="../src/definitions/jquery.d.ts" />
+﻿/// <reference path="../typescript/definitions/jquery.d.ts" />
 declare module Jquerypivot.Lib {
     class StringBuilder {
         public strings: string[];

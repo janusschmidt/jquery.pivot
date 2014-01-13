@@ -1,0 +1,944 @@
+2014-01-13 00:24:16,938 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 00:24:16,943 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 00:24:16,950 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 00:24:16,950 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['52262'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158801048', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 00:24:16,951 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['52262'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 00:24:16,953 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['52262']
+2014-01-13 00:24:16,963 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52262 in 3ms
+2014-01-13 00:24:17,861 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["52262"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158801048","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 00:24:21,917 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (2e980a8318164aa4b68d0545a17d02eb)
+2014-01-13 00:24:22,331 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 00:24:39,375 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki77187.miso.saucelabs.com
+2014-01-13 00:24:39,392 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52262 in 0ms
+2014-01-13 00:24:39,398 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 00:24:39,400 - sauce_connect:646 - INFO - Connecting to tunnel host maki77187.miso.saucelabs.com as janusschmidt
+2014-01-13 00:24:39,609 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 52270
+2014-01-13 00:24:39,634 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 00:24:40,397 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 00:24:40,565 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: 22a4914298134bb08783cfa7482bd7da
+2014-01-13 00:24:40,569 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 00:24:47,364 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 00:24:47,414 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (50ms, 912 bytes)
+2014-01-13 00:24:47,815 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 00:24:47,819 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 00:24:47,829 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (15ms, 6619 bytes)
+2014-01-13 00:24:47,852 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (34ms, 73492 bytes)
+2014-01-13 00:24:47,953 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 00:24:47,953 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 00:24:47,953 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 00:24:47,957 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 00:24:47,990 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (38ms, 6649 bytes)
+2014-01-13 00:24:48,042 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (88ms, 2453 bytes)
+2014-01-13 00:24:48,045 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (89ms, 21446 bytes)
+2014-01-13 00:24:48,075 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (121ms, 93069 bytes)
+2014-01-13 00:24:48,180 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 00:24:48,278 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (97ms, 9344 bytes)
+2014-01-13 00:24:48,719 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 00:24:48,719 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 00:24:48,789 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (70ms, 21793 bytes)
+2014-01-13 00:24:48,803 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (85ms, 62337 bytes)
+2014-01-13 00:24:48,855 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 00:24:48,871 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (17ms, 648 bytes)
+2014-01-13 00:24:49,430 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 00:24:49,457 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (27ms, 912 bytes)
+2014-01-13 00:24:49,710 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 00:24:49,710 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 00:24:49,713 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 00:24:49,714 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 00:24:49,714 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 00:24:49,716 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 00:24:49,726 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 00:24:49,726 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (13ms, 6649 bytes)
+2014-01-13 00:24:49,726 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (12ms, 6619 bytes)
+2014-01-13 00:24:49,743 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (34ms, 73492 bytes)
+2014-01-13 00:24:49,746 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (31ms, 21446 bytes)
+2014-01-13 00:24:49,752 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 00:24:49,822 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (71ms, 2453 bytes)
+2014-01-13 00:24:49,835 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 00:24:49,838 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (111ms, 93069 bytes)
+2014-01-13 00:24:49,851 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (16ms, 9344 bytes)
+2014-01-13 00:24:49,865 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 00:24:49,868 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 00:24:49,868 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 00:24:49,868 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 00:24:49,875 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (8ms, 4942 bytes)
+2014-01-13 00:24:49,878 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (10ms, 648 bytes)
+2014-01-13 00:24:49,881 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (17ms, 21793 bytes)
+2014-01-13 00:24:49,884 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (16ms, 62337 bytes)
+2014-01-13 00:24:49,992 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 00:24:49,997 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (6ms, 6649 bytes)
+2014-01-13 00:24:50,072 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 00:24:50,069 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 00:24:50,069 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 00:24:50,075 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 00:24:50,069 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 00:24:50,076 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 00:24:50,081 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (9ms, 21446 bytes)
+2014-01-13 00:24:50,082 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (6ms, 648 bytes)
+2014-01-13 00:24:50,086 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 00:24:50,088 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (12ms, 2453 bytes)
+2014-01-13 00:24:50,089 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (20ms, 6619 bytes)
+2014-01-13 00:24:50,089 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 00:24:50,082 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 00:24:50,109 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (23ms, 9344 bytes)
+2014-01-13 00:24:50,105 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (35ms, 73492 bytes)
+2014-01-13 00:24:50,115 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (26ms, 21793 bytes)
+2014-01-13 00:24:50,117 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (47ms, 93069 bytes)
+2014-01-13 00:24:50,122 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (42ms, 62337 bytes)
+2014-01-13 00:24:52,006 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 00:24:52,007 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (2ms, 4942 bytes)
+2014-01-13 00:24:55,122 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 00:24:55,125 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:01:06,132 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:01:06,137 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:01:06,142 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:01:06,144 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['52802'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158803257', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:01:06,145 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['52802'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:01:06,145 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['52802']
+2014-01-13 01:01:06,154 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52802 in 4ms
+2014-01-13 01:01:07,049 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["52802"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158803257","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:01:10,911 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (51dd2faf7a28403096954f89e0945fdd)
+2014-01-13 01:01:11,348 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:01:45,641 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki76226.miso.saucelabs.com
+2014-01-13 01:01:45,660 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52802 in 0ms
+2014-01-13 01:01:45,664 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:01:45,667 - sauce_connect:646 - INFO - Connecting to tunnel host maki76226.miso.saucelabs.com as janusschmidt
+2014-01-13 01:01:45,894 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 52814
+2014-01-13 01:01:45,905 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:01:46,687 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:01:46,857 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: 4a3281f221ab457f817e70adb07bdc5b
+2014-01-13 01:01:46,859 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:01:53,329 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:01:53,431 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (102ms, 912 bytes)
+2014-01-13 01:01:53,688 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:01:53,690 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:01:53,717 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (29ms, 6619 bytes)
+2014-01-13 01:01:53,724 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (34ms, 73492 bytes)
+2014-01-13 01:01:53,869 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:01:53,869 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:01:53,869 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:01:53,885 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (18ms, 6649 bytes)
+2014-01-13 01:01:53,868 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:01:53,920 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (50ms, 2453 bytes)
+2014-01-13 01:01:53,993 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (126ms, 21446 bytes)
+2014-01-13 01:01:53,996 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (127ms, 93069 bytes)
+2014-01-13 01:01:54,434 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:01:54,459 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (25ms, 9344 bytes)
+2014-01-13 01:01:54,786 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:01:54,819 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (32ms, 21793 bytes)
+2014-01-13 01:01:54,954 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:01:54,954 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:01:55,006 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (50ms, 648 bytes)
+2014-01-13 01:01:55,059 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (104ms, 62337 bytes)
+2014-01-13 01:01:55,684 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:01:55,687 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:01:55,858 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:01:55,861 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:01:55,914 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:01:55,914 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:01:55,920 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:01:55,921 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (5ms, 4942 bytes)
+2014-01-13 01:01:55,921 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (6ms, 6619 bytes)
+2014-01-13 01:01:55,920 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:01:55,921 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:01:55,947 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:01:55,948 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:01:55,963 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:01:55,963 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (40ms, 73492 bytes)
+2014-01-13 01:01:55,976 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (28ms, 6649 bytes)
+2014-01-13 01:01:55,967 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (47ms, 21446 bytes)
+2014-01-13 01:01:56,029 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (65ms, 9344 bytes)
+2014-01-13 01:01:56,029 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (75ms, 2453 bytes)
+2014-01-13 01:01:56,048 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:01:56,048 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:01:56,055 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (134ms, 93069 bytes)
+2014-01-13 01:01:56,058 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:01:56,063 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (16ms, 648 bytes)
+2014-01-13 01:01:56,075 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (27ms, 21793 bytes)
+2014-01-13 01:01:56,081 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (23ms, 62337 bytes)
+2014-01-13 01:01:56,148 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:01:56,151 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:01:56,157 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (5ms, 6619 bytes)
+2014-01-13 01:01:56,167 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:01:56,168 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:01:56,170 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (21ms, 73492 bytes)
+2014-01-13 01:01:56,171 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:01:56,177 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (8ms, 9344 bytes)
+2014-01-13 01:01:56,177 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:01:56,178 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (11ms, 6649 bytes)
+2014-01-13 01:01:56,181 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (10ms, 2453 bytes)
+2014-01-13 01:01:56,184 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:01:56,196 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (11ms, 21446 bytes)
+2014-01-13 01:01:56,200 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (23ms, 93069 bytes)
+2014-01-13 01:01:56,265 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:01:56,265 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:01:56,266 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:01:56,286 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (21ms, 648 bytes)
+2014-01-13 01:01:56,289 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (26ms, 21793 bytes)
+2014-01-13 01:01:56,295 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (32ms, 62337 bytes)
+2014-01-13 01:01:57,138 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:01:57,141 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:01:58,151 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:01:58,154 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:08:23,470 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:08:23,473 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:08:23,483 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:08:23,486 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['52995'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158803695', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:08:23,486 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['52995'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:08:23,486 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['52995']
+2014-01-13 01:08:23,496 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52995 in 6ms
+2014-01-13 01:08:24,407 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["52995"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158803695","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:08:28,305 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (436cd67745574121a5109f6da9ae9cec)
+2014-01-13 01:08:28,720 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:08:59,546 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki77081.miso.saucelabs.com
+2014-01-13 01:08:59,562 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:52995 in 0ms
+2014-01-13 01:08:59,569 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:08:59,571 - sauce_connect:646 - INFO - Connecting to tunnel host maki77081.miso.saucelabs.com as janusschmidt
+2014-01-13 01:08:59,767 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 53009
+2014-01-13 01:08:59,799 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:09:00,585 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:09:00,755 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: c3f63c33809347eb8ac0bde56244798f
+2014-01-13 01:09:00,757 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:09:07,082 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:09:07,135 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (54ms, 912 bytes)
+2014-01-13 01:09:07,532 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:09:07,533 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:09:07,555 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (23ms, 6619 bytes)
+2014-01-13 01:09:07,565 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:09:07,566 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:09:07,575 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (42ms, 73492 bytes)
+2014-01-13 01:09:07,588 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (22ms, 21446 bytes)
+2014-01-13 01:09:07,588 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (27ms, 6649 bytes)
+2014-01-13 01:09:07,710 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:09:07,710 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:09:07,724 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (16ms, 2453 bytes)
+2014-01-13 01:09:07,767 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (57ms, 93069 bytes)
+2014-01-13 01:09:08,075 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:09:08,105 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (30ms, 9344 bytes)
+2014-01-13 01:09:08,473 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:09:08,474 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:09:08,536 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (61ms, 62337 bytes)
+2014-01-13 01:09:08,546 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (72ms, 21793 bytes)
+2014-01-13 01:09:08,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:09:08,644 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (12ms, 648 bytes)
+2014-01-13 01:09:09,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:09:09,634 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:09:10,196 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:09:10,196 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:09:10,200 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (6ms, 912 bytes)
+2014-01-13 01:09:10,203 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (9ms, 912 bytes)
+2014-01-13 01:09:10,450 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:09:10,454 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (5ms, 6619 bytes)
+2014-01-13 01:09:10,460 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:09:10,463 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:09:10,467 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (6ms, 6649 bytes)
+2014-01-13 01:09:10,467 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:09:10,469 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:09:10,500 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (33ms, 2453 bytes)
+2014-01-13 01:09:10,503 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (35ms, 21446 bytes)
+2014-01-13 01:09:10,509 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:09:10,512 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:09:10,513 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:09:10,513 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:09:10,559 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (98ms, 73492 bytes)
+2014-01-13 01:09:10,565 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (53ms, 9344 bytes)
+2014-01-13 01:09:10,575 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (61ms, 21793 bytes)
+2014-01-13 01:09:10,582 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (71ms, 62337 bytes)
+2014-01-13 01:09:10,595 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (100ms, 93069 bytes)
+2014-01-13 01:09:10,625 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:09:10,627 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:09:10,632 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (14ms, 6619 bytes)
+2014-01-13 01:09:10,632 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:09:10,647 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (19ms, 648 bytes)
+2014-01-13 01:09:10,670 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:09:10,684 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:09:10,676 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:09:10,684 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:09:10,687 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:09:10,701 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (67ms, 73492 bytes)
+2014-01-13 01:09:10,703 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (32ms, 6649 bytes)
+2014-01-13 01:09:10,707 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:09:10,706 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (22ms, 2453 bytes)
+2014-01-13 01:09:10,720 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (35ms, 9344 bytes)
+2014-01-13 01:09:10,707 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (31ms, 21446 bytes)
+2014-01-13 01:09:10,740 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (33ms, 21793 bytes)
+2014-01-13 01:09:10,752 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (75ms, 93069 bytes)
+2014-01-13 01:09:10,802 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:09:10,806 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:09:10,812 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (6ms, 648 bytes)
+2014-01-13 01:09:10,816 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (14ms, 62337 bytes)
+2014-01-13 01:09:14,278 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:09:14,285 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (8ms, 4942 bytes)
+2014-01-13 01:09:15,467 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:09:15,470 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:11:37,036 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:11:37,042 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:11:37,049 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:11:37,049 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['53157'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158803888', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:11:37,051 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['53157'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:11:37,052 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['53157']
+2014-01-13 01:11:37,062 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53157 in 5ms
+2014-01-13 01:11:38,049 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["53157"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158803888","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:11:41,667 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (c369f014dae54126bb75899b7d8b1e3d)
+2014-01-13 01:11:42,072 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:12:05,950 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki76203.miso.saucelabs.com
+2014-01-13 01:12:05,967 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53157 in 0ms
+2014-01-13 01:12:05,973 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:12:05,974 - sauce_connect:646 - INFO - Connecting to tunnel host maki76203.miso.saucelabs.com as janusschmidt
+2014-01-13 01:12:06,164 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 53167
+2014-01-13 01:12:06,177 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:12:07,009 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:12:07,177 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: e55bad06775f4ef5882f278f059462a9
+2014-01-13 01:12:07,180 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:12:16,579 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:12:16,624 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (44ms, 912 bytes)
+2014-01-13 01:12:16,894 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:12:16,926 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:12:16,934 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (42ms, 6619 bytes)
+2014-01-13 01:12:16,934 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:12:16,931 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:12:16,936 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:12:16,940 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:12:16,973 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (38ms, 21446 bytes)
+2014-01-13 01:12:16,976 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (36ms, 6649 bytes)
+2014-01-13 01:12:16,977 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (46ms, 2453 bytes)
+2014-01-13 01:12:17,007 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (82ms, 73492 bytes)
+2014-01-13 01:12:17,022 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (86ms, 93069 bytes)
+2014-01-13 01:12:17,066 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:12:17,065 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:12:17,071 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:12:17,071 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:12:17,071 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:12:17,092 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (21ms, 4942 bytes)
+2014-01-13 01:12:17,111 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (46ms, 21793 bytes)
+2014-01-13 01:12:17,117 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (49ms, 9344 bytes)
+2014-01-13 01:12:17,124 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (52ms, 648 bytes)
+2014-01-13 01:12:17,167 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (96ms, 62337 bytes)
+2014-01-13 01:12:18,380 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:12:18,384 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:36:04,381 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:36:04,385 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:36:04,392 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:36:04,394 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['53633'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158805355', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:36:04,394 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['53633'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:36:04,395 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['53633']
+2014-01-13 01:36:04,405 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53633 in 3ms
+2014-01-13 01:36:05,305 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["53633"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158805355","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:36:09,210 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (72306068e67e429eb2a27b0727560d75)
+2014-01-13 01:36:09,621 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:36:47,338 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki77187.miso.saucelabs.com
+2014-01-13 01:36:47,358 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53633 in 0ms
+2014-01-13 01:36:47,365 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:36:47,365 - sauce_connect:646 - INFO - Connecting to tunnel host maki77187.miso.saucelabs.com as janusschmidt
+2014-01-13 01:36:47,598 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 53645
+2014-01-13 01:36:47,625 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:36:48,470 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:36:48,638 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: 1a3fba9f7c9c423bb81622a69e4c7063
+2014-01-13 01:36:48,642 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:37:03,845 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:37:03,953 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (108ms, 912 bytes)
+2014-01-13 01:37:04,200 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:37:04,220 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (18ms, 6619 bytes)
+2014-01-13 01:37:04,250 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:37:04,256 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:37:04,270 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (15ms, 6649 bytes)
+2014-01-13 01:37:04,384 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (132ms, 73492 bytes)
+2014-01-13 01:37:04,401 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:37:04,400 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:37:04,401 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:37:04,415 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (16ms, 2453 bytes)
+2014-01-13 01:37:04,426 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (26ms, 21446 bytes)
+2014-01-13 01:37:04,467 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (68ms, 93069 bytes)
+2014-01-13 01:37:04,558 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:37:04,588 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (30ms, 9344 bytes)
+2014-01-13 01:37:05,144 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:37:05,147 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:37:05,184 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (38ms, 648 bytes)
+2014-01-13 01:37:05,203 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (60ms, 21793 bytes)
+2014-01-13 01:37:05,313 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:37:05,358 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (46ms, 62337 bytes)
+2014-01-13 01:37:06,311 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:37:06,315 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (6ms, 4942 bytes)
+2014-01-13 01:40:10,411 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:40:10,415 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:40:10,423 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:40:10,423 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['53736'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158805602', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:40:10,424 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['53736'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:40:10,424 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['53736']
+2014-01-13 01:40:10,434 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53736 in 5ms
+2014-01-13 01:40:11,351 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["53736"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158805602","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:40:15,348 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (67c710f363b241c6bf8d00d782a7ad6b)
+2014-01-13 01:40:15,765 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:40:53,456 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki76047.miso.saucelabs.com
+2014-01-13 01:40:53,479 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:53736 in 0ms
+2014-01-13 01:40:53,486 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:40:53,490 - sauce_connect:646 - INFO - Connecting to tunnel host maki76047.miso.saucelabs.com as janusschmidt
+2014-01-13 01:40:53,757 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 53749
+2014-01-13 01:40:53,769 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:40:54,700 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:40:54,743 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: ed214759d2af499883787e09bf588ec3
+2014-01-13 01:40:54,746 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:41:00,993 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:01,045 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (53ms, 912 bytes)
+2014-01-13 01:41:01,285 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:01,302 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (18ms, 6619 bytes)
+2014-01-13 01:41:01,487 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:01,487 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:01,506 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (18ms, 912 bytes)
+2014-01-13 01:41:01,517 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (30ms, 73492 bytes)
+2014-01-13 01:41:01,711 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:01,714 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (4ms, 6619 bytes)
+2014-01-13 01:41:02,029 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:02,042 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (13ms, 73492 bytes)
+2014-01-13 01:41:02,414 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:02,434 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (22ms, 21446 bytes)
+2014-01-13 01:41:02,928 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:02,928 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:02,969 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (41ms, 6649 bytes)
+2014-01-13 01:41:03,009 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (82ms, 21446 bytes)
+2014-01-13 01:41:03,318 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:03,374 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (56ms, 93069 bytes)
+2014-01-13 01:41:03,526 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:03,526 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:03,530 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:41:03,530 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (4ms, 6649 bytes)
+2014-01-13 01:41:03,959 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:03,970 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (12ms, 2453 bytes)
+2014-01-13 01:41:03,997 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:04,003 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (5ms, 6619 bytes)
+2014-01-13 01:41:04,012 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:04,016 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:04,033 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (23ms, 21446 bytes)
+2014-01-13 01:41:04,046 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (31ms, 73492 bytes)
+2014-01-13 01:41:04,183 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:04,196 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:04,194 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:04,200 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:04,200 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:04,200 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:04,203 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:04,247 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (46ms, 6649 bytes)
+2014-01-13 01:41:04,250 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (68ms, 93069 bytes)
+2014-01-13 01:41:04,255 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:04,266 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (64ms, 93069 bytes)
+2014-01-13 01:41:04,266 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (66ms, 2453 bytes)
+2014-01-13 01:41:04,275 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (73ms, 648 bytes)
+2014-01-13 01:41:04,280 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (85ms, 62337 bytes)
+2014-01-13 01:41:04,292 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (100ms, 21793 bytes)
+2014-01-13 01:41:04,309 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (55ms, 9344 bytes)
+2014-01-13 01:41:04,359 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:04,364 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (4ms, 9344 bytes)
+2014-01-13 01:41:06,160 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:06,163 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (3ms, 2453 bytes)
+2014-01-13 01:41:06,558 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:06,558 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:06,568 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (9ms, 9344 bytes)
+2014-01-13 01:41:06,572 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (15ms, 21793 bytes)
+2014-01-13 01:41:06,730 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:06,733 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:41:07,130 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:07,130 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:07,137 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (7ms, 21793 bytes)
+2014-01-13 01:41:07,148 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (19ms, 62337 bytes)
+2014-01-13 01:41:07,523 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:07,539 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (17ms, 62337 bytes)
+2014-01-13 01:41:07,707 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:07,729 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (22ms, 648 bytes)
+2014-01-13 01:41:08,052 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:08,055 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:41:08,223 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:08,226 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:41:28,811 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:28,813 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:41:29,255 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:29,256 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:29,265 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (10ms, 6619 bytes)
+2014-01-13 01:41:29,275 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:29,278 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:29,278 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:29,282 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:29,282 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:29,315 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (30ms, 6649 bytes)
+2014-01-13 01:41:29,316 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (34ms, 9344 bytes)
+2014-01-13 01:41:29,316 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (36ms, 2453 bytes)
+2014-01-13 01:41:29,319 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (45ms, 21446 bytes)
+2014-01-13 01:41:29,325 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (71ms, 73492 bytes)
+2014-01-13 01:41:29,334 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (56ms, 93069 bytes)
+2014-01-13 01:41:29,431 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:29,431 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:29,431 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:29,434 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:41:29,440 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (8ms, 21793 bytes)
+2014-01-13 01:41:29,444 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (13ms, 62337 bytes)
+2014-01-13 01:41:31,740 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:31,744 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 01:41:32,138 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:32,138 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:32,141 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:41:32,141 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (3ms, 6619 bytes)
+2014-01-13 01:41:32,147 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:32,148 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:32,148 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:32,154 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (7ms, 6649 bytes)
+2014-01-13 01:41:32,157 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (10ms, 21446 bytes)
+2014-01-13 01:41:32,167 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (20ms, 93069 bytes)
+2014-01-13 01:41:32,309 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:32,309 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:32,319 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (9ms, 21793 bytes)
+2014-01-13 01:41:32,325 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (16ms, 62337 bytes)
+2014-01-13 01:41:32,509 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:32,513 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (2ms, 648 bytes)
+2014-01-13 01:41:32,680 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:32,680 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:32,684 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (3ms, 2453 bytes)
+2014-01-13 01:41:32,690 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (10ms, 73492 bytes)
+2014-01-13 01:41:32,854 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:32,857 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 01:41:33,221 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:33,223 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (2ms, 912 bytes)
+2014-01-13 01:41:33,404 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:33,407 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:41:33,444 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:33,444 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:33,447 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:33,450 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:33,453 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (8ms, 6649 bytes)
+2014-01-13 01:41:33,447 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:33,470 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (20ms, 6619 bytes)
+2014-01-13 01:41:33,476 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (32ms, 21446 bytes)
+2014-01-13 01:41:33,487 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (40ms, 2453 bytes)
+2014-01-13 01:41:33,490 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (43ms, 93069 bytes)
+2014-01-13 01:41:33,582 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:33,585 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 01:41:33,793 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:33,793 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:33,798 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (5ms, 21793 bytes)
+2014-01-13 01:41:33,803 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (11ms, 62337 bytes)
+2014-01-13 01:41:33,963 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:33,967 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:41:34,135 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:34,151 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (15ms, 73492 bytes)
+2014-01-13 01:41:35,457 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:35,460 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:41:48,115 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:41:48,119 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 01:41:48,453 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:41:48,453 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:41:48,463 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (9ms, 6619 bytes)
+2014-01-13 01:41:48,473 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (19ms, 73492 bytes)
+2014-01-13 01:41:48,628 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:41:48,628 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:41:48,628 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:41:48,628 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:41:48,635 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (8ms, 6649 bytes)
+2014-01-13 01:41:48,648 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (19ms, 2453 bytes)
+2014-01-13 01:41:48,651 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (24ms, 21446 bytes)
+2014-01-13 01:41:48,664 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (36ms, 93069 bytes)
+2014-01-13 01:41:49,007 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:41:49,012 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (4ms, 9344 bytes)
+2014-01-13 01:41:49,180 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:41:49,186 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (6ms, 21793 bytes)
+2014-01-13 01:41:49,385 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:41:49,385 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:41:49,388 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:41:49,400 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (14ms, 62337 bytes)
+2014-01-13 01:41:50,183 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:41:50,186 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:42:01,365 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:42:01,368 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:42:01,671 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:42:01,673 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:42:01,673 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:42:01,680 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:42:01,676 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:42:01,703 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (23ms, 6649 bytes)
+2014-01-13 01:42:01,700 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (29ms, 6619 bytes)
+2014-01-13 01:42:01,709 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (33ms, 2453 bytes)
+2014-01-13 01:42:01,710 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (37ms, 21446 bytes)
+2014-01-13 01:42:01,717 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (45ms, 73492 bytes)
+2014-01-13 01:42:01,917 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:42:01,943 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (26ms, 93069 bytes)
+2014-01-13 01:42:02,078 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:42:02,082 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 01:42:02,085 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:42:02,088 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (3ms, 21793 bytes)
+2014-01-13 01:42:02,255 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:42:02,255 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:42:02,256 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (1ms, 648 bytes)
+2014-01-13 01:42:02,269 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (15ms, 62337 bytes)
+2014-01-13 01:42:03,526 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:42:03,530 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:42:04,398 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:42:04,401 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:42:04,812 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:42:04,815 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:42:04,818 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:42:04,815 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:42:04,819 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:42:04,832 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (16ms, 6649 bytes)
+2014-01-13 01:42:04,855 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (40ms, 21446 bytes)
+2014-01-13 01:42:04,861 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (45ms, 2453 bytes)
+2014-01-13 01:42:04,865 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (52ms, 73492 bytes)
+2014-01-13 01:42:04,882 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (64ms, 93069 bytes)
+2014-01-13 01:42:04,920 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:42:04,921 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (3ms, 6619 bytes)
+2014-01-13 01:42:05,184 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:42:05,187 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 01:42:05,430 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:42:05,436 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (6ms, 21793 bytes)
+2014-01-13 01:42:05,604 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:42:05,604 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:42:05,607 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:42:05,615 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (12ms, 62337 bytes)
+2014-01-13 01:42:06,598 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:42:06,601 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:58:50,171 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 01:58:50,174 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 01:58:50,181 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 01:58:50,184 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['54161'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158806722', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 01:58:50,184 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['54161'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 01:58:50,186 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['54161']
+2014-01-13 01:58:50,194 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:54161 in 5ms
+2014-01-13 01:58:51,124 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["54161"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158806722","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 01:58:55,255 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (335803451f1a4d2aa937d83c35df994a)
+2014-01-13 01:58:55,670 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 01:59:16,118 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki77187.miso.saucelabs.com
+2014-01-13 01:59:16,137 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:54161 in 0ms
+2014-01-13 01:59:16,142 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 01:59:16,144 - sauce_connect:646 - INFO - Connecting to tunnel host maki77187.miso.saucelabs.com as janusschmidt
+2014-01-13 01:59:16,336 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 54191
+2014-01-13 01:59:16,375 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 01:59:17,101 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 01:59:17,273 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: d9003cec8b17479299dca6cc790492b4
+2014-01-13 01:59:17,278 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 01:59:23,167 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:23,207 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (39ms, 912 bytes)
+2014-01-13 01:59:23,723 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:23,729 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:23,766 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (43ms, 6619 bytes)
+2014-01-13 01:59:23,776 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (48ms, 73492 bytes)
+2014-01-13 01:59:23,934 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:23,938 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (6ms, 912 bytes)
+2014-01-13 01:59:24,707 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:24,710 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:24,707 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:24,726 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (18ms, 73492 bytes)
+2014-01-13 01:59:24,734 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (28ms, 6619 bytes)
+2014-01-13 01:59:24,739 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (29ms, 21446 bytes)
+2014-01-13 01:59:25,483 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:25,490 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (6ms, 21446 bytes)
+2014-01-13 01:59:25,668 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:25,707 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (39ms, 6649 bytes)
+2014-01-13 01:59:25,884 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:25,888 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (4ms, 6649 bytes)
+2014-01-13 01:59:26,065 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:26,065 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:26,072 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (7ms, 912 bytes)
+2014-01-13 01:59:26,121 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (55ms, 93069 bytes)
+2014-01-13 01:59:26,272 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:26,305 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (33ms, 93069 bytes)
+2014-01-13 01:59:26,329 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:26,335 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:26,348 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:26,351 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (19ms, 6619 bytes)
+2014-01-13 01:59:26,355 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:26,364 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:26,365 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (17ms, 6649 bytes)
+2014-01-13 01:59:26,375 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:26,385 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (50ms, 73492 bytes)
+2014-01-13 01:59:26,385 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (22ms, 2453 bytes)
+2014-01-13 01:59:26,388 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (33ms, 93069 bytes)
+2014-01-13 01:59:26,388 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (13ms, 21446 bytes)
+2014-01-13 01:59:26,463 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:26,464 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:26,464 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:26,503 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:26,545 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (40ms, 648 bytes)
+2014-01-13 01:59:26,562 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (97ms, 21793 bytes)
+2014-01-13 01:59:26,584 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (121ms, 62337 bytes)
+2014-01-13 01:59:26,595 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (133ms, 9344 bytes)
+2014-01-13 01:59:26,973 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:26,974 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:26,980 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (7ms, 2453 bytes)
+2014-01-13 01:59:26,986 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (12ms, 2453 bytes)
+2014-01-13 01:59:29,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:59:29,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:29,634 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (4ms, 9344 bytes)
+2014-01-13 01:59:29,634 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:59:29,786 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:29,788 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 01:59:30,355 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:30,355 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:30,364 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (8ms, 21793 bytes)
+2014-01-13 01:59:30,364 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (8ms, 21793 bytes)
+2014-01-13 01:59:30,747 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:30,762 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (14ms, 62337 bytes)
+2014-01-13 01:59:30,926 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:30,938 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (13ms, 62337 bytes)
+2014-01-13 01:59:31,213 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:31,216 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:59:31,598 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:59:31,601 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 01:59:31,776 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:31,779 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (2ms, 648 bytes)
+2014-01-13 01:59:49,674 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:49,677 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 01:59:50,066 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:50,066 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:50,078 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (11ms, 6619 bytes)
+2014-01-13 01:59:50,075 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:50,078 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:50,078 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:50,098 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (32ms, 73492 bytes)
+2014-01-13 01:59:50,079 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:50,084 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:50,085 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:50,134 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (56ms, 21446 bytes)
+2014-01-13 01:59:50,140 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (46ms, 2453 bytes)
+2014-01-13 01:59:50,140 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (61ms, 6649 bytes)
+2014-01-13 01:59:50,151 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (68ms, 21793 bytes)
+2014-01-13 01:59:50,153 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (70ms, 9344 bytes)
+2014-01-13 01:59:50,168 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (90ms, 93069 bytes)
+2014-01-13 01:59:50,237 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:50,237 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:50,240 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:59:50,249 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (11ms, 62337 bytes)
+2014-01-13 01:59:52,970 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:59:52,973 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 01:59:55,673 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:55,676 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (2ms, 912 bytes)
+2014-01-13 01:59:55,884 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:55,888 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:55,888 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (3ms, 6619 bytes)
+2014-01-13 01:59:55,892 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (6ms, 21446 bytes)
+2014-01-13 01:59:56,059 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:56,059 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:56,059 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:56,059 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:56,078 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (19ms, 6649 bytes)
+2014-01-13 01:59:56,079 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (20ms, 9344 bytes)
+2014-01-13 01:59:56,082 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (25ms, 2453 bytes)
+2014-01-13 01:59:56,084 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (26ms, 93069 bytes)
+2014-01-13 01:59:56,236 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:56,345 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (108ms, 21793 bytes)
+2014-01-13 01:59:56,408 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:56,421 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (13ms, 73492 bytes)
+2014-01-13 01:59:56,625 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:56,650 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (26ms, 62337 bytes)
+2014-01-13 01:59:56,798 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:56,802 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (4ms, 648 bytes)
+2014-01-13 01:59:57,007 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 01:59:57,012 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (5ms, 912 bytes)
+2014-01-13 01:59:57,256 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:59:57,259 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 01:59:57,259 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 01:59:57,259 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 01:59:57,259 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 01:59:57,262 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 01:59:57,263 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (6ms, 4942 bytes)
+2014-01-13 01:59:57,346 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (88ms, 73492 bytes)
+2014-01-13 01:59:57,361 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (96ms, 2453 bytes)
+2014-01-13 01:59:57,362 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (104ms, 6649 bytes)
+2014-01-13 01:59:57,382 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (123ms, 6619 bytes)
+2014-01-13 01:59:57,400 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (140ms, 21446 bytes)
+2014-01-13 01:59:57,427 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 01:59:57,431 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (5ms, 9344 bytes)
+2014-01-13 01:59:57,769 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 01:59:57,780 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (11ms, 62337 bytes)
+2014-01-13 01:59:57,941 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 01:59:57,947 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (5ms, 21793 bytes)
+2014-01-13 01:59:58,114 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 01:59:58,117 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 01:59:58,285 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 01:59:58,299 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (13ms, 93069 bytes)
+2014-01-13 01:59:58,750 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 01:59:58,753 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 02:00:08,982 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:00:08,984 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 02:00:09,237 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:09,237 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:00:09,237 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 02:00:09,242 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 02:00:09,256 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (20ms, 6619 bytes)
+2014-01-13 02:00:09,262 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (24ms, 21446 bytes)
+2014-01-13 02:00:09,262 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (20ms, 6649 bytes)
+2014-01-13 02:00:09,266 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (30ms, 73492 bytes)
+2014-01-13 02:00:09,525 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 02:00:09,525 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 02:00:09,532 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (8ms, 2453 bytes)
+2014-01-13 02:00:09,543 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (19ms, 93069 bytes)
+2014-01-13 02:00:09,635 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 02:00:09,638 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (2ms, 9344 bytes)
+2014-01-13 02:00:09,796 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:09,796 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 02:00:09,799 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (3ms, 21793 bytes)
+2014-01-13 02:00:09,806 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (10ms, 62337 bytes)
+2014-01-13 02:00:09,953 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 02:00:09,957 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (3ms, 648 bytes)
+2014-01-13 02:00:11,019 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:11,022 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 02:00:18,463 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/myopera/
+2014-01-13 02:00:18,463 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/portal/
+2014-01-13 02:00:18,467 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/market/us
+2014-01-13 02:00:18,463 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/facebook/
+2014-01-13 02:00:18,463 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/amazon/
+2014-01-13 02:00:18,467 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/booking/
+2014-01-13 02:00:18,517 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/amazon/ -> 302 (54ms, 0 bytes)
+2014-01-13 02:00:18,517 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/booking/ -> 302 (51ms, 0 bytes)
+2014-01-13 02:00:18,517 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/facebook/ -> 302 (54ms, 0 bytes)
+2014-01-13 02:00:18,519 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/myopera/ -> 302 (56ms, 0 bytes)
+2014-01-13 02:00:18,517 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/portal/ -> 302 (54ms, 0 bytes)
+2014-01-13 02:00:18,522 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/market/us -> 302 (55ms, 0 bytes)
+2014-01-13 02:00:18,696 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/kayak
+2014-01-13 02:00:18,710 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/reddit
+2014-01-13 02:00:18,710 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/bigpoint/
+2014-01-13 02:00:18,714 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/kayak -> 302 (18ms, 0 bytes)
+2014-01-13 02:00:18,727 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/reddit -> 302 (17ms, 0 bytes)
+2014-01-13 02:00:18,729 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/bigpoint/ -> 302 (18ms, 0 bytes)
+2014-01-13 02:00:18,868 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/download
+2014-01-13 02:00:18,868 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/ebay
+2014-01-13 02:00:18,868 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:00:18,871 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 02:00:18,882 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/download -> 302 (15ms, 0 bytes)
+2014-01-13 02:00:18,885 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/ebay -> 302 (18ms, 0 bytes)
+2014-01-13 02:00:19,039 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/fastmail
+2014-01-13 02:00:19,042 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/shopping
+2014-01-13 02:00:19,055 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/fastmail -> 302 (16ms, 0 bytes)
+2014-01-13 02:00:19,056 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/shopping -> 302 (15ms, 0 bytes)
+2014-01-13 02:00:19,121 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/previews/booking/default
+2014-01-13 02:00:19,121 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/speeddials/previews/market/us
+2014-01-13 02:00:19,122 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:19,124 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/amazon/
+2014-01-13 02:00:19,131 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (9ms, 6619 bytes)
+2014-01-13 02:00:19,138 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/previews/booking/default -> 302 (17ms, 0 bytes)
+2014-01-13 02:00:19,141 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/speeddials/previews/market/us -> 302 (20ms, 0 bytes)
+2014-01-13 02:00:19,145 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/amazon/ -> 302 (23ms, 0 bytes)
+2014-01-13 02:00:19,213 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 02:00:19,213 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:00:19,216 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:19,213 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:19,213 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 02:00:19,216 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 02:00:19,217 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 02:00:19,216 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 02:00:19,223 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 02:00:19,230 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (14ms, 9344 bytes)
+2014-01-13 02:00:19,229 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (16ms, 648 bytes)
+2014-01-13 02:00:19,230 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 02:00:19,236 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (23ms, 4942 bytes)
+2014-01-13 02:00:19,236 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (17ms, 2453 bytes)
+2014-01-13 02:00:19,236 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (20ms, 6649 bytes)
+2014-01-13 02:00:19,236 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (21ms, 21793 bytes)
+2014-01-13 02:00:19,265 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (52ms, 73492 bytes)
+2014-01-13 02:00:19,299 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (72ms, 62337 bytes)
+2014-01-13 02:00:19,303 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (81ms, 21446 bytes)
+2014-01-13 02:00:19,311 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (80ms, 93069 bytes)
+2014-01-13 02:00:19,479 - sauce_connect:0 - INFO - Request started: HEAD http://redir.opera.com/bookmarks/sports.opera.com
+2014-01-13 02:00:19,502 - sauce_connect:0 - INFO - HEAD http://redir.opera.com/bookmarks/sports.opera.com -> 302 (23ms, 0 bytes)
+2014-01-13 02:00:19,838 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:19,842 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 02:00:20,174 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:00:20,177 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 02:00:20,618 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:20,621 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 02:00:20,630 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 02:00:20,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 02:00:20,630 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:20,634 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (4ms, 2453 bytes)
+2014-01-13 02:00:20,634 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (4ms, 9344 bytes)
+2014-01-13 02:00:20,638 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (7ms, 6619 bytes)
+2014-01-13 02:00:20,644 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:00:20,645 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:20,645 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 02:00:20,680 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 02:00:20,681 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 02:00:20,694 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (49ms, 6649 bytes)
+2014-01-13 02:00:20,698 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (19ms, 648 bytes)
+2014-01-13 02:00:20,698 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (54ms, 21793 bytes)
+2014-01-13 02:00:20,710 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (65ms, 73492 bytes)
+2014-01-13 02:00:20,710 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (28ms, 62337 bytes)
+2014-01-13 02:00:20,770 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 02:00:20,770 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 02:00:20,783 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (13ms, 21446 bytes)
+2014-01-13 02:00:20,796 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (26ms, 93069 bytes)
+2014-01-13 02:00:20,966 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:20,967 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (2ms, 6619 bytes)
+2014-01-13 02:00:21,140 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:21,144 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (4ms, 21793 bytes)
+2014-01-13 02:00:34,642 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:00:34,645 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (3ms, 912 bytes)
+2014-01-13 02:00:34,852 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:34,858 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (5ms, 6619 bytes)
+2014-01-13 02:00:34,890 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 02:00:34,890 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:00:34,911 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (20ms, 93069 bytes)
+2014-01-13 02:00:34,910 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (20ms, 73492 bytes)
+2014-01-13 02:00:35,030 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 02:00:35,032 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 02:00:35,030 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 02:00:35,035 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (3ms, 2453 bytes)
+2014-01-13 02:00:35,042 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (8ms, 6649 bytes)
+2014-01-13 02:00:35,052 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (20ms, 21446 bytes)
+2014-01-13 02:00:35,203 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 02:00:35,207 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 02:00:35,505 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 02:00:35,505 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:35,515 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (10ms, 21793 bytes)
+2014-01-13 02:00:35,520 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (16ms, 62337 bytes)
+2014-01-13 02:00:35,619 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 02:00:35,625 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (4ms, 648 bytes)
+2014-01-13 02:00:36,512 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:36,516 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (4ms, 4942 bytes)
+2014-01-13 02:00:43,951 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:00:43,956 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (4ms, 912 bytes)
+2014-01-13 02:00:44,171 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js
+2014-01-13 02:00:44,176 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-jsreporter.js -> 200 (4ms, 6649 bytes)
+2014-01-13 02:00:44,201 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:00:44,203 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:00:44,206 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (4ms, 6619 bytes)
+2014-01-13 02:00:44,220 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (17ms, 73492 bytes)
+2014-01-13 02:00:44,348 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jquery.min.js
+2014-01-13 02:00:44,349 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js
+2014-01-13 02:00:44,349 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/lib.js
+2014-01-13 02:00:44,358 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/lib.js -> 200 (10ms, 2453 bytes)
+2014-01-13 02:00:44,375 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine-html.js -> 200 (26ms, 21446 bytes)
+2014-01-13 02:00:44,391 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jquery.min.js -> 200 (41ms, 93069 bytes)
+2014-01-13 02:00:44,520 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/adapter.js
+2014-01-13 02:00:44,523 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/adapter.js -> 200 (3ms, 9344 bytes)
+2014-01-13 02:00:44,693 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:00:44,697 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/src/jquery.pivot.js -> 200 (5ms, 21793 bytes)
+2014-01-13 02:00:44,963 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js
+2014-01-13 02:00:44,963 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js
+2014-01-13 02:00:44,964 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/startJasmineHtmlRunner.js -> 200 (2ms, 648 bytes)
+2014-01-13 02:00:44,993 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/js/tests/spec.js -> 200 (30ms, 62337 bytes)
+2014-01-13 02:00:46,033 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png
+2014-01-13 02:00:46,036 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine_favicon.png -> 404 (3ms, 4942 bytes)
+2014-01-13 02:04:48,082 - sauce_connect:558 - INFO - / Starting \
+2014-01-13 02:04:48,085 - sauce_connect:559 - INFO - Please wait for "You may start your tests" to start your tests.
+2014-01-13 02:04:48,092 - sauce_connect:571 - DEBUG - System is 2.0 hours off UTC
+2014-01-13 02:04:48,094 - sauce_connect:573 - DEBUG - options: {'user': 'janusschmidt', 'ports': ['54530'], 'domains': None, 'debug_ssh': False, 'tunnel_ports': ['80'], 'allow_unclean_exit': False, 'rest_url': 'https://saucelabs.com/rest/v1', 'logfile': 'sauce_connect.log', 'squid_opts': '', 'boost_mode': True, 'tunnel_identifier': '158807079', 'fast_fail_regexps': '', 'quiet': False, 'latency_log': 150, 'use_ssh_config': False, 'ssh': False, 'se_port': '4445', 'readyfile': None, 'shared_tunnel': False, 'ssh_port': 443, 'direct_domains': '', 'host': '127.0.0.1'}
+2014-01-13 02:04:48,095 - sauce_connect:574 - DEBUG - metadata: {'PythonVersion': '2.5.1', 'OwnerHost': '127.0.0.1', 'Release': '3.0-r28', 'OwnerPorts': ['54530'], 'Ports': ['80'], 'Platform': 'Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86', 'Build': '43', 'ScriptRelease': 43, 'ScriptName': 'sauce_connect'}
+2014-01-13 02:04:48,095 - sauce_connect:576 - INFO - Forwarding: None:['80'] -> 127.0.0.1:['54530']
+2014-01-13 02:04:48,105 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:54530 in 5ms
+2014-01-13 02:04:49,016 - sauce_connect:238 - INFO - {"squid_config":null,"use_caching_proxy":true,"metadata":{"PythonVersion":"2.5.1","OwnerHost":"127.0.0.1","Release":"3.0-r28","OwnerPorts":["54530"],"Ports":["80"],"Platform":"Java-1.7.0_45-Java_HotSpot-TM-_Client_VM,_24.45-b08,_Oracle_Corporation-on-Windows_Server_2012-6.2-x86","Build":"43","ScriptRelease":43,"ScriptName":"sauce_connect"},"use_kgp":true,"tunnel_identifier":"158807079","shared_tunnel":false,"fast_fail_regexps":null,"ssh_port":443,"direct_domains":null,"domain_names":[]}
+2014-01-13 02:04:52,618 - sauce_connect:250 - INFO - Tunnel remote VM is provisioned (d04ab440a07d48169cdc855c0fa70a63)
+2014-01-13 02:04:53,035 - sauce_connect:268 - INFO - Tunnel remote VM is booting ..
+2014-01-13 02:05:22,904 - sauce_connect:272 - INFO - Tunnel remote VM is running at maki76166.miso.saucelabs.com
+2014-01-13 02:05:22,921 - sauce_connect:375 - INFO - Succesfully connected to local server 127.0.0.1:54530 in 0ms
+2014-01-13 02:05:22,927 - sauce_connect:646 - INFO - Starting connection to tunnel host...
+2014-01-13 02:05:22,928 - sauce_connect:646 - INFO - Connecting to tunnel host maki76166.miso.saucelabs.com as janusschmidt
+2014-01-13 02:05:23,125 - sauce_connect:646 - INFO - Forwarding Selenium with ephemeral port 54540
+2014-01-13 02:05:23,207 - sauce_connect:646 - INFO - Selenium HTTP proxy listening on port 4445
+2014-01-13 02:05:23,992 - sauce_connect:0 - INFO - Successful handshake with Sauce Connect server
+2014-01-13 02:05:24,167 - sauce_connect:0 - INFO - Tunnel host version: 0.1.0, remote endpoint ID: d6d83bbc8f334de2b8278e7f8bf7f0b9
+2014-01-13 02:05:24,171 - sauce_connect:646 - INFO - Connected! You may start your tests.
+2014-01-13 02:05:37,855 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:05:37,898 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (43ms, 912 bytes)
+2014-01-13 02:05:38,441 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css
+2014-01-13 02:05:38,459 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.css -> 200 (16ms, 6619 bytes)
+2014-01-13 02:05:38,631 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tests/run.html
+2014-01-13 02:05:38,637 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tests/run.html -> 200 (5ms, 912 bytes)
+2014-01-13 02:05:38,815 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js
+2014-01-13 02:05:38,835 - sauce_connect:0 - INFO - GET http://localhost/jquery.pivot/tools/jasmine-1.3.1/jasmine.js -> 200 (20ms, 73492 bytes)
+2014-01-13 02:05:38,848 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/src/jquery.pivot.js
+2014-01-13 02:05:38,851 - sauce_connect:0 - INFO - Request started: GET http://localhost/jquery.pivot/js/tests/spec.js

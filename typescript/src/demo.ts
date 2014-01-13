@@ -1,4 +1,4 @@
-﻿///<reference path="definitions/jquery.d.ts"/>
+﻿///<reference path="../definitions/jquery.d.ts"/>
 /// <reference path="jquery.pivot.ts"/>
 
 $(document).ready(function () {
