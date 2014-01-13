@@ -1,20 +1,26 @@
-﻿{
-    "name": "pivot",
-    "version": "2.0.1",
-    "title": "jQuery.pivot",
-    "author": {
-        "name": "Janus Schmidt"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/janusschmidt/jquery.pivot/blob/master/license.txt"
-        }
-    ],
-    "dependencies": {
-        "jquery": ">=1.7.0"
-    },
-    "description": "The jquery.pivot plugin can be used for presenting table data in pivot form. Data can be read from a html table or json. Use v2.0.1 for jquery 1.7.0 and above. Use v1.0.0 for jquery below 1.7.0",
-    "keywords": ["data","pivot","pivottable","table","analyze"],
-    "homepage": "http://metalogic.dk/jquery.pivot/demo/demo.htm"
+{
+  "name": "pivot",
+  "version": "2.0.2",
+  "title": "jquery.pivot",
+  "author": {
+    "name": "Janus Schmidt"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "description": "The jquery.pivot plugin can be used for presenting table data in pivot form. Data can be read from a html table or json. Use v2.x for jquery 1.7.0 and above. Use v1.x for jquery below 1.7.0",
+  "keywords": [
+    "data",
+    "pivot",
+    "pivottable",
+    "table",
+    "analyze"
+  ],
+  "homepage": "http://metalogic.dk/jquery.pivot/demo/demo.htm"
 }

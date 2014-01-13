@@ -56,6 +56,7 @@
             }
         },
         //Remember to have java installed and in your environment path
+        //Remember to set key in environment
         'saucelabs-jasmine': {
             all: {
                 options: {
@@ -83,6 +84,15 @@
                     testname: "jasmine tests"
                 }
             }
+        },
+        jquerymanifest: {
+            options: {
+                overrides: {
+                    name: "pivot",
+                    dependencies: { "jquery": ">=1.7.0" },
+                    "keywords": ["data", "pivot", "pivottable", "table", "analyze"],
+                }
+            }
         }
     });
 
@@ -92,9 +102,10 @@
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-saucelabs');
+    grunt.loadNpmTasks('grunt-jquerymanifest');
 
     // Default task(s).
-    grunt.registerTask('default', ['typescript', 'jshint', 'uglify', 'jasmine']);
+    grunt.registerTask('default', ['typescript', 'jquerymanifest', 'jshint', 'uglify', 'jasmine']);
 
     //Run tests in target browsers
     grunt.registerTask('sauce', ['saucelabs-jasmine']);

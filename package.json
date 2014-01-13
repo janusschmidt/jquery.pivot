@@ -1,17 +1,18 @@
 {
-  "name": "pivot",
-  "version": "2.0.2",
-  "title": "jQuery.pivot",
-  "repository" : { 
-	"type" : "git", 
-	"url" : "https://github.com/janusschmidt/jquery.pivot.git"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-typescript": "~0.2.7",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-saucelabs": "~4.1.2"
-  }
+	"name": "jquery.pivot",
+	"version": "2.0.2",
+	"author": {"name": "Janus Schmidt"},
+	"repository": {"type": "git", "url": "https://github.com/janusschmidt/jquery.pivot.git"},
+	"description": "The jquery.pivot plugin can be used for presenting table data in pivot form. Data can be read from a html table or json. Use v2.x for jquery 1.7.0 and above. Use v1.x for jquery below 1.7.0",
+	"homepage": "http://metalogic.dk/jquery.pivot/demo/demo.htm",
+	"license":"MIT",
+	"devDependencies": {
+		"grunt": "~0.4.2",
+		"grunt-contrib-uglify": "~0.2.7",
+		"grunt-contrib-jshint": "~0.8.0",
+		"grunt-typescript": "~0.2.7",
+		"grunt-contrib-jasmine": "~0.5.2",
+		"grunt-saucelabs": "~4.1.2",
+		"grunt-jquerymanifest": "~0.1.4"
+	}
 }
