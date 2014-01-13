@@ -1,6 +1,6 @@
 {
 	"name": "jquery.pivot",
-	"version": "2.0.2",
+	"version": "2.0.2", //When bumping version remember to run grunt or grunt jquerymanifest before comitting!
 	"author": {"name": "Janus Schmidt"},
 	"repository": {"type": "git", "url": "https://github.com/janusschmidt/jquery.pivot.git"},
 	"description": "The jquery.pivot plugin can be used for presenting table data in pivot form. Data can be read from a html table or json. Use v2.x for jquery 1.7.0 and above. Use v1.x for jquery below 1.7.0",
