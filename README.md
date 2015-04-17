@@ -2,7 +2,7 @@
 
 ##Description
 
-The jquery.pivot plugin can be used for presenting table data in pivot form. It is made and maintained me, Janus Schmidt, currently employed by [Metalogic.dk](http://Metalogic.dk).
+The jquery.pivot plugin can be used for presenting table data in pivot form. It is made and maintained me, Janus Schmidt, currently employed by [edlund.dk](http://edlund.dk).
 
 The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 
