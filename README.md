@@ -1,24 +1,24 @@
-#jquery.pivot plugin
+# jquery.pivot plugin
 
-##Description
+## Description
 
 The jquery.pivot plugin can be used for presenting table data in pivot form. It is made and maintained me, Janus Schmidt, currently employed by [edlund.dk](http://edlund.dk).
 
 The project lives on [github](http://github.com/janusschmidt/jquery.pivot).
 
-##Demo
+## Demo
 For further info on how to use the plugin, have a look at the [demo](http://metalogic.dk/jquery.pivot/demo/demo.htm)
 
 
-##Compatibility (Jasmine test results)
+## Compatibility (Jasmine test results)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/janusschmidt.svg)](https://saucelabs.com/u/janusschmidt)
 
-##History
+## History
 
 I made this some time ago, for a web application that enables people to keep track of time [styrpaatiden.dk](http://styrpaatiden.dk). As i am a big fan of jQuery, i decided, it was time for
 me to give back to the community.
 
-##Usage:
+## Usage:
 
 This is only a scarce description, so look in the examples to get more information.
 The data can be parsed from a html table with special markup or from json data. As i live in denmark i've built in the possibility to pass in format and parse functions for numbers.
@@ -48,20 +48,20 @@ $.fn.pivot.defaults = {
 };
 ```
 
-##Development
+## Development
 The source is in Typescript.
 
 If you for some reason don't want to use typescript, You're welcome to send bugs/change suggestions in plain javascript.
 
 The project is setup to use grunt.
 
-###To use *grunt* via *node* 
+### To use *grunt* via *node* 
 1. Install node.
 2. In *node* console install grunt `npm install -g grunt-cli`.
 3. In *node* console `cd` to project directory and run `npm install`
 4. In *node* console run `grunt` command
 
-###*grunt* is set up to:
+### *grunt* is set up to:
 1. Generate javascript files from typescripts.
 2. Jshint all (non minified) javascript.
 3. Minify selected files.
@@ -78,5 +78,5 @@ __Secret bonus *grunt* task.__ If you have a saucelab account you can fill in se
 get the unittest run in different target browsers. You must have java installed and added to your nodejs environment path. Also you must have local webserver serving you web on localhost/jquery.pivot.
 Don't sweat it if you skip this step. :-)
 
-##License
+## License
 The project uses the [MIT license](license.txt).
